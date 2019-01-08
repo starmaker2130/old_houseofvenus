@@ -26,7 +26,8 @@ var config = {
         './media/pattern', //6 
         './media/model', //7
         './media/texture', //8
-        './room' //9
+        './room', //9
+        './media/video', //10
     ],
     deviceType: null
 };
@@ -46,11 +47,11 @@ function checkInitialDeviceConnectionType(headers, ip){
     console.log(result.toString());
 
     if(result.isType('desktop')){
-        console.log('This is a desktop computer. \n User is most likely streaming firectly from eV quARk.');
+        console.log('This is a desktop computer.');
         config.deviceType = 'desktop';
     }
     else{
-        console.log('This is a mobile device. \n User is most likely connecting her remote.');
+        console.log('This is a mobile device.');
         config.deviceType = 'mobile';
     }
 }
@@ -100,9 +101,14 @@ app.get('/media/texture/:texture_id', function(req, res){
 });
 
 app.get('/room/:room_id', function(req, res){
-    var room = req.params.room_id
+    var room = req.params.room_id;
     console.log(`looking for room ${room}`);
     res.sendFile(room+'.html',{root: dir[9]});
+});
+
+app.get('/media/video/:video_id', function(req, res){
+    var video_id = req.params.video_id;
+    res.sendFile(video_id, {root: dir[10]});
 });
 
 var io = require('socket.io').listen(app.listen(config.PORT, function(){
