@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html, #main-app-container{
+    width: 100%;
+    height: 100%;
+}
+
+#full-page-container{
+    position: absolute;
+    display: none;
+    opacity: 0;
+    width: 100%;
+    height: 0;
+}
+
+#full-page-navigation-bar{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#vision-navigation-option{
+    background-color: black;
+    color: white;
+}
+
+.navigation-page-option{
+    display: none;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+#legacy-navigation-option{
+    background-color: red;
+    color: white;
+}
+
+#roster-navigation-option{
+    background-color: lavender;
+    color: black;
+}
+
+#eos-navigation-option{
+    background-color: yellow;
+    color: black;
+}
+
+#docs-navigation-option{
+    background-color: blue;
+    color: white;
+}
+
+#background-layer{
+    z-index: -50;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#navigation-bubbles-container{
+    position: absolute;
+    display: block;
+    z-index: 100;
+    width: 200px;
+    height: 50px;
+    bottom: 5%;
+    left: 50%;
+    margin-left: -100px;
+}
+
+.navigation-bubble{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: auto 10px;
+    text-align: center;
+    line-height: 15px;
+    background-color: white;
+    color: white;
+    cursor: pointer;
+}
+
+.navigation-bubble:hover, .selected-navigation-bubble{
+    width: 20px;
+    height: 20px;
+    color: black;
+}

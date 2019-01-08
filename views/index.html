@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1.0' />
+    <title>Welcome to our House | Stay Visionary</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="../media/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../media/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../media/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../media/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../media/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../media/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../media/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../media/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../media/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="../media/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../media/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../media/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../media/icon/favicon-16x16.png">
+    <link rel="manifest" href="../media/icon/manifest.json">
+    
+    <link rel=stylesheet type="text/css" href='../css/eos-standard-single-page-dapp.css' />
+    <script src='../js/jquery-3.2.1.min.js'></script>
+    <script>
+        var sessionManager = {
+            focus: 0
+        };
+        
+        document.addEventListener('DOMContentLoaded', function(){
+            //init
+            sessionManager.focus = 0;
+            $('#vision-navigation-option').show().animate({
+                opacity: 0.6
+            }, 1000);
+            
+            //navigation event handlers
+            $('.navigation-bubble').click(function(){
+                var rawID = $(this).attr('id');
+                var id = rawID.substring(0, rawID.indexOf('-'));
+                
+                $('.navigation-page-option').animate({
+                    opacity: 0
+                }, 1000, function(){
+                    $(this).hide();
+                });
+                
+                setTimeout(function(){
+                    
+                    console.log(`selected ${id} navigation option. \n showing associated page...`);
+
+                    switch(id){
+                        case 'vision':
+                            sessionManager.focus = 0;
+                            $('#vision-navigation-option').show().animate({
+                                opacity: 0.6
+                            }, 1000);
+                            break;
+                        case 'legacy':
+                            sessionManager.focus = 1;
+                            $('#legacy-navigation-option').show().animate({
+                                opacity: 0.6
+                            }, 1000);
+                            break;
+                        case 'roster':
+                            sessionManager.focus = 2;
+                            $('#roster-navigation-option').show().animate({
+                                opacity: 0.6
+                            }, 1000);
+                            break;
+                        case 'eos':
+                            sessionManager.focus = 3;
+                            $('#eos-navigation-option').show().animate({
+                                opacity: 0.6
+                            }, 1000);
+                            break;
+                        case 'docs':
+                            sessionManager.focus = 4;
+                            $('#docs-navigation-option').show().animate({
+                                opacity: 0.6
+                            }, 1000);
+                            break;
+                        default:
+                            console.log('no navigation page associated with this code');
+                            break;
+                    }
+                }, 1250);
+            })
+        });
+    </script>
+</head>
+<body>
+    <div id='main-app-container'>
+        <div id='full-page-navigation-bar'>
+            <div id='vision-navigation-option' class='navigation-page-option'></div>
+            <div id='legacy-navigation-option' class='navigation-page-option'></div>
+            <div id='roster-navigation-option' class='navigation-page-option'></div>
+            <div id='eos-navigation-option' class='navigation-page-option'></div>
+            <div id='docs-navigation-option' class='navigation-page-option'></div>
+        </div>
+        <div id='full-page-container'>
+            <div id='vision-page-container' class='page-container'></div>
+            <div id='legacy-page-container' class='page-container'></div>
+            <div id='roster-page-container' class='page-container'></div>
+            <div id='eos-page-container' class='page-container'></div>
+            <div id='docs-page-container' class='page-container'></div>
+        </div>
+        <div id='navigation-bubbles-container'>
+            <div id='vision-navigation-bubble' class='navigation-bubble'>.</div>
+            <div id='legacy-navigation-bubble' class='navigation-bubble'>.</div>
+            <div id='roster-navigation-bubble' class='navigation-bubble'>.</div>
+            <div id='eos-navigation-bubble' class='navigation-bubble'>.</div>
+            <div id='docs-navigation-bubble' class='navigation-bubble'>.</div>
+        </div>
+    </div>
+</body>
+</html>
