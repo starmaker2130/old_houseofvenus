@@ -25,7 +25,8 @@
     <script>
         var sessionManager = {
             focus: 0,
-            menuContainerVisible: false
+            menuContainerVisible: false,
+            pageOpen: null
         };
         
         function toggleMenuContainer(){
@@ -35,7 +36,7 @@
                 $('#menu-container').animate({
                     height: 0,
                     opacity: 0
-                }, 1000, function(){
+                }, 300, function(){
                     $(this).hide();
                     sessionManager.menuContainerVisible = false;
                 });
@@ -45,9 +46,69 @@
                 $('#menu-container').show().animate({
                     height: '100%',
                     opacity: 1.0
-                }, 1000, function(){
+                }, 300, function(){
                     sessionManager.menuContainerVisible = true;
                 });
+            }
+        }
+        
+        function showPage(target){
+            var id = target;
+            
+            switch(id){
+                case 'vision':
+                    sessionManager.pageOpen = 0;
+
+                    $('#vision-page-container').show();
+                    $('#full-page-container').show().animate({
+                        height: '100%',
+                        opacity: 1.0
+                    }, 500);
+
+                    break;
+                case 'legacy':
+                    sessionManager.pageOpen = 1;
+
+                    $('#legacy-page-container').show();
+                    $('#full-page-container').show().animate({
+                        height: '100%',
+                        opacity: 1.0
+                    }, 500);
+
+                    break;
+                case 'roster':
+                    sessionManager.pageOpen = 2;
+
+                    $('#roster-page-container').show();
+                    $('#full-page-container').show().animate({
+                        height: '100%',
+                        opacity: 1.0
+                    }, 500);
+
+                    break;
+                case 'eos':
+                    sessionManager.pageOpen = 3;
+
+                    $('#eos-page-container').show();
+                    $('#full-page-container').show().animate({
+                        height: '100%',
+                        opacity: 1.0
+                    }, 500);
+
+                    break;
+                case 'docs':
+                    sessionManager.pageOpen = 4;
+
+                    $('#docs-page-container').show();
+                    $('#full-page-container').show().animate({
+                        height: '100%',
+                        opacity: 1.0
+                    }, 500);
+
+                    break;
+                default:
+                    console.log('no navigation page associated with this code');
+                    break;
             }
         }
         
@@ -57,6 +118,8 @@
             $('#vision-navigation-option').show().animate({
                 opacity: 1.0
             }, 500);
+            
+            $('#full-page-container').show();
             
             //navigation event handlers
             $('.navigation-bubble').click(function(){
@@ -207,10 +270,39 @@
                             break;
                     }
                 }, 750);
-            })
+            });
+            
+            // page selection
+            $('.menu-option').click(function(){
+                var rawID = $(this).attr('id');
+                var id = rawID.substring(0, rawID.indexOf('-'));    
+                console.log(`selected ${id} menu option. \n showing associated content...`);
+                    
+                showPage(id);
+            });
         
+            $('.close-page-container-button').click(function(){
+                $('#full-page-container').animate({
+                    height: 0,
+                    opacity: 0
+                }, 500, function(){
+                    $(this).hide();
+                    $('.page-container').css({
+                        display: 'none'
+                    });
+                });
+            });
+            
             $('#logo').click(function(){
                 toggleMenuContainer();
+            });
+            
+            $('.navigation-option-subtitle').click(function(){
+                var rawID = $(this).attr('id');
+                var id = rawID.substring(0, rawID.indexOf('-'));    
+                console.log(`selected ${id} menu option. \n showing associated content...`);
+                    
+                showPage(id);
             });
         });
     </script>
@@ -231,40 +323,112 @@
         <div id='full-page-navigation-bar'>
             <div id='vision-navigation-option' class='navigation-page-option'>
                 <div class='navigation-option-title'>Elders uphold tradition; YOUTH create new ones. </div>
-                <div class='navigation-option-subtitle'>Our VISION for creativity everywhere &#9658;</div>
+                <div id='vision-subtitle' class='navigation-option-subtitle'>Our VISION for creativity everywhere &#9658;</div>
             </div>
             <div id='legacy-navigation-option' class='navigation-page-option'>
                 <div class='navigation-option-title'><p>BUILD or DESTROY.</p><p>What is your LEGACY?</p></div>
-                <div class='navigation-option-subtitle'>Grasp the future NOW &#9658;</div>
+                <div id='legacy-subtitle' class='navigation-option-subtitle'>Grasp the future NOW &#9658;</div>
             </div>
             <div id='roster-navigation-option' class='navigation-page-option'>
-                <div class='navigation-option-title'>LIFE HAPPENS. Make it happen with PURPOSE</div>
-                <div class='navigation-option-subtitle'>Be fly and STAY VISIONARY &#9658;</div>
+                <div class='navigation-option-title'>LIFE HAPPENS. Let it be with PURPOSE.</div>
+                <div id='roster-subtitle' class='navigation-option-subtitle'>Be fly and STAY VISIONARY &#9658;</div>
             </div>
             <div id='eos-navigation-option' class='navigation-page-option'>
-                <div class='navigation-option-title'>COMMUNITY as a service to BUILD the future we need</div>
-                <div class='navigation-option-subtitle'>1 MILLION careers in the MAKING &#9658;</div>
+                <div class='navigation-option-title'>COMMUNITY as a SERVICE for the future we need</div>
+                <div id='eos-subtitle' class='navigation-option-subtitle'>1 MILLION careers in the MAKING &#9658;</div>
             </div>
             <div id='docs-navigation-option' class='navigation-page-option'>
                 <div class='navigation-option-title'>START building and exploring the IMMERSIVE web</div>
-                <div class='navigation-option-subtitle'>Take a stroll in the pARk &#9658;</div>
+                <div id='docs-subtitle' class='navigation-option-subtitle'>Take a stroll in the pARk &#9658;</div>
             </div>
         </div>
         <div id='full-page-container'>
             <div id='vision-page-container' class='page-container'>
-            
+                <div class='page-container-title'>vision</div>
+                <div class='page-container-content'><p class='page-content-paragraph'>we are building a world where every community has access to clean drinking water and affordable, open internet service</p><p class='page-content-paragraph'>the journey begins on the immersive Web at the crossroads of IoT and Hyper-Reality</p></div>
+                <div class='close-page-container-button'>x</div>
             </div>
             <div id='legacy-page-container' class='page-container'>
-            
+                <div class='page-container-title'>legacy</div>
+                <div class='page-container-content'>
+                    <div id='technology-block-array-container'>
+                        <div id='cARd-technology-block' class='technology-block-container'>
+                            <div id='cARd-name-container' class='technology-name-container'>cARd v. 0.9.0</div>
+                            <div id='cARd-price-tag' class='price-tag-container'>$39.99</div>
+                            <div id='cARd-description-container' class='technology-description-container'>create freely; with a cARd the world is your desktop and your hand is the mouse</div>
+                            <div id='cARd-add-to-cart-button' class='add-to-cart-button'>add to cart</div>
+                        </div>
+                        <div id='dev-technology-block' class='technology-block-container'>
+                            <div id='dev-name-container' class='technology-name-container'>pARk kit v. 0.4.0</div>
+                            <div id='dev-price-tag' class='price-tag-container'>$99.99</div>
+                            <div id='dev-description-container' class='technology-description-container'>explore the immersive web and develop experiences and dapps for the pARk</div>
+                            <div id='dev-add-to-cart-button' class='add-to-cart-button'>add to cart</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='close-page-container-button'>x</div>
             </div>
             <div id='roster-page-container' class='page-container'>
-            
+                <div class='page-container-title'>roster</div>
+                <div class='page-container-content'>
+                    <div id='roster-block-array-container'>
+                        <div id='pamo-roster-block' class='roster-block-container'>
+                            <div class='roster-block-content'>
+                                <div id='pamo-name-container' class='roster-name-container'>Patrice-Morgan ONGOLY</div>
+                                <div id='pamo-position-container' class='roster-position-container'>Founder, CEO</div>
+                                <div id='pamo-year-container' class='roster-year-container'>Math. '20</div>
+                            </div>
+                        </div>
+                        <div id='vaibhav-roster-block' class='roster-block-container'>
+                            <div class='roster-block-content'>
+                                <div id='vaibhav-name-container' class='roster-name-container'>Vaibhav PONNURI</div>
+                                <div id='vaibhav-position-container' class='roster-position-container'>Founder, CMO</div>
+                                <div id='vaibhav-year-container' class='roster-year-container'>Math. '18</div>
+                            </div>
+                        </div>
+                        <div id='cam-roster-block' class='roster-block-container'>
+                            <div class='roster-block-content'>
+                                <div id='cam-name-container' class='roster-name-container'>Cameron REED</div>
+                                <div id='cam-position-container' class='roster-position-container'>CPO, V.Store</div>
+                                <div id='cam-year-container' class='roster-year-container'>CpE. '20</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='close-page-container-button'>x</div>
             </div>
             <div id='eos-page-container' class='page-container'>
-            
+                <div class='page-container-title'>eos</div>
+                <div class='page-container-content'>
+                    <p class='page-content-paragraph'>
+                        from building an immersive media player to setting up a benefit fintech startup: watch how to do it, teach when it's done, and make some money along the way
+                    </p>
+                    <p class='page-content-paragraph'>
+                        connect to preview now
+                    </p>
+                </div>
+                <div class='close-page-container-button'>x</div>
             </div>
             <div id='docs-page-container' class='page-container'>
-            
+                <div class='page-container-title'>docs</div>
+                <div class='page-container-content'>
+                    <p class='page-content-paragraph'>
+                        ingredients for recipes galore
+                    </p>
+                    <p class='page-content-paragraph'>
+                        software
+                    </p>
+                    <p class='page-content-paragraph'>
+                        hardware
+                    </p>
+                    <p class='page-content-paragraph'>
+                        platform
+                    </p>
+                    <p class='page-content-paragraph'>
+                        community
+                    </p>
+                </div>
+                <div class='close-page-container-button'>x</div>
             </div>
         </div>
         <div id='navigation-bubbles-container'>
@@ -274,6 +438,7 @@
             <div id='eos-navigation-bubble' class='navigation-bubble'>.</div>
             <div id='docs-navigation-bubble' class='navigation-bubble'>.</div>
         </div>
+        <div id='author-footer'>Patrice-Morgan Ongoly | 2019</div>
     </div>
 </body>
 </html>
