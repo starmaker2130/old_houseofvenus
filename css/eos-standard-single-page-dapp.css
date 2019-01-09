@@ -84,6 +84,11 @@ body, html, #main-app-container{
     margin-left: -100px;
 }
 
+#navigation-bubble-class{
+    margin: 0;
+    padding: 0;
+}
+
 .navigation-bubble{
     width: 15px;
     height: 15px;
