@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1.0' />
+    <title>public Augmented Reality kinectome v. 0.2.0 | House of Venus</title>
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="../media/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../media/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../media/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../media/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../media/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../media/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../media/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../media/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../media/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="../media/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../media/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../media/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../media/icon/favicon-16x16.png">
+    <link rel="manifest" href="../media/icon/manifest.json">
+    
+    <link rel=stylesheet type="text/css" href='../css/fonts.css' />
+    <link rel=stylesheet type="text/css" href='../css/eos-standard-single-page-dapp.css' />
+    <link rel=stylesheet type="text/css" href='../css/cARd-teaser.css' />
+    <script src='../js/jquery-3.2.1.min.js'></script>
+    <script>
+        var sessionManager = {
+            focus: 0,
+            menuContainerVisible: false,
+            pageOpen: null
+        };
+        
+        function toggleMenuContainer(){
+            console.log('toggle menu container');
+            
+            if(sessionManager.menuContainerVisible){
+                //if the menu is visible hide it
+                $('#company-header-button').css({
+                    color: 'white'
+                });
+                
+                $('#menu-container').animate({
+                    height: 0,
+                    opacity: 0
+                }, 300, function(){
+                    $(this).hide();
+                    sessionManager.menuContainerVisible = false;
+                });
+            }
+            else{
+                //if the menu is not visible show it
+                if(sessionManager.focus==0){
+                    $('#company-header-button').css({
+                        color: 'black'
+                    });
+                }
+                else{
+                    $('#company-header-button').css({
+                        color: 'white'
+                    });
+                }
+                $('#menu-container').show().animate({
+                    height: '100%',
+                    opacity: 1.0
+                }, 300, function(){
+                    sessionManager.menuContainerVisible = true;
+                });
+            }
+        }
+        
+        function showPage(target){
+            var id = target;
+            
+            switch(id){
+                case 'cARd':
+                    sessionManager.pageOpen = 0;
+
+                    $('#cARd-page-container').show();
+                    $('#full-page-container').show().animate({
+                        height: '100%',
+                        opacity: 1.0
+                    }, 500);
+
+                    break;
+                case 'order':
+                    sessionManager.pageOpen = 1;
+
+                    $('#order-page-container').show();
+                    $('#full-page-container').show().animate({
+                        height: '100%',
+                        opacity: 1.0
+                    }, 500);
+
+                    break;
+                case 'main':
+                    sessionManager.focus = null;
+                    window.location.href = './';
+                    break;
+                default:
+                    console.log('no navigation page associated with this code');
+                    break;
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function(){
+            //init
+            sessionManager.focus = 0;
+            $('#cARd-navigation-option').show().animate({
+                opacity: 1.0
+            }, 500);
+            
+            $('#full-page-container').show();
+            
+            //navigation event handlers
+            $('.navigation-bubble').click(function(){
+                var rawID = $(this).attr('id');
+                var id = rawID.substring(0, rawID.indexOf('-'));
+                
+                $('.navigation-page-option').animate({
+                    opacity: 0
+                }, 500, function(){
+                    $(this).hide();
+                });
+                
+                $('#background-layer').animate({
+                    opacity: 0
+                }, 500);
+                
+                setTimeout(function(){
+                    
+                    console.log(`selected ${id} navigation option. \n showing associated page...`);
+
+                    switch(id){
+                        case 'cARd':
+                            sessionManager.focus = 0;
+                            $('#company-header-button').css({
+                                color: 'black'
+                            });
+                            
+                            $('#menu-container').css({
+                                backgroundColor: 'rgba(255, 255, 0, 1.0)',
+                                color: 'black'
+                            });
+                            
+                            $('#cARd-navigation-option').show().css({
+                                color: 'white'
+                            }).animate({
+                                opacity: 1.0
+                            }, 500);
+                            
+                            $('#background-layer').attr('src', '../media/video/Postcard.mp4').animate({
+                                opacity: 1.0
+                            }, 500);
+                            break;
+                        case 'order':
+                            sessionManager.focus = 1;
+                            $('#company-header-button').css({
+                                color: 'white'
+                            });
+                            
+                            $('#menu-container').css({
+                                backgroundColor: 'rgba(0, 0, 255, 1.0)',
+                                color: 'white'
+                            });
+                            
+                            $('#order-navigation-option').show().css({
+                                color: 'white'
+                            }).animate({
+                                opacity: 1.0
+                            }, 500);
+                            
+                            $('#background-layer').attr('src', '../media/video/Studio.mp4').animate({
+                                opacity: 1.0
+                            }, 500);
+                            break;
+                        default:
+                            console.log('no navigation page associated with this code');
+                            break;
+                    }
+                }, 750);
+            });
+            
+            // page selection
+            $('.menu-option').click(function(){
+                var rawID = $(this).attr('id');
+                var id = rawID.substring(0, rawID.indexOf('-'));    
+                console.log(`selected ${id} menu option. \n showing associated content...`);
+                    
+                showPage(id);
+            });
+        
+            $('.close-page-container-button').click(function(){
+                $('#full-page-container').animate({
+                    height: 0,
+                    opacity: 0
+                }, 500, function(){
+                    $(this).hide();
+                    $('.page-container').css({
+                        display: 'none'
+                    });
+                });
+            });
+            
+            $('#logo').click(function(){
+                toggleMenuContainer();
+            });
+            
+            $('.navigation-option-subtitle').click(function(){
+                var rawID = $(this).attr('id');
+                var id = rawID.substring(0, rawID.indexOf('-'));    
+                console.log(`selected ${id} menu option. \n showing associated content...`);
+                    
+                showPage(id);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id='main-app-container'>
+        <div id='menu-container'>
+            <div id='cARd-menu-option' class='menu-option'>cARd</div>
+            <div id='order-menu-option' class='menu-option'>order</div>
+            <div id='main-menu-option' class='menu-option'>main</div>
+        </div>
+        <div id='company-header-button'>house of venus</div>
+        <div id='logo'></div>
+        <video id='background-layer' autoplay muted loop src='../media/video/Postcard.mp4'></video>
+        <div id='filter-layer'></div>
+        <div id='full-page-navigation-bar'>
+            <div id='cARd-navigation-option' class='navigation-page-option'>
+                <div class='navigation-option-title'>creative Augmented Reality desktop</div>
+                <div id='cARd-subtitle' class='navigation-option-subtitle'>create naturally &#9658;</div>
+            </div>
+            <div id='order-navigation-option' class='navigation-page-option'>
+                <div class='navigation-option-title'><p>REACH OUT</p></div>
+                <div id='order-subtitle' class='navigation-option-subtitle'>Order a cARd to begin exploring &#9658;</div>
+            </div>
+        </div>
+        <div id='full-page-container'>
+            <div id='cARd-page-container' class='page-container'>
+                <div class='page-container-title'>cARd</div>
+                    <div id='play-preview-button'>&#9658;</div>
+                <video id='cARd-preview-video'width='500' height='300'></video>
+                <div class='close-page-container-button'>x</div>
+            </div>
+            <div id='order-page-container' class='page-container'>
+                <div class='page-container-title'>order</div>
+                <div class='page-container-content'>
+                    <div class='purchase-block-container'>
+                        <div id='purchase-block'>
+                            <div id='dev-name-container' class='technology-name-container'>cARd v. 1.0.0</div>
+                            <div id='dev-price-tag' class='price-tag-container'>$99.99</div>
+                            <div id='cARd-description-container' class='technology-description-container'>explore the immersive web and develop experiences and dapps for the cARd</div>
+                            <div id='dev-add-to-cart-button' class='add-to-cart-button'>add to cart</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='close-page-container-button'>x</div>
+            </div>
+        </div>
+        <div id='cARd-navigation-bar' class='navigation-bubbles-container'>
+            <div id='cARd-navigation-bubble' class='navigation-bubble'>.</div>
+            <div id='order-navigation-bubble' class='navigation-bubble'>.</div>
+        </div>
+        <div id='author-footer'>Patrice-Morgan Ongoly | 2019</div>
+    </div>
+</body>
+</html>

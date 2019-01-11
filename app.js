@@ -65,6 +65,24 @@ app.get('/', function(req, res){
     res.render('index.html',{root: dir[0]});
 });
 
+app.get('/pARk', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering pARk application teaser page...') 
+    res.render('pARk.html',{root: dir[0]});
+});
+
+app.get('/cARd', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering cARd application teaser page...') 
+    res.render('cARd.html',{root: dir[0]});
+});
+
 app.get('/css/:stylesheet_id', function(req, res){
     var stylesheet_id = req.params.stylesheet_id;
     res.sendFile(stylesheet_id, {root: dir[1]});

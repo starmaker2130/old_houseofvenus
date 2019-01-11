@@ -1,0 +1,79 @@
+#pARk-navigation-option{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#join-navigation-option{
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+}
+
+#pARk-menu-option{
+    margin-top: 10%;
+}
+
+#pARk-page-container{
+    background-color: black;
+    color: white;
+}
+
+#join-page-container{
+    background-color: red;
+    color: white;
+}
+
+#pARk-navigation-bar{
+    width: 80px;
+    margin-left: -40px;
+}
+
+#play-preview-button{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 60px;
+    z-index: 50;
+}
+
+.purchase-block-container{
+    width: 80%;
+    margin: 0 auto;
+    height: 75%;
+    min-height: 300px;
+    display: block;
+    position: relative;
+}
+
+#purchase-block{
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0 0 -150px;
+    text-align: center;
+}
+
+#play-preview-button:hover{
+    background-color: white;
+    color: black;
+}
+
+#pARk-description-container{
+    margin-top: 5%;
+    line-height: 25px;
+}
+
+@media screen and (max-width: 600px) {
+    #pARk-menu-option{
+        margin-top: 25%;
+        /*margin-left: 10%;*/
+    }
+}
