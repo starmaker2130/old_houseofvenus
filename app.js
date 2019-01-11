@@ -1,7 +1,7 @@
 "use strict";
 // author(s):  Patrice-Morgan Ongoly
-// version: 0.2.0
-// last modified: Tuesday, January 1, 2019 13:35 PST
+// version: 0.3.0
+// last modified: Friday, January 11, 2019 10:13 PST
 // description: 
 
 // required modules
@@ -15,7 +15,7 @@ var app = express();
 // main application settings
 
 var config = {
-    PORT: 2130, //process.env.PORT ||
+    PORT: process.env.PORT,
     DIRECTORY: [
         './',  //0
         './css',  //1
@@ -40,7 +40,6 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(express.static('/'));
- 
 
 function checkInitialDeviceConnectionType(headers, ip){
     var result = new WhichBrowser(headers);
@@ -132,7 +131,6 @@ app.get('/media/video/:video_id', function(req, res){
 var io = require('socket.io').listen(app.listen(config.PORT, function(){
     console.log(`[0] listening on port ${config.PORT}`);
 }));
-
 
 io.sockets.on('connection', function(socket){
     console.log('client connected.');
