@@ -128,9 +128,11 @@ app.get('/media/video/:video_id', function(req, res){
     res.sendFile(video_id, {root: dir[10]});
 });
 
-var io = require('socket.io').listen(app.listen(config.PORT, function(){
+app.listen(config.PORT, function(){
     console.log(`[0] listening on port ${config.PORT}`);
-}));
+});
+
+/*var io = require('socket.io').listen());
 
 io.sockets.on('connection', function(socket){
     console.log('client connected.');
@@ -140,4 +142,4 @@ io.sockets.on('connection', function(socket){
     socket.on('disconnect', function(){
         console.log(`socket ${socket.id} disconnected.`);
     });
-});
+});*/

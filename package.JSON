@@ -1,14 +1,11 @@
 {
     "name": "company-landing-page",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "private": true,
     "dependencies": {
         "ejs": "latest",
-        "aws-sdk": "latest",
         "express": "latest",
         "body-parser": "latest",
-        "formidable": "latest",
-        "socket.io": "latest",
         "which-browser": "latest"
     },
     "scripts": {
