@@ -15,7 +15,7 @@ var app = express();
 // main application settings
 
 var config = {
-    PORT: process.env.PORT || 8008,
+    PORT: process.env.PORT || 3000,
     DIRECTORY: [
         './',  //0
         './css',  //1

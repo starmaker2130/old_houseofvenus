@@ -1,14 +1,17 @@
 {
-  "name": "company-landing-page",
-  "version": "0.4.0",
-  "dependencies": {
-    "body-parser": "1.14.2",
-    "ejs": "2.4.1",
-    "express": "4.14.0",
-    "formidable": "^1.1.1",
-    "socket.io": "1.5.0"
-  },
-  "scripts": {
-    "start": "node app.js"
-  }
+    "name": "company-landing-page",
+    "version": "0.5.0",
+    "private": true,
+    "dependencies": {
+        "ejs": "latest",
+        "aws-sdk": "latest",
+        "express": "latest",
+        "body-parser": "latest",
+        "formidable": "latest",
+        "socket.io": "latest",
+        "which-browser": "latest"
+    },
+    "scripts": {
+        "start": "node app.js"
+    }
 }
