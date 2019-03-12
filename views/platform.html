@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1.0' />
+    <title>PLATFORM</title>
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="../media/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../media/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../media/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../media/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../media/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../media/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../media/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../media/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../media/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="../media/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../media/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../media/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../media/icon/favicon-16x16.png">
+    <link rel="manifest" href="../media/icon/manifest.json">
+    <link rel='stylesheet' type="text/css" href='../css/fonts.css' />
+    <style>
+        * {
+            font-family: 'Proxima Nova', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+            color: black;
+        }
+        
+        #main-app-container{
+            width: 355px;
+            height: 505px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -252px 0 0 -180px;
+        }
+        
+        .photo-bg-container{
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            margin: 5% auto;
+            display: block;
+            background-color: white;
+            border: 2px white solid;
+            cursor: pointer;
+        }
+        
+        .roster-block-content{
+            position: absolute;
+            top: 1%;
+        }
+
+        .roster-block-container{
+            position: relative;
+            vertical-align: bottom;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .roster-name-container{
+            display: inline-block;
+            width: 100%;
+            font-size: 24px;
+        }
+
+        .roster-year-container{
+            display: inline-block;
+            width: 40%;
+            font-size: 16px;
+        }
+
+        .roster-position-container{
+            display: inline-block;
+            width: 58%;
+            font-size: 20px;
+        }
+        
+        #cam-year-container{
+            vertical-align: top;
+            line-height: 50px;
+            height: 50px;
+        }
+
+        .cpe-link{
+            cursor: pointer;
+            font-weight: 900;
+        }
+
+        .cpe-link:hover{
+            color: blue;
+        }
+        
+        #author-footer{
+            color: black;
+            position: absolute;
+            width: 250px;
+            height: 50px;
+            text-align: center;
+            bottom: 1%;
+            left: 50%;
+            margin-left: -125px;
+            line-height: 50px;
+            font-size: 10px;
+            z-index: 50;
+        }
+
+        #cam-roster-block{
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+    <script src='../js/jquery-3.2.1.min.js'></script>
+    </head>
+<body>
+    <div id='main-app-container'>
+        <div id='cam-roster-block' class='roster-block-container'>
+            <div class='roster-block-content'>
+                <div id='cam-photo-container' class='photo-bg-container'></div>
+                <div id='cam-name-container' class='roster-name-container'>platform</div>
+                <div id='cam-name-container' class='roster-name-container'>icdp</div>
+                <div id='cam-name-container' class='roster-name-container'>pARk</div>
+                <p>flat | vr | xr</p>
+            </div>
+        </div>
+    </div>
+    <div id='author-footer'>Patrice-Morgan Ongoly | 2019</div>
+</body>
+</html>

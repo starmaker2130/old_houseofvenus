@@ -42,7 +42,7 @@ body, html, #main-app-container{
 }
 
 #legacy-navigation-option{
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(255, 255, 0, 0.5);
     color: white;
 }
 
@@ -56,18 +56,18 @@ body, html, #main-app-container{
     color: white;
 }
 
-#docs-navigation-option{
+#lyoko-navigation-option{
     background-color: rgba(0, 0, 255, 0.5);
     color: white;
 }
 
 #background-layer{
-    position: absolute;
     z-index: -50;
-    width: 120%;
+    position: fixed;
     left: -10%;
-    min-height: 90%;
-    height: auto;
+    bottom: -20%;
+    min-width: 120%; 
+    min-height: 120%;
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -85,11 +85,11 @@ body, html, #main-app-container{
 }
 
 .navigation-bubble{
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: inline-block;
-    margin: auto 10px;
+    margin: auto 13px;
     text-align: center;
     line-height: 15px;
     background-color: white;
@@ -99,10 +99,11 @@ body, html, #main-app-container{
 }
 
 .navigation-bubble:hover{
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     color: black;
     background-color: black;
+    border: 2px white solid;
 }
 
 .selected-navigation-bubble{
@@ -200,21 +201,90 @@ body, html, #main-app-container{
     text-decoration: underline;
 }
 
-.close-page-container-button{
+#close-team-page-container-button{
     width: 50px;
     height: 50px;
     border-radius: 50%;
     display: block;
-    margin: 2% auto;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px black solid;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+#close-demos-page-container-button, .close-page-container-button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
     text-align: center;
     border: 2px white solid;
     line-height: 50px;
     cursor: pointer;
 }
 
-.close-page-container-button:hover{
+#close-team-page-container-button:hover{
+    background-color: white;
+    border: 2px white solid;
+    color: black;
+}
+
+#close-demos-page-container-button:hover, .close-page-container-button:hover{
     background-color: white;
     color: black;
+}
+
+#vision-team-option{
+    position: absolute;
+    left: 15%;
+    bottom: 35%;
+    background-image: url('../media/texture/roster-icon.png');
+    background-size: 80% 100%;
+}
+
+#vision-apps-option{
+    position: absolute;
+    right: 15%;
+    bottom: 35%;
+    background-image: url('../media/texture/dapps-icon.png');
+    background-size: 100% 100%;
+}
+
+#vision-team-option:hover{
+    background-image: url('../media/texture/roster-icon-white.png');
+}
+
+#vision-apps-option:hover{
+    background-image: url('../media/texture/dapps-icon-white.png');
+}
+
+.vision-page-option-button{
+    color: aquamarine;
+    font-weight: 900;
+    min-width: 125px;
+    min-height: 100px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 1.0);
+    text-align: center;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.vision-page-option-button:hover{
+    background-color: black;
+    color: black;
+    font-weight: 900;
+    border: 2px white solid;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.vision-page-option-button:focus{
+    outline:none;
 }
 
 .page-container{
@@ -234,6 +304,43 @@ body, html, #main-app-container{
     line-height: 100px;
 }
 
+.secondary-page-container-title{
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+
+#cam-year-container, #pamo-year-container{
+    vertical-align: top;
+    line-height: 50px;
+    height: 50px;
+}
+
+#vaibhav-year-container:hover{
+    color: aquamarine;
+}
+
+#pamo-year-container:hover{
+    color: aquamarine;
+}
+
+.math-link{
+    cursor: pointer;
+    font-weight: 900;
+    color: white;
+}
+
+.cpe-link{
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.cpe-link:hover{
+    color: white;
+}
+
 .page-container-content{
     display: block;
     width: 100%;
@@ -247,12 +354,160 @@ body, html, #main-app-container{
 }
 
 #legacy-page-container{
-    background-color: red;
+    background-color: yellow;
     color: white;
 }
 
+#legacy-close-page-button{
+    color: black;
+    background-color: white;
+}
+
+#legacy-close-page-button:hover{
+    background-color: rgba(0, 0, 0, 0);
+}
+                    
+
+#demos-page-container{
+    opacity: 0;
+    background-color: black;
+    color: white;
+}
+
+.aria-app-container, .shop-app-container, .card-app-container, .demo-app-container{
+    margin: 0 auto 2% auto;
+    width: 250px;
+    height: 180px;
+    border-radius: 10px;
+    border: 2px white solid;
+}
+
+#shop-page-container{
+    background-color: blueviolet;
+    color: white;
+}
+
+.view-preview-button{
+    width: 100%;
+    border-radius: 5px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.photo-bg-container{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin: 5% auto;
+    display: block;
+    background-color: white;
+    border: 2px white solid;
+    cursor: pointer;
+}
+
+#cARd-technology-block{
+    background-image: url('../media/texture/reneapple.gif');
+    background-size: auto 100%;
+    background-position: center center;
+}
+
+#dev-technology-block{
+    background-image: url('../media/texture/museum.gif');
+    background-size: auto 100%;
+    background-position: center center;
+}
+
+.photo-bg-container:hover{
+    background-color: black;
+    border: 2px black solid;
+}
+
+#vaibhav-name-container, #cam-name-container{
+    margin-top: 7%;
+}
+
+#pamo-position-container, #pamo-name-container, #vaibhav-position-container, #vaibhav-name-container{
+    color: white;
+    cursor: pointer;
+}
+
+#vaibhav-position-container:hover, #vaibhav-name-container:hover{
+    color: aquamarine;
+}
+
+#pamo-position-container:hover, #pamo-name-container:hover{
+    color: aquamarine;
+}
+
+.demo-app-title-container, .card-app-title-container, .aria-app-title-container{
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.add-to-shopping-cart-button{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+.card-app-description-container, .aria-app-description-container{
+    text-align: center;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.demo-app-description-container{
+    text-align: justify;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.card-app-version-container:hover, .aria-app-version-container:hover{
+    background-color: white;
+    color: blueviolet;
+}
+.card-app-version-container:hover::before, .aria-app-version-container:hover::before{
+    content: 'see ';
+}
+
+.card-app-version-container:hover::after, .aria-app-version-container:hover::after{
+    content: ' preview';
+}
+
+.add-to-shopping-cart-button:hover{
+    background-color: white;
+    font-weight: 900;
+    color: blueviolet;
+}
+
+.add-to-shopping-cart-button:hover::after{
+    cursor: pointer;
+    content: ' add to cart +';
+}
+
+.demo-app-version-container, .card-app-version-container, .aria-app-version-container{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    margin-top: 10px;
+}
+
 #roster-page-container{
-    background-color: lavender;
+    opacity: 0;
+    background-color: aquamarine;
     color: rgba(148, 0 211, 1.0);
 }
 
@@ -261,7 +516,7 @@ body, html, #main-app-container{
     color: black;
 }
 
-#docs-page-container{
+#lyoko-page-container{
     background-color: blue;
     color: white;
 }
@@ -274,7 +529,7 @@ body, html, #main-app-container{
     line-height: 100px;
 }
 
-.docs-option:hover{
+.lyoko-option:hover{
     text-transform: uppercase;
     font-weight: 900;
 }
@@ -282,13 +537,13 @@ body, html, #main-app-container{
 .page-content-paragraph{
     display: block;
     width: 300px;
-    margin: 3% auto 1% auto;
+    margin: 2% auto 0 auto;
     text-align: center;
     cursor: pointer;
 }
 
 #technology-block-array-container{
-    width: 505px;
+    width: 550px;
     height: 255px;
     font-size: 0;
     display: block;
@@ -305,16 +560,21 @@ body, html, #main-app-container{
 
 .roster-block-content{
     position: absolute;
-    bottom: 1%;
+    top: 1%;
 }
 
 .roster-block-container, .technology-block-container{
     position: relative;
     vertical-align: bottom;
     width: 250px;
-    height: 250px;
+    height: 300px;
     display: inline-block;
     text-align: center;
+    border-radius: 10px;
+}
+
+.technology-block-container{
+   margin: 0 10px;
 }
 
 .roster-name-container, .technology-name-container{
@@ -340,10 +600,20 @@ body, html, #main-app-container{
 }
 
 .technology-description-container{
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
     width: 89%;
     padding: 0 5%;
     height: 50%;
     font-size: 20px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.technology-description-container:hover{
+    background-color: rgba(255, 255, 255, 1.0);
+    color: black;
 }
 
 .add-to-cart-button{
@@ -351,9 +621,9 @@ body, html, #main-app-container{
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 5px;
+    height: 25%;
+    line-height: 75px;
+    border-radius: 0 0 10px 10px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -400,26 +670,50 @@ body, html, #main-app-container{
         text-align: center;
     }
 
+    
     #background-layer{
+        z-index: -50;
+        position: fixed;
+        left: -60%;
+        bottom: -20%;
+        min-width: 120%; 
+        min-height: 120%;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    /*#background-layer{
+        position: absolute;
+        z-index: -50;
+        height: 120%;
+        left: -10%;
+        /*min-height: 90%;
+        height: auto;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    /*#background-layer{
         position: relative;
         margin: 0 auto 0 -75%;
         z-index: -50;
-        height: 100%;
+        height: 120%;
         width: auto;
         background-size: auto 100%;
         background-repeat: no-repeat;
         background-position: center;
-    }
+    }*/
     
     .navigation-option-title{
         position: absolute;
         opacity: 1.0;
         font-size: 30px;
         font-weight: 800;
-        width: 280px;
+        width: 300px;
         bottom: 50%;
         left: 50%;
-        margin-left: -125px;
+        margin-left: -150px;
         text-align: left;
     }
 
@@ -451,4 +745,26 @@ body, html, #main-app-container{
     color: white;
     line-height: 50px;
     font-size: 10px;
+}
+
+.demo-app-container{
+    cursor: pointer;
+}
+
+.demo-app-container:hover{
+    color: black;
+    background-color: white;
+}
+
+#cam-name-container, #cam-position-container{
+    cursor: pointer;
+}
+
+#cam-name-container:hover, #cam-position-container:hover{
+    color: white;
+}
+
+#kinectome-link{
+    color: aquamarine;
+    font-weight: 800;
 }

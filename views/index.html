@@ -19,7 +19,6 @@
     <link rel="icon" type="image/png" sizes="96x96" href="../media/icon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../media/icon/favicon-16x16.png">
     <link rel="manifest" href="../media/icon/manifest.json">
-    
     <link rel=stylesheet type="text/css" href='../css/fonts.css' />
     <link rel=stylesheet type="text/css" href='../css/eos-standard-single-page-dapp.css' />
     <script src='../js/jquery-3.2.1.min.js'></script>
@@ -34,6 +33,13 @@
             console.log('toggle menu container');
             if(sessionManager.menuContainerVisible){
                 //if the menu is visible hide it
+                if(sessionManager.focus==1){
+                    $('#company-header-button').css({
+                        color: 'white'
+                    });
+                    
+                    
+                }
                 $('#menu-container').animate({
                     height: 0,
                     opacity: 0
@@ -44,6 +50,11 @@
             }
             else{
                 //if the menu is not visible show it
+                if(sessionManager.focus==1){
+                    $('#company-header-button').css({
+                        color: 'black'
+                    });
+                }
                 $('#menu-container').show().animate({
                     height: '100%',
                     opacity: 1.0
@@ -77,35 +88,43 @@
                     }, 500);
 
                     break;
-                case 'roster':
+                case 'lyoko':
                     sessionManager.pageOpen = 2;
 
-                    $('#roster-page-container').show();
+                    $('#lyoko-page-container').show();
                     $('#full-page-container').show().animate({
                         height: '100%',
                         opacity: 1.0
                     }, 500);
 
                     break;
-                case 'eos':
+                case 'roster':
                     sessionManager.pageOpen = 3;
 
-                    $('#eos-page-container').show();
-                    $('#full-page-container').show().animate({
+                    $('#roster-page-container').show().animate({
                         height: '100%',
                         opacity: 1.0
                     }, 500);
 
                     break;
-                case 'docs':
+                case 'demos':
                     sessionManager.pageOpen = 4;
 
-                    $('#docs-page-container').show();
-                    $('#full-page-container').show().animate({
+                    $('#demos-page-container').show().animate({
                         height: '100%',
                         opacity: 1.0
                     }, 500);
 
+                    break;
+                case 'shop':
+                    sessionManager.pageOpen = 5;
+
+                    $('#shop-page-container').show();
+                    $('#full-page-container').show().animate({
+                        height: '100%',
+                        opacity: 1.0
+                    }, 500);
+                    
                     break;
                 default:
                     console.log('no navigation page associated with this code');
@@ -174,8 +193,8 @@
                             });
                             
                             $('#menu-container').css({
-                                backgroundColor: 'rgba(255, 0, 0, 1.0)',
-                                color: 'white'
+                                backgroundColor: 'rgba(255, 255, 0, 1.0)',
+                                color: 'black'
                             });
                             
                             $('#legacy-navigation-option').show().css({
@@ -192,58 +211,8 @@
                                 backgroundColor: 'rgba(255,0,0,0.6)'
                             });*/
                             break;
-                        case 'roster':
+                        case 'lyoko':
                             sessionManager.focus = 2;
-                            $('#company-header-button').css({
-                                color: 'rgba(148, 0, 211, 1.0)'
-                            });
-                            
-                            $('#menu-container').css({
-                                backgroundColor: 'rgba(230, 250, 250, 1.0)',
-                                color: 'rgba(148, 0, 211, 1.0)'
-                            });
-                            
-                            $('#roster-navigation-option').show().css({
-                                color: 'rgba(148, 0, 211, 1.0)'
-                            }).animate({
-                                opacity: 1.0
-                            }, 500);
-                            
-                            $('#background-layer').attr('src', '../media/video/CampusWalkthrough.mp4').animate({
-                                opacity: 1.0
-                            }, 500);
-                            
-                            /*$('#main-app-container').css({
-                                backgroundColor: 'rgba(230,230,250,0.6)'
-                            });*/
-                            break;
-                        case 'eos':
-                            sessionManager.focus = 3;
-                            $('#company-header-button').css({
-                                color: 'black'
-                            });
-                            
-                            $('#menu-container').css({
-                                backgroundColor: 'rgba(255, 255, 0, 1.0)',
-                                color: 'black'
-                            });
-                            
-                            $('#eos-navigation-option').show().css({
-                                color: 'black'
-                            }).animate({
-                                opacity: 1.0
-                            }, 500);
-                            
-                            $('#background-layer').attr('src', '../media/video/NationalHarbor.mp4').animate({
-                                opacity: 1.0
-                            }, 500);
-                            
-                            /*$('#main-app-container').css({
-                                backgroundColor: 'rgba(255,255,0,0.6)'
-                            });*/
-                            break;
-                        case 'docs':
-                            sessionManager.focus = 4;
                             $('#company-header-button').css({
                                 color: 'white'
                             });
@@ -253,13 +222,37 @@
                                 color: 'white'
                             });
                             
-                            $('#docs-navigation-option').show().css({
+                            $('#lyoko-navigation-option').show().css({
                                 color: 'white'
                             }).animate({
                                 opacity: 1.0
                             }, 500);
                             
                             $('#background-layer').attr('src', '../media/video/LondonScan.mp4').animate({
+                                opacity: 1.0
+                            }, 500);
+                            /*$('#main-app-container').css({
+                                backgroundColor: 'rgba(0,0,255,0.6)'
+                            });*/
+                            break;
+                        case 'shop':
+                            sessionManager.focus = 3;
+                            $('#company-header-button').css({
+                                color: 'white'
+                            });
+                            
+                            $('#menu-container').css({
+                                backgroundColor: 'rgba(215, 124, 241, 1.0)',
+                                color: 'white'
+                            });
+                            
+                            $('#shop-navigation-option').show().css({
+                                color: 'white'
+                            }).animate({
+                                opacity: 1.0
+                            }, 500);
+                            
+                            $('#background-layer').attr('src', '../media/video/Shipping.mp4').animate({
                                 opacity: 1.0
                             }, 500);
                             /*$('#main-app-container').css({
@@ -283,15 +276,85 @@
             });
         
             $('.close-page-container-button').click(function(){
-                $('#full-page-container').animate({
-                    height: 0,
-                    opacity: 0
-                }, 500, function(){
-                    $(this).hide();
-                    $('.page-container').css({
-                        display: 'none'
+                closeOverlayPage(0);
+            });
+            
+            function closeOverlayPage(code){
+                let target = code;
+                
+                if(target==null){
+                    throw new Error('no target code provided. overlay ui action cannot be executed.');
+                }
+                else if(target==0){
+                    $('#full-page-container').animate({
+                        height: 0,
+                        opacity: 0
+                    }, 500, function(){
+                        $(this).hide();
+                        $('.page-container').css({
+                            display: 'none'
+                        });
                     });
-                });
+                }
+                else if(target==1){
+                    $('#roster-page-container').animate({
+                        height: 0,
+                        opacity: 0
+                    }, 500, function(){
+                        $(this).hide();
+                    });
+                }
+                else if(target==2){
+                    $('#demos-page-container').animate({
+                        height: 0,
+                        opacity: 0
+                    }, 500, function(){
+                        $(this).hide();
+                    });
+                }
+                
+            }
+            
+            document.getElementById('vaibhav-photo-container').addEventListener('click', function(){
+                window.open('./v', '_blank');
+            });
+            
+            document.getElementById('pamo-photo-container').addEventListener('click', function(){
+                window.open('./pamo', '_blank');
+            });
+            
+            document.getElementById('cam-photo-container').addEventListener('click', function(){
+                window.open('./cam', '_blank');
+            });
+            
+            $('.lyoko-option').click(function(){
+                var id = $(this).attr('id');
+                id = id.substring(0, id.indexOf('-'));
+                
+                switch(id){
+                    case 'software':
+                        window.open('./docs/software', '_blank');
+                        break;
+                    case 'hardware':
+                        window.open('./docs/hardware', '_blank');
+                        break;
+                    case 'platform':
+                        window.open('./docs/platform', '_blank');
+                        break;
+                    case 'community':
+                        window.open('./docs/community', '_blank');
+                        break;
+                    default:
+                        break;
+                }
+            })
+            
+            document.getElementById('close-demos-page-container-button').addEventListener('click', function(){
+                closeOverlayPage(2);
+            });
+            
+            document.getElementById('close-team-page-container-button').addEventListener('click', function(){
+                closeOverlayPage(1);
             });
             
             $('#logo').click(function(){
@@ -305,139 +368,185 @@
                     
                 showPage(id);
             });
+            
+            document.getElementById('vision-team-option').addEventListener('click', function(){
+                showPage('roster');
+            });
+            
+            document.getElementById('vision-apps-option').addEventListener('click', function(){
+                showPage('demos');
+            });
+            
+            document.getElementById('makers-link-span').addEventListener('click', function(){
+                showPage('roster');
+            });
+            
+            document.getElementById('hyper-reality-link-span').addEventListener('click', function(){
+                showPage('demos');
+            });
+            
+            document.getElementById('vaibhav-year-container').addEventListener('click', function(){
+                window.open('https://www-math.umd.edu/undergraduate.html', '_blank');
+            });
+            
+            document.getElementById('pamo-year-container').addEventListener('click', function(){
+                window.open('https://www-math.umd.edu/undergraduate.html', '_blank');
+            });
+            
+            document.getElementById('cam-year-container').addEventListener('click', function(){
+                window.open('https://ece.umd.edu/undergraduate/degrees/bs-computer-engineering', '_blank');
+            });
         });
     </script>
 </head>
 <body>
     <div id='main-app-container'>
         <div id='menu-container'>
-            <div id='vision-menu-option' class='menu-option'>vision</div>
-            <div id='legacy-menu-option' class='menu-option'>legacy</div>
-            <div id='roster-menu-option' class='menu-option'>roster</div>
-            <div id='eos-menu-option' class='menu-option'>eos</div>
-            <div id='docs-menu-option' class='menu-option'>docs</div>
+            <div id='vision-menu-option' class='menu-option'>explore</div>
+            <div id='legacy-menu-option' class='menu-option'>build</div>
+            <div id='lyoko-menu-option' class='menu-option'>docs</div>
+            <div id='shop-menu-option' class='menu-option'>shop</div>
         </div>
         <div id='company-header-button'>house of venus</div>
         <div id='logo'></div>
-        <video id='background-layer' autoplay muted loop src='../media/video/BlackMarble_720p.mp4'></video>
+        <!--<div id='background-layer-container'>-->
+            <video id='background-layer' autoplay muted loop src='../media/video/BlackMarble_720p.mp4'></video>
+        <!--</div>-->
         <div id='filter-layer'></div>
         <div id='full-page-navigation-bar'>
             <div id='vision-navigation-option' class='navigation-page-option'>
-                <div class='navigation-option-title'>Elders uphold tradition; YOUTH create new ones. </div>
-                <div id='vision-subtitle' class='navigation-option-subtitle'>Our VISION for creativity everywhere &#9658;</div>
+                <div class='navigation-option-title'>WHY will you fly? <br/>What is your LEGACY?</div>
+                <div id='vision-subtitle' class='navigation-option-subtitle'>EXPLORE the pARk &#9658;</div>
             </div>
             <div id='legacy-navigation-option' class='navigation-page-option'>
-                <div class='navigation-option-title'><p>BUILD or DESTROY.</p><p>What is your LEGACY?</p></div>
-                <div id='legacy-subtitle' class='navigation-option-subtitle'>Grasp the future NOW &#9658;</div>
+                <div class='navigation-option-title'><p>Get started with LYOKO</p></div>
+                <div id='legacy-subtitle' class='navigation-option-subtitle'>BUILD your vision &#9658;</div>
             </div>
-            <div id='roster-navigation-option' class='navigation-page-option'>
-                <div class='navigation-option-title'>LIFE HAPPENS. Let it be with PURPOSE.</div>
-                <div id='roster-subtitle' class='navigation-option-subtitle'>Be fly and STAY VISIONARY &#9658;</div>
+            <div id='lyoko-navigation-option' class='navigation-page-option'>
+                <div class='navigation-option-title'>Learn about ICDP: The IMMERSIVE COMPUTING framework</div>
+                <div id='lyoko-subtitle' class='navigation-option-subtitle'>DOCS, white paper, and tools &#9658;</div>
             </div>
-            <div id='eos-navigation-option' class='navigation-page-option'>
-                <div class='navigation-option-title'>COMMUNITY as a SERVICE for the future we need</div>
-                <div id='eos-subtitle' class='navigation-option-subtitle'>1 MILLION careers in the MAKING &#9658;</div>
-            </div>
-            <div id='docs-navigation-option' class='navigation-page-option'>
-                <div class='navigation-option-title'>START building and exploring the IMMERSIVE web</div>
-                <div id='docs-subtitle' class='navigation-option-subtitle'>Take a stroll in the pARk &#9658;</div>
+            <div id='shop-navigation-option' class='navigation-page-option'>
+                <div class='navigation-option-title'>Connect to your COMMUNITY</div>
+                <div id='shop-subtitle' class='navigation-option-subtitle'>SHOP for 5G devices &#9658;</div>
             </div>
         </div>
         <div id='full-page-container'>
             <div id='vision-page-container' class='page-container'>
-                <div class='page-container-title'>vision</div>
-                <div class='page-container-content'><p class='page-content-paragraph'>we are building a world where every community has access to clean drinking water and affordable, open internet service</p><p class='page-content-paragraph'>the journey begins in the pARk at the crossroads of IoT and Hyper-Reality</p></div>
+                <div class='page-container-title'>explore</div>
+                <div class='page-container-content'><p class='page-content-paragraph'>affordable access to clean drinking water and open internets is the most vital element for human life and freedom on Earth</p><p class='page-content-paragraph'> our HOUSE is committed to serving the planet and the life on it through our <span id='kinectome-link'>pARk: a community-level 5G immersive internet framework</span></p><p class='page-content-paragraph'>&#9664; <span id='makers-link-span'>Makers</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id='hyper-reality-link-span'>Hyper-Reality</span> &#9658;</p></div>
+                <input type='button' value='team' id='vision-team-option' class='vision-page-option-button' />
+                <input type='button' value='dApps' id='vision-apps-option' class='vision-page-option-button' />
                 <div class='close-page-container-button'>x</div>
             </div>
             <div id='legacy-page-container' class='page-container'>
-                <div class='page-container-title'>legacy</div>
+                <div class='page-container-title' style='color: black;'>build</div>
                 <div class='page-container-content'>
                     <div id='technology-block-array-container'>
                         <div id='cARd-technology-block' class='technology-block-container'>
-                            <div id='cARd-name-container' class='technology-name-container'>cARd v. 0.9.0</div>
-                            <div id='cARd-price-tag' class='price-tag-container'>$39.99</div>
-                            <div id='cARd-description-container' class='technology-description-container'>create naturally; with a cARd the world is your desktop and your hand is the mouse</div>
-                            <div id='cARd-add-to-cart-button' class='add-to-cart-button'>add to cart</div>
+                            <div id='cARd-name-container' class='technology-name-container'>MUSIC PLAYXR</div>
+                            <div id='cARd-price-tag' class='price-tag-container'>5 minutes</div>
+                            <div id='cARd-description-container' class='technology-description-container'>create an immersive music playlist and share it online with family and friends</div>
+                            <div id='cARd-add-to-cart-button' class='add-to-cart-button'>launch tutorial</div>
                         </div>
                         <div id='dev-technology-block' class='technology-block-container'>
-                            <div id='dev-name-container' class='technology-name-container'>pARk kit v. 0.4.0</div>
-                            <div id='dev-price-tag' class='price-tag-container'>$99.99</div>
-                            <div id='dev-description-container' class='technology-description-container'>explore the immersive web and develop experiences and dapps for the pARk</div>
-                            <div id='dev-add-to-cart-button' class='add-to-cart-button'>add to cart</div>
+                            <div id='dev-name-container' class='technology-name-container'>CURATXR</div>
+                            <div id='dev-price-tag' class='price-tag-container'>10 minutes</div>
+                            <div id='dev-description-container' class='technology-description-container'>produce an immersive gallery featuring the art you love</div>
+                            <div id='dev-add-to-cart-button' class='add-to-cart-button'>launch tutorial</div>
                         </div>
                     </div>
                 </div>
-                <div class='close-page-container-button'>x</div>
+                <div id='legacy-close-page-button' class='close-page-container-button'>x</div>
             </div>
-            <div id='roster-page-container' class='page-container'>
-                <div class='page-container-title'>roster</div>
-                <div class='page-container-content'>
-                    <div id='roster-block-array-container'>
-                        <div id='pamo-roster-block' class='roster-block-container'>
-                            <div class='roster-block-content'>
-                                <div id='pamo-name-container' class='roster-name-container'>Patrice-Morgan ONGOLY</div>
-                                <div id='pamo-position-container' class='roster-position-container'>Founder, CEO</div>
-                                <div id='pamo-year-container' class='roster-year-container'>Math. '20</div>
-                            </div>
-                        </div>
-                        <div id='vaibhav-roster-block' class='roster-block-container'>
-                            <div class='roster-block-content'>
-                                <div id='vaibhav-name-container' class='roster-name-container'>Vaibhav PONNURI</div>
-                                <div id='vaibhav-position-container' class='roster-position-container'>Founder, CMO</div>
-                                <div id='vaibhav-year-container' class='roster-year-container'>Math. '18</div>
-                            </div>
-                        </div>
-                        <div id='cam-roster-block' class='roster-block-container'>
-                            <div class='roster-block-content'>
-                                <div id='cam-name-container' class='roster-name-container'>Cameron REED</div>
-                                <div id='cam-position-container' class='roster-position-container'>CPO, V.Store</div>
-                                <div id='cam-year-container' class='roster-year-container'>CpE. '20</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='close-page-container-button'>x</div>
-            </div>
-            <div id='eos-page-container' class='page-container'>
-                <div class='page-container-title'>eos</div>
-                <div class='page-container-content'>
-                    <p class='page-content-paragraph'>
-                        from building an immersive media player to setting up a benefit fintech startup: watch how to do it, teach when it's done, and make some money along the way
-                    </p>
-                    <p class='page-content-paragraph'>
-                        connect to preview now
-                    </p>
-                </div>
-                <div class='close-page-container-button'>x</div>
-            </div>
-            <div id='docs-page-container' class='page-container'>
+            <div id='lyoko-page-container' class='page-container'>
                 <div class='page-container-title'>docs</div>
                 <div class='page-container-content'>
-                    <p class='page-content-paragraph'>
-                        ingredients for recipes galore
-                    </p>
-                    <p class='docs-option page-content-paragraph'>
+                    <p id='software-option' class='lyoko-option page-content-paragraph'>
                         software
                     </p>
-                    <p class='docs-option page-content-paragraph'>
+                    <p id='hardware-option' class='lyoko-option page-content-paragraph'>
                         hardware
                     </p>
-                    <p class='docs-option page-content-paragraph'>
+                    <p id='platform-option' class='lyoko-option page-content-paragraph'>
                         platform
                     </p>
-                    <p class='docs-option page-content-paragraph'>
+                    <p id='community-option' class='lyoko-option page-content-paragraph'>
                         community
                     </p>
                 </div>
                 <div class='close-page-container-button'>x</div>
             </div>
+            <div id='roster-page-container' class='page-container'>
+                <div class='page-container-title'>team</div>
+                <div class='page-container-content'>
+                    <div id='roster-block-array-container'>
+                        <div id='vaibhav-roster-block' class='roster-block-container'>
+                            <div class='roster-block-content'>
+                                <div id='vaibhav-photo-container' class='photo-bg-container'></div>
+                                <div id='vaibhav-name-container' class='roster-name-container'>Vaibhav PONNURI</div>
+                                <div id='vaibhav-position-container' class='roster-position-container'>Data Engineer</div>
+                                <div id='vaibhav-year-container' class='math-link roster-year-container'>Math. '18</div>
+                            </div>
+                        </div>
+                        <div id='pamo-roster-block' class='roster-block-container'>
+                            <div class='roster-block-content'>
+                                <div id='pamo-photo-container' class='photo-bg-container'></div>
+                                <div id='pamo-name-container' class='roster-name-container'>Patrice-Morgan ONGOLY</div>
+                                <div id='pamo-position-container' class='roster-position-container'>Founder,<br/> CEO | CTO</div>
+                                <div id='pamo-year-container' class='math-link roster-year-container'>Math. '20</div>
+                            </div>
+                        </div>
+                        <div id='cam-roster-block' class='roster-block-container'>
+                            <div class='roster-block-content'>
+                                <div id='cam-photo-container' class='photo-bg-container'></div>
+                                <div id='cam-name-container' class='roster-name-container'>Cameron REED</div>
+                                <div id='cam-position-container' class='roster-position-container'>Mixed Reality Engineer</div>
+                                <div id='cam-year-container' class='cpe-link roster-year-container'>CpE. '20</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id='close-team-page-container-button'>x</div>
+            </div>
+            <div id='demos-page-container' class='page-container'>
+                <div class='secondary-page-container-title'>demos</div>
+                <div class='demo-app-container'>
+                    <div class='demo-app-title-container'>shoppXR</div>
+                    <div class='demo-app-description-container'>an immersive portal to the frontiers of fashion and health</div>
+                    <div class='demo-app-version-container'>pARk v. 0.2.0</div>
+                    <div style='width: 100%; height: 50px; line-height: 50px; text-align: center;'>launch demo on Lyoko</div>
+                </div>
+                <div class='demo-app-container'>
+                    <div class='demo-app-title-container'>realtXR</div>
+                    <div class='demo-app-description-container'>explore and discover local property </div>
+                    <div class='demo-app-version-container'>pARk v. 0.2.0</div>
+                    <div style='width: 100%; height: 50px; line-height: 50px; text-align: center;'>launch demo on Lyoko</div>
+                </div>
+                <div id='close-demos-page-container-button'>x</div>
+            </div>
+            <div id='shop-page-container' class='page-container'>
+                <div class='secondary-page-container-title'>shop</div>
+                <div class='card-app-container'>
+                    <div class='card-app-title-container'>cARd</div>
+                    <div class='card-app-description-container'>creative Augmented Reality desktop</div>
+                    <div class='card-app-version-container'>v. 0.9.0</div>
+                    <div class='add-to-shopping-cart-button'>+</div>
+                </div>
+                <div class='aria-app-container'>
+                    <div class='aria-app-title-container'>AR.ia</div>
+                    <div class='aria-app-description-container'>Augmented Reality Internet Assistant</div>
+                    <div class='aria-app-version-container'>v. 0.9.0</div>
+                    <div class='add-to-shopping-cart-button'>+</div>
+                </div>
+                <div id='close-shop-page-container-button' class='close-page-container-button'>x</div>
+            </div>
         </div>
         <div class='navigation-bubbles-container'>
             <div id='vision-navigation-bubble' class='navigation-bubble'>.</div>
             <div id='legacy-navigation-bubble' class='navigation-bubble'>.</div>
-            <div id='roster-navigation-bubble' class='navigation-bubble'>.</div>
-            <div id='eos-navigation-bubble' class='navigation-bubble'>.</div>
-            <div id='docs-navigation-bubble' class='navigation-bubble'>.</div>
+            <div id='lyoko-navigation-bubble' class='navigation-bubble'>.</div>
+            <div id='shop-navigation-bubble' class='navigation-bubble'>.</div>
         </div>
         <div id='author-footer'>Patrice-Morgan Ongoly | 2019</div>
     </div>

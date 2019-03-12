@@ -82,6 +82,70 @@ app.get('/cARd', function(req, res){
     res.render('cARd.html',{root: dir[0]});
 });
 
+app.get('/cam', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering cam roster page.') 
+    res.render('cam.html',{root: dir[0]});
+});
+
+app.get('/v', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering v roster page.') 
+    res.render('v.html',{root: dir[0]});
+});
+
+app.get('/pamo', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering patrice-morgan roster page.') 
+    res.render('pamo.html',{root: dir[0]});
+});
+
+app.get('/docs/software', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering software roster page.') 
+    res.render('software.html',{root: dir[0]});
+});
+
+app.get('/docs/hardware', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering hardware roster page.') 
+    res.render('hardware.html',{root: dir[0]});
+});
+
+app.get('/docs/platform', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering platform roster page.') 
+    res.render('platform.html',{root: dir[0]});
+});
+
+app.get('/docs/community', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering community roster page.') 
+    res.render('community.html',{root: dir[0]});
+});
+
+
 app.get('/css/:stylesheet_id', function(req, res){
     var stylesheet_id = req.params.stylesheet_id;
     res.sendFile(stylesheet_id, {root: dir[1]});
@@ -109,12 +173,12 @@ app.get('/media/img/:img_id', function(req, res){
 
 app.get('/media/pattern/:pattern_id', function(req, res){
     var pattern_id = req.params.pattern_id;
-    res.sendFile(img_id, {root: dir[6]});
+    res.sendFile(pattern_id, {root: dir[6]});
 });
 
 app.get('/media/texture/:texture_id', function(req, res){
     var texture_id = req.params.texture_id;
-    res.sendFile(img_id, {root: dir[7]});
+    res.sendFile(texture_id, {root: dir[8]});
 });
 
 app.get('/room/:room_id', function(req, res){
