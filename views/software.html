@@ -34,6 +34,12 @@
             background-color: blue;
         }
         
+        .docs-title{
+            font-size: 22px;
+            width: 100%;
+            text-align: center;
+        }
+        
         #subsection-navigation-container{
             display: block;
             margin: 1% auto;
@@ -55,7 +61,7 @@
             display: inline-block;
             width: 33%;
             height: 100%;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 50px;
             cursor: pointer;
         }
@@ -66,12 +72,12 @@
         }
         
         #main-app-container{
-            width: 70%;
-            /*min-width: 355px;*/
+            width: 600px;
             height: 505px;
             position: absolute;
-            top: 5%;
-            left: 15%;
+            top: 50%;
+            left: 50%;
+            margin: -250px 0 0 -275px;
             text-align: center;
         }
         
@@ -97,7 +103,10 @@
         }
         
         .docs-content{
+            width: 90%;
             padding-top: 5%;
+            padding-left: 5%;
+            padding-right: 5%;
             height: 375px;
             overflow-y: scroll;
             overflow-wrap: break-word;
@@ -111,11 +120,11 @@
         
         #content-list li{
             height: 5%;
-            
+            margin-bottom: 3%;
         }
         
         #section-navigation-container{
-            width: 500px;
+            width: 600px;
             height: 8%;
             min-height: 50px;
             line-height: 50px;
@@ -125,7 +134,7 @@
         
         .section-option{
             display: inline-block;
-            width: 23%;
+            width: 24%;
             height: 100%;
             font-size: 16px;
             color: white;
@@ -169,6 +178,32 @@
         
         ::-webkit-scrollbar-track-piece {
             background-color: white;
+        }
+        
+        h2{
+            font-weight: 200;
+            font-size: 20px;
+        }
+        
+        .option-button-container{
+            width: 275px;
+            margin: 5% auto 0 auto;
+        }
+        
+        .code-option-button:hover, .tutorial-option-button:hover{
+            background-color: white;
+            color: blue;
+        }
+        
+        .tutorial-option-button, .code-option-button{
+            cursor: pointer;
+            display: inline-block;
+            width: 125px;
+            height: 75px;
+            text-align: center;
+            line-height: 75px;
+            border-radius: 10px;
+            border: 2px white solid;
         }
     </style>
     <script src='../js/jquery-3.2.1.min.js'></script>
@@ -265,7 +300,7 @@
                     pARks augment the flow of creative collaboration through technologies and communities that combine the best of the digital and physical realms. In a pARk, one can interact with the world as one is meant to -- without the constraints of abstractions like the Document Object Model -- while still taking advantage of the benefits of digital impressions, search, and machine processing.
                 </p>
                 <p class='page-content-paragraph'>
-                    pARks are operated by distributed autonomous organizations, or DAOs, known as Communities. Each Community Network operates on an immersive computing paradigm called ICDP (I2oT-CaaS-DLT Paradigm) or "I See Dead People". As the parenthetical denotes, there are three components to this system:
+                    pARks are operated by distributed autonomous organizations, or DAOs, known as Communities. Each Community Network operates on an immersive computing paradigm called ICDP (I2oT-CaaS-DLT Paradigm) or "I See Dead People". As the parenthetical denotes, there are three (3) components to this system:
                 </p>
                 <ol id='content-list'>
                     <li id='content-list-item-0' class='content-list-item'>Immersive Internet of Things or I2oT</li>
@@ -277,31 +312,45 @@
                 <h2>I See Dead People</h2>
                 <div id='subsection-navigation-container'>
                     <h3 id='i2ot-subsection-option' class='leftmost'>I2oT</h3>
-                    <h3 id='caas-subsection-option'>CaaA</h3>
+                    <h3 id='caas-subsection-option'>CaaS</h3>
                     <h3 id='dlt-subsection-option' class='rightmost'>DLT</h3>
                 </div>
                 <div id='subsection-0' class='section-1-subsection'>
                     <p class='page-content-paragraph'>
-                    The Immersive Internet of Things is a sub-discipline of the more widely-known Internet of Things (IoT) concept. I2oT devices, just like IoT technologies, can communicate directly and exchange information from item to item without centralized, third-party middlemen. On top of this, I2oT devices in particular have interactive-display capabilities, allowing humans to interact with digital content in real world contexts. I2oT technology from the House of Venus ranges in size from the microchip tag level to mid-size consumer avionics and large-scale aerocraft.
-                </p>
+                        The Immersive Internet of Things is a sub-discipline of the more widely-known Internet of Things (IoT) concept. I2oT devices, just like IoT technologies, can communicate directly with each other, exchanging information from item to item without a centralized, third-party service. Additionally, I2oT devices possess interactive-display capabilities to overlay or present digital content in real world spaces.
+                    </p>
+                    <div class='option-button-container'>
+                        <div id='tutorials-0-button' class='tutorial-option-button'>tutorials</div>
+                        <div id='code-0-button' class='code-option-button'>code</div>
+                    </div>
                 </div>
                 <div id='subsection-1' class='section-1-subsection'>
                     <p class='page-content-paragraph'>
-                     Community as a Service refers to the particular organizational architecture that structures pARk DAOs. In the traditional world of the World Wide Web, the relationship between users and producers required the former to connect to content online by jumping between digital properties (e.g. websites or apps) owned by the latter. Users pay for access to these properties directly via subscriptions and fees or indirectly through pervasive exposure to omnichannel advertising. Content and copyrights must be monitored and the attribution process involves claims and appeals. This is much too slow and inefficient at scale as evidenced by the regular issues on large media publishing platforms like YouTube.
-                </p>
+                     Community as a Service is the organizational structure of pARk DAOs. Under the CaaS model, pARk networks act as decentralized content exchanges between Community Members (CMs). <!--"Users" and "producers" can only be identified by the amount and type of content they post -- "users" tend to post more text content and likewise less storage-intensive content whereas "producers" post a wide variety of content types, not limited to text, that take up significantly more storage space.--> Because every account that posts on a pARk is rewarded for all the public content they produce -- comments and reactions to other posts included! -- everyone is a CM with respect their network instead of a "user" or "producer". 
+                    </p>    
                     <p class='page-content-paragraph'>
-                    In contrast, the CaaS model sets up CNs as decentralized exchanges between Community Members (CMs). "Users" and "producers" can only be identified by the amount and type of content they post -- "users" tend to post more text content and likewise less storage-intensive content whereas "producers" post a wide variety of content types, not limited to text, that take up significantly more storage space. The network sees everyone on it as a CM however and rewards all CMs for content produced, meaning even comments on pARk "websites" have a Lyokoin and consequently a US Dollar value attached to it. The owner of the content owns that value and can use it in other Community transactions or exchange their Lyokoin for USD and take that value into other markets.
+                    Internally all content on a pARk is the result of a transaction, an experience generation request with an associated Lyokoin -- and consequently US Dollar -- value. The owner of the content owns that value and can use it in other Community transactions or exchange their Lyokoin for USD and take that value into other markets.<!-- On the traditional World Wide Web, internet users connected to content online by jumping between digital properties (e.g. websites or apps) owned by the content producers. Users paid for access to these properties directly via subscriptions and fees or indirectly through pervasive exposure to omnichannel advertising. Content and copyrights are monitored through a partially automated process of claims and appeals. This is much too slow and inefficient at scale as evidenced by the regular issues on large media publishing platforms like YouTube.-->
                 </p>
+                    <div class='option-button-container'>
+                        <div id='tutorials-1-button' class='tutorial-option-button'>tutorials</div>
+                        <div id='code-1-button' class='code-option-button'>code</div>
+                    </div>
                 </div>
                 <div id='subsection-2' class='section-1-subsection'>
                     <p class='page-content-paragraph'>
-                        The final, most fundamental component of ICDP is the Distributed Ledger Technology that manages pARk data layers. Adding content to the pARk occurs via a generation request transaction. CMs define an experience and send that blueprint to the Community along with Lyokoin. The Community generates an experience from the blueprint, returns a pointer to the data and its associated value to the CM, then records the successful transaction in the Community Ledger. <!--Content is uploaded to the pARk via LOnce content is uploaded to the pARk it is registered permanently in a distributed ledger. To comply with privacy concerns, the ledger contains value pointers that point to where data is stored on the network rather than the encrypted data itself. This allows community members to delete content without breaking the ledger chain. The value pointer simply points to a null value where the data used to exist.-->
+                        The House of Venus TreeHouse Distributed Ledger Technology manages pARk data layers. Adding content to a pARk occurs via a generation request. Community Members (CMs) define an experience and send that blueprint to the Community Network (CN) along with Lyokoin in exchange for a generated experience, a pointer to the said data and its associated value, and a public record of the successful transaction in the TreeHouse Ledger. <!--Content is uploaded to the pARk via LOnce content is uploaded to the pARk it is registered permanently in a distributed ledger. To comply with privacy concerns, the ledger contains value pointers that point to where data is stored on the network rather than the encrypted data itself. This allows community members to delete content without breaking the ledger chain. The value pointer simply points to a null value where the data used to exist.-->
                     </p>
                     <p class='page-content-paragraph'>
-                        Content on the ledger is valued based on a combination of storage-cost and market-added value (MAV). Storage-cost is the amount of storage space and processing resources needed to render the content. MAV is any extra value derived from interactions and speculations of other CMs based on the semantics of the content itself. All of the content in a pARk is wrapped in an experience object and can be interacted with as a self-contained experience. These experience objects are linked to or included in other experience objects forming a hyper-reality of interlinked or chained experiences rather than hyper-text domains.
+                        Content on the CN ledger is valued based on a combination of storage-cost and market-added value (MAV). Storage-cost is a caluclated combination of the amount of storage space and the hardware resources needed to render or process the content. MAV is any extra value derived from interactions and speculations by other CMs based on the semantics of the content itself.
                     </p>
+                    <p class='page-content-paragraph'>
+                        All of the content in a pARk is wrapped in an experience object and can be interacted with as a self-contained experience. These experience objects are linked to or included in other experience objects forming a hyper-reality of interlinked or chained experiences rather than hyper-text domains.
+                    </p>
+                    <div class='option-button-container'>
+                        <div id='tutorials-2-button' class='tutorial-option-button'>tutorials</div>
+                        <div id='code-2-button' class='code-option-button'>code</div>
+                    </div>
                 </div>
-                
             </div>
             <div id='section-2' class='docs-content-section'>
                 <h3>show and tell</h3>
@@ -311,12 +360,19 @@
                 <p class='page-content-paragraph'>
                     Show and Tell is a decentralized web application written in Lyoko that lets community members use their hands and voice to build an experience naturally without the need for a mouse or the plethora of action tools one would expect in a standard 3D editor.
                 </p>
+                <div class='option-button-container'>
+                    <div id='tutorials-3-button' class='tutorial-option-button'>tutorials</div>
+                </div>
             </div>
             <div id='section-3' class='docs-content-section'>
                 <h3>lyoko</h3>
                 <p class='page-content-paragraph'>
-                    Lyoko is the programming language for pARk smart contracts. Inspired by natural conversation and built on top of ECMAScript, members use it to define content. Each Lyoko smart contract is essentially its own self-contained webXR experience.
+                    Lyoko is the programming language for pARk smart contracts. Inspired by natural conversation and built on top of ECMAScript, members use it to define content. Each Lyoko smart contract is its own self-contained webXR experience.
                 </p>
+                <div class='option-button-container'>
+                    <div id='tutorials-4-button' class='tutorial-option-button'>tutorials</div>
+                    <div id='code-4-button' class='code-option-button'>code</div>
+                </div>
             </div>
         </div>
     </div>

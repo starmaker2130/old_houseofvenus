@@ -30,79 +30,58 @@
         body, html{
             width: 100%;
             height: 100%;
-            color: black;
+            color: white;
+            background-color: rgba(0,190,0, 0.8);
+        }
+        
+        .docs-title{
+            font-size: 22px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        #subsection-navigation-container{
+            display: block;
+            margin: 1% auto;
+            width: 300px;
+            height: 50px;
+            font-size: 0;
+        }
+        
+        .leftmost{
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .rightmost{
+            border-radius: 0 10px 10px 0;
+        }
+        
+        #subsection-navigation-container h3{
+            text-align: center;
+            display: inline-block;
+            width: 33%;
+            height: 100%;
+            font-size: 16px;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        
+        #subsection-navigation-container h3:hover{
+            background-color: white;
+            color: rgba(0,190,0, 0.8);
         }
         
         #main-app-container{
-            width: 355px;
+            width: 600px;
             height: 505px;
             position: absolute;
             top: 50%;
             left: 50%;
-            margin: -252px 0 0 -180px;
-        }
-        
-        .photo-bg-container{
-            width: 125px;
-            height: 125px;
-            border-radius: 50%;
-            margin: 5% auto;
-            display: block;
-            background-color: white;
-            border: 2px white solid;
-            cursor: pointer;
-        }
-        
-        .roster-block-content{
-            position: absolute;
-            top: 1%;
-        }
-
-        .roster-block-container{
-            position: relative;
-            vertical-align: bottom;
-            width: 100%;
-            height: 100%;
-            display: inline-block;
+            margin: -250px 0 0 -275px;
             text-align: center;
-            border-radius: 10px;
-        }
-
-        .roster-name-container{
-            display: inline-block;
-            width: 100%;
-            font-size: 24px;
-        }
-
-        .roster-year-container{
-            display: inline-block;
-            width: 40%;
-            font-size: 16px;
-        }
-
-        .roster-position-container{
-            display: inline-block;
-            width: 58%;
-            font-size: 20px;
-        }
-        
-        #cam-year-container{
-            vertical-align: top;
-            line-height: 50px;
-            height: 50px;
-        }
-
-        .cpe-link{
-            cursor: pointer;
-            font-weight: 900;
-        }
-
-        .cpe-link:hover{
-            color: blue;
         }
         
         #author-footer{
-            color: black;
             position: absolute;
             width: 250px;
             height: 50px;
@@ -110,26 +89,202 @@
             bottom: 1%;
             left: 50%;
             margin-left: -125px;
+            color: white;
             line-height: 50px;
             font-size: 10px;
-            z-index: 50;
         }
-
-        #cam-roster-block{
-            background-color: rgba(0, 0, 0, 0.6);
+        
+        .page-content-paragraph{
+            display: block;
+            width: 95%;
+            margin: 2% auto 0 auto;
+            text-align: justify;
+            cursor: pointer;
+        }
+        
+        .docs-content{
+            width: 90%;
+            padding-top: 5%;
+            padding-left: 5%;
+            padding-right: 5%;
+            height: 375px;
+            overflow-y: scroll;
+            overflow-wrap: break-word;
+        }
+        
+        #content-list{
+            text-align: left;
+            width: 300px;
+            margin: 5% auto 0 auto;
+        }
+        
+        #content-list li{
+            height: 5%;
+            margin-bottom: 3%;
+        }
+        
+        #section-navigation-container{
+            width: 600px;
+            height: 8%;
+            min-height: 50px;
+            line-height: 50px;
+            font-size: 0;
+            margin: 1% auto;
+        }
+        
+        .section-option{
+            display: inline-block;
+            width: 49%;
+            height: 100%;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .section-option:hover{
+            background-color: white;
+            color: rgba(0,190,0, 0.8);
+        }
+        
+        .section-1-subsection, .docs-content-section{
+            display: none;
+            opacity: 0;
+        }
+        
+        .content-list-item{
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .content-list-item:hover{
+            font-style: italic;
+            background-color: white;
+            color: rgba(0,190,0, 0.8);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 20px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(147, 112, 219, 0.7);
+        }
+        
+        ::-webkit-scrollbar-button {
+            background-color: rgba(147, 112, 219, 0.7);
+        }
+        
+        ::-webkit-scrollbar-track-piece {
+            background-color: white;
+        }
+        
+        h2{
+            font-weight: 200;
+            font-size: 20px;
+        }
+        
+        .option-button-container{
+            width: 275px;
+            margin: 5% auto 0 auto;
+        }
+        
+        .code-option-button:hover, .tutorial-option-button:hover{
+            background-color: white;
+            color: rgba(0,190,0, 0.8);
+        }
+        
+        .tutorial-option-button, .code-option-button{
+            cursor: pointer;
+            display: inline-block;
+            width: 125px;
+            height: 75px;
+            text-align: center;
+            line-height: 75px;
+            border-radius: 10px;
+            border: 2px white solid;
         }
     </style>
     <script src='../js/jquery-3.2.1.min.js'></script>
+    <script>
+        
+        function showContentSection(section){
+            $('.docs-content-section').animate({
+                opacity: 0
+            }, 500, function(){
+                $(this).hide();
+            });
+            
+            setTimeout(function(){
+                $(`#section-${section}`).show().animate({
+                    opacity: 1.0
+                }, 500, function(){
+                    if(section==1){
+                        $(`#subsection-0`).show().animate({
+                            opacity: 1.0
+                        }, 500);
+                    }
+                });
+            }, 550);
+            
+        }
+        
+        function showSubSection(section){
+            $('.section-1-subsection').animate({
+                opacity: 0
+            }, 500, function(){
+                $(this).hide();
+            });
+            
+            setTimeout(function(){
+                $(`#subsection-${section}`).show().animate({
+                    opacity: 1.0
+                }, 500, function(){
+                    
+                });
+            }, 550);
+            
+        }
+        
+        document.addEventListener('DOMContentLoaded', function(){
+            $('#section-0').show().animate({
+                opacity: 1.0
+            }, 500);
+            
+            document.getElementById('intro-section-option').addEventListener('click', function(){
+                showContentSection(0);
+            });
+            
+            document.getElementById('pARk-option').addEventListener('click', function(){
+                showContentSection(1);
+            });
+        });
+    </script>
     </head>
 <body>
     <div id='main-app-container'>
-        <div id='cam-roster-block' class='roster-block-container'>
-            <div class='roster-block-content'>
-                <div id='cam-photo-container' class='photo-bg-container'></div>
-                <div id='cam-name-container' class='roster-name-container'>platform</div>
-                <div id='cam-name-container' class='roster-name-container'>icdp</div>
-                <div id='cam-name-container' class='roster-name-container'>pARk</div>
-                <p>flat | vr | xr</p>
+        <div class='docs-title'>PLATFORM</div>
+        <div id='section-navigation-container'>
+            <div class='section-option leftmost' id='intro-section-option'>intro</div>
+            <div class='section-option' id='pARk-option'>pARk</div>
+        </div>
+        <div class='docs-content'>
+            <div id='section-0' class='docs-content-section'>
+                <h2>Welcome</h2>
+                <p class='page-content-paragraph'>
+                    The public Augmented Reality kinectome, or pARk, is a 5G immersive internet framework.</p>
+                <p class='page-content-paragraph'>
+                    pARks augment the flow of creative collaboration through technologies and communities that combine the best of the digital and physical realms. In a pARk, one can interact with the world as one is meant to -- without the constraints of abstractions like the Document Object Model -- while still taking advantage of the benefits of digital impressions, search, and machine processing.
+                </p>
+            </div>
+            <div id='section-1' class='docs-content-section'>
+                <h2>public Augmented Reality kinectome</h2>
+                <div style='width: 300px; height: 300px; display: block; margin: 2% auto; border-radius: 50%; text-align: center; background-color: white; color: blue;'>globe will go here</div>
+                <div class='option-button-container'>
+                    <div id='tutorials-4-button' class='tutorial-option-button'>tutorials</div>
+                    <div id='code-4-button' class='code-option-button'>code</div>
+                </div>
             </div>
         </div>
     </div>
