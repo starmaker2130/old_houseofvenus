@@ -30,79 +30,52 @@
         body, html{
             width: 100%;
             height: 100%;
-            color: black;
+            color: white;
+            background-color: blue;
         }
         
-        #main-app-container{
-            width: 355px;
-            height: 505px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin: -252px 0 0 -180px;
-        }
-        
-        .photo-bg-container{
-            width: 125px;
-            height: 125px;
-            border-radius: 50%;
-            margin: 5% auto;
+        #subsection-navigation-container{
             display: block;
-            background-color: white;
-            border: 2px white solid;
-            cursor: pointer;
-        }
-        
-        .roster-block-content{
-            position: absolute;
-            top: 1%;
-        }
-
-        .roster-block-container{
-            position: relative;
-            vertical-align: bottom;
-            width: 100%;
-            height: 100%;
-            display: inline-block;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        .roster-name-container{
-            display: inline-block;
-            width: 100%;
-            font-size: 24px;
-        }
-
-        .roster-year-container{
-            display: inline-block;
-            width: 40%;
-            font-size: 16px;
-        }
-
-        .roster-position-container{
-            display: inline-block;
-            width: 58%;
-            font-size: 20px;
-        }
-        
-        #cam-year-container{
-            vertical-align: top;
-            line-height: 50px;
+            margin: 1% auto;
+            width: 300px;
             height: 50px;
+            font-size: 0;
         }
-
-        .cpe-link{
+        
+        .leftmost{
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .rightmost{
+            border-radius: 0 10px 10px 0;
+        }
+        
+        #subsection-navigation-container h3{
+            text-align: center;
+            display: inline-block;
+            width: 33%;
+            height: 100%;
+            font-size: 20px;
+            line-height: 50px;
             cursor: pointer;
-            font-weight: 900;
         }
-
-        .cpe-link:hover{
+        
+        #subsection-navigation-container h3:hover{
+            background-color: white;
             color: blue;
         }
         
+        #main-app-container{
+            width: 70%;
+            /*min-width: 355px;*/
+            height: 505px;
+            position: absolute;
+            top: 5%;
+            left: 15%;
+            text-align: center;
+        }
+        
         #author-footer{
-            color: black;
             position: absolute;
             width: 250px;
             height: 50px;
@@ -110,26 +83,240 @@
             bottom: 1%;
             left: 50%;
             margin-left: -125px;
+            color: white;
             line-height: 50px;
             font-size: 10px;
-            z-index: 50;
         }
-
-        #cam-roster-block{
-            background-color: rgba(0, 0, 0, 0.6);
+        
+        .page-content-paragraph{
+            display: block;
+            width: 95%;
+            margin: 2% auto 0 auto;
+            text-align: justify;
+            cursor: pointer;
+        }
+        
+        .docs-content{
+            padding-top: 5%;
+            height: 375px;
+            overflow-y: scroll;
+            overflow-wrap: break-word;
+        }
+        
+        #content-list{
+            text-align: left;
+            width: 300px;
+            margin: 5% auto 0 auto;
+        }
+        
+        #content-list li{
+            height: 5%;
+            
+        }
+        
+        #section-navigation-container{
+            width: 500px;
+            height: 8%;
+            min-height: 50px;
+            line-height: 50px;
+            font-size: 0;
+            margin: 1% auto;
+        }
+        
+        .section-option{
+            display: inline-block;
+            width: 23%;
+            height: 100%;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .section-option:hover{
+            background-color: white;
+            color: blue;
+        }
+        
+        .section-1-subsection, .docs-content-section{
+            display: none;
+            opacity: 0;
+        }
+        
+        .content-list-item{
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .content-list-item:hover{
+            font-style: italic;
+            background-color: white;
+            color: blue;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 20px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(147, 112, 219, 0.7);
+        }
+        
+        ::-webkit-scrollbar-button {
+            background-color: rgba(147, 112, 219, 0.7);
+        }
+        
+        ::-webkit-scrollbar-track-piece {
+            background-color: white;
         }
     </style>
     <script src='../js/jquery-3.2.1.min.js'></script>
+    <script>
+        
+        function showContentSection(section){
+            $('.docs-content-section').animate({
+                opacity: 0
+            }, 500, function(){
+                $(this).hide();
+            });
+            
+            setTimeout(function(){
+                $(`#section-${section}`).show().animate({
+                    opacity: 1.0
+                }, 500, function(){
+                    if(section==1){
+                        $(`#subsection-0`).show().animate({
+                            opacity: 1.0
+                        }, 500);
+                    }
+                });
+            }, 550);
+            
+        }
+        
+        function showSubSection(section){
+            $('.section-1-subsection').animate({
+                opacity: 0
+            }, 500, function(){
+                $(this).hide();
+            });
+            
+            setTimeout(function(){
+                $(`#subsection-${section}`).show().animate({
+                    opacity: 1.0
+                }, 500, function(){
+                    
+                });
+            }, 550);
+            
+        }
+        
+        document.addEventListener('DOMContentLoaded', function(){
+            $('#section-0').show().animate({
+                opacity: 1.0
+            }, 500);
+            
+            document.getElementById('intro-section-option').addEventListener('click', function(){
+                showContentSection(0);
+            });
+            
+            document.getElementById('i-see-dead-people-option').addEventListener('click', function(){
+                showContentSection(1);
+            });
+            
+            document.getElementById('saturday-section-option').addEventListener('click', function(){
+                showContentSection(2);
+            });
+            
+            document.getElementById('lyoko-section-option').addEventListener('click', function(){
+                showContentSection(3);
+            });
+            
+            document.getElementById('i2ot-subsection-option').addEventListener('click', function(){
+                showSubSection(0);
+            });
+            
+            document.getElementById('caas-subsection-option').addEventListener('click', function(){
+                showSubSection(1);
+            });
+            
+            document.getElementById('dlt-subsection-option').addEventListener('click', function(){
+                showSubSection(2);
+            });
+        });
+    </script>
     </head>
 <body>
     <div id='main-app-container'>
-        <div id='cam-roster-block' class='roster-block-container'>
-            <div class='roster-block-content'>
-                <div id='cam-photo-container' class='photo-bg-container'></div>
-                <div id='cam-name-container' class='roster-name-container'>software</div>
-                <div id='cam-name-container' class='roster-name-container'>show and tell</div>
-                <div id='cam-name-container' class='roster-name-container'>lyoko</div>
-                <p>flat | vr | xr</p>
+        <div class='docs-title'>SOFTWARE</div>
+        <div id='section-navigation-container'>
+            <div class='section-option leftmost' id='intro-section-option'>intro</div>
+            <div class='section-option' id='i-see-dead-people-option'>icdp</div>
+            <div class='section-option' id='saturday-section-option'>show and tell</div>
+            <div class='section-option rightmost' id='lyoko-section-option'>lyoko</div>
+        </div>
+        <div class='docs-content'>
+            <div id='section-0' class='docs-content-section'>
+                <h2>Welcome</h2>
+                <p class='page-content-paragraph'>
+                    The public Augmented Reality kinectome, or pARk, is a 5G immersive internet framework.</p>
+                <p class='page-content-paragraph'>
+                    pARks augment the flow of creative collaboration through technologies and communities that combine the best of the digital and physical realms. In a pARk, one can interact with the world as one is meant to -- without the constraints of abstractions like the Document Object Model -- while still taking advantage of the benefits of digital impressions, search, and machine processing.
+                </p>
+                <p class='page-content-paragraph'>
+                    pARks are operated by distributed autonomous organizations, or DAOs, known as Communities. Each Community Network operates on an immersive computing paradigm called ICDP (I2oT-CaaS-DLT Paradigm) or "I See Dead People". As the parenthetical denotes, there are three components to this system:
+                </p>
+                <ol id='content-list'>
+                    <li id='content-list-item-0' class='content-list-item'>Immersive Internet of Things or I2oT</li>
+                    <li id='content-list-item-1' class='content-list-item'>Community as a Service or CaaS</li>
+                    <li id='content-list-item-2' class='content-list-item'>Distributed Ledger Technology or DLT</li>
+                </ol>
+            </div>
+            <div id='section-1' class='docs-content-section'>
+                <h2>I See Dead People</h2>
+                <div id='subsection-navigation-container'>
+                    <h3 id='i2ot-subsection-option' class='leftmost'>I2oT</h3>
+                    <h3 id='caas-subsection-option'>CaaA</h3>
+                    <h3 id='dlt-subsection-option' class='rightmost'>DLT</h3>
+                </div>
+                <div id='subsection-0' class='section-1-subsection'>
+                    <p class='page-content-paragraph'>
+                    The Immersive Internet of Things is a sub-discipline of the more widely-known Internet of Things (IoT) concept. I2oT devices, just like IoT technologies, can communicate directly and exchange information from item to item without centralized, third-party middlemen. On top of this, I2oT devices in particular have interactive-display capabilities, allowing humans to interact with digital content in real world contexts. I2oT technology from the House of Venus ranges in size from the microchip tag level to mid-size consumer avionics and large-scale aerocraft.
+                </p>
+                </div>
+                <div id='subsection-1' class='section-1-subsection'>
+                    <p class='page-content-paragraph'>
+                     Community as a Service refers to the particular organizational architecture that structures pARk DAOs. In the traditional world of the World Wide Web, the relationship between users and producers required the former to connect to content online by jumping between digital properties (e.g. websites or apps) owned by the latter. Users pay for access to these properties directly via subscriptions and fees or indirectly through pervasive exposure to omnichannel advertising. Content and copyrights must be monitored and the attribution process involves claims and appeals. This is much too slow and inefficient at scale as evidenced by the regular issues on large media publishing platforms like YouTube.
+                </p>
+                    <p class='page-content-paragraph'>
+                    In contrast, the CaaS model sets up CNs as decentralized exchanges between Community Members (CMs). "Users" and "producers" can only be identified by the amount and type of content they post -- "users" tend to post more text content and likewise less storage-intensive content whereas "producers" post a wide variety of content types, not limited to text, that take up significantly more storage space. The network sees everyone on it as a CM however and rewards all CMs for content produced, meaning even comments on pARk "websites" have a Lyokoin and consequently a US Dollar value attached to it. The owner of the content owns that value and can use it in other Community transactions or exchange their Lyokoin for USD and take that value into other markets.
+                </p>
+                </div>
+                <div id='subsection-2' class='section-1-subsection'>
+                    <p class='page-content-paragraph'>
+                        The final, most fundamental component of ICDP is the Distributed Ledger Technology that manages pARk data layers. Adding content to the pARk occurs via a generation request transaction. CMs define an experience and send that blueprint to the Community along with Lyokoin. The Community generates an experience from the blueprint, returns a pointer to the data and its associated value to the CM, then records the successful transaction in the Community Ledger. <!--Content is uploaded to the pARk via LOnce content is uploaded to the pARk it is registered permanently in a distributed ledger. To comply with privacy concerns, the ledger contains value pointers that point to where data is stored on the network rather than the encrypted data itself. This allows community members to delete content without breaking the ledger chain. The value pointer simply points to a null value where the data used to exist.-->
+                    </p>
+                    <p class='page-content-paragraph'>
+                        Content on the ledger is valued based on a combination of storage-cost and market-added value (MAV). Storage-cost is the amount of storage space and processing resources needed to render the content. MAV is any extra value derived from interactions and speculations of other CMs based on the semantics of the content itself. All of the content in a pARk is wrapped in an experience object and can be interacted with as a self-contained experience. These experience objects are linked to or included in other experience objects forming a hyper-reality of interlinked or chained experiences rather than hyper-text domains.
+                    </p>
+                </div>
+                
+            </div>
+            <div id='section-2' class='docs-content-section'>
+                <h3>show and tell</h3>
+                <p class='page-content-paragraph'>
+                    The blueprints that define content on a CN are built with one's body using "Show and Tell" or programmatically with scripts written in "Lyoko".
+                </p>
+                <p class='page-content-paragraph'>
+                    Show and Tell is a decentralized web application written in Lyoko that lets community members use their hands and voice to build an experience naturally without the need for a mouse or the plethora of action tools one would expect in a standard 3D editor.
+                </p>
+            </div>
+            <div id='section-3' class='docs-content-section'>
+                <h3>lyoko</h3>
+                <p class='page-content-paragraph'>
+                    Lyoko is the programming language for pARk smart contracts. Inspired by natural conversation and built on top of ECMAScript, members use it to define content. Each Lyoko smart contract is essentially its own self-contained webXR experience.
+                </p>
             </div>
         </div>
     </div>
