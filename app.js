@@ -109,6 +109,15 @@ app.get('/pamo', function(req, res){
     res.render('pamo.html',{root: dir[0]});
 });
 
+app.get('/docs/examples', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering software roster page.') 
+    res.render('tutorials.min.html',{root: dir[0]});
+});
+
 app.get('/docs/software', function(req, res){
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var headers = req.headers;

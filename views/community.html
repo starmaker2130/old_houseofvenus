@@ -30,8 +30,8 @@
         body, html{
             width: 100%;
             height: 100%;
-            color: white;
-            background-color: rgba(255, 20, 20, 0.8);
+            color: rgba(100, 61, 255, 0.8);
+            background-color: rgba(253, 255, 187 , 0.8);
         }
         
         .docs-title{
@@ -40,35 +40,12 @@
             text-align: center;
         }
         
-        #subsection-navigation-container{
-            display: block;
-            margin: 1% auto;
-            width: 300px;
-            height: 50px;
-            font-size: 0;
-        }
-        
         .leftmost{
             border-radius: 10px 0 0 10px;
         }
         
         .rightmost{
             border-radius: 0 10px 10px 0;
-        }
-        
-        #subsection-navigation-container h3{
-            text-align: center;
-            display: inline-block;
-            width: 33%;
-            height: 100%;
-            font-size: 16px;
-            line-height: 50px;
-            cursor: pointer;
-        }
-        
-        #subsection-navigation-container h3:hover{
-            background-color: white;
-            color: rgba(255, 20, 20, 0.8);
         }
         
         #main-app-container{
@@ -89,7 +66,7 @@
             bottom: 1%;
             left: 50%;
             margin-left: -125px;
-            color: white;
+            color: rgba(100, 61, 255, 0.8);
             line-height: 50px;
             font-size: 10px;
         }
@@ -137,14 +114,13 @@
             width: 33%;
             height: 100%;
             font-size: 16px;
-            color: white;
+            color: rgba(100, 61, 255, 0.8);
             text-align: center;
             cursor: pointer;
         }
         
         .section-option:hover{
-            background-color: white;
-            color: rgba(255, 20, 20, 0.8);
+            border-bottom: 3px rgba(100, 61, 255, 0.8) solid;
         }
         
         .section-1-subsection, .docs-content-section{
@@ -159,8 +135,8 @@
         
         .content-list-item:hover{
             font-style: italic;
-            background-color: white;
-            color: rgba(255, 20, 20, 0.8);
+            background-color: rgba(100, 61, 255, 0.8);
+            color: rgba(253, 255, 187 , 0.8);
         }
         
         ::-webkit-scrollbar {
@@ -177,7 +153,7 @@
         }
         
         ::-webkit-scrollbar-track-piece {
-            background-color: white;
+            background-color: rgba(100, 61, 255, 0.8);
         }
         
         h2{
@@ -191,8 +167,8 @@
         }
         
         .code-option-button:hover, .tutorial-option-button:hover{
-            background-color: white;
-            color: rgba(255, 20, 20, 0.8);
+            background-color: rgba(100, 61, 255, 0.8);
+            color: rgba(253, 255, 187 , 0.8);
         }
         
         .tutorial-option-button, .code-option-button{
@@ -203,47 +179,64 @@
             text-align: center;
             line-height: 75px;
             border-radius: 10px;
-            border: 2px white solid;
+            border: 2px rgba(100, 61, 255, 0.8) solid;
+        }
+        
+        .highlight:hover{
+            font-style: italic;
+        }
+        
+        .highlight{
+            font-weight: 900;
+            color: rgba(255, 86, 112, 0.8);
+        }
+        
+         
+        .selected-option{
+            font-weight: 900;
+            color: rgba(255, 86, 112, 0.8);
+            border-bottom: 3px rgba(89,84,246, 0.8) solid;
+        }
+        
+        .centered{
+            text-align: center;
+            width: 100%;
+        }
+        
+        .spacer{
+            margin-top: 3%;
+        }
+        
+        .examples-list{
+            text-align: left;
+            width: 350px;
+            margin: 2% auto;
         }
     </style>
     <script src='../js/jquery-3.2.1.min.js'></script>
     <script>
+        var sessionManager = {
+            onPage: 0
+        };
         
         function showContentSection(section){
             $('.docs-content-section').animate({
                 opacity: 0
-            }, 500, function(){
+            }, 150, function(){
                 $(this).hide();
             });
             
             setTimeout(function(){
+                $(`.section-option-${sessionManager.onPage}`).removeClass('selected-option');
+                
+                $(`.section-option-${section}`).addClass('selected-option');
+                
                 $(`#section-${section}`).show().animate({
                     opacity: 1.0
-                }, 500, function(){
-                    if(section==1){
-                        $(`#subsection-0`).show().animate({
-                            opacity: 1.0
-                        }, 500);
-                    }
+                }, 250, function(){
+                    sessionManager.onPage = section;
                 });
-            }, 550);
-            
-        }
-        
-        function showSubSection(section){
-            $('.section-1-subsection').animate({
-                opacity: 0
-            }, 500, function(){
-                $(this).hide();
-            });
-            
-            setTimeout(function(){
-                $(`#subsection-${section}`).show().animate({
-                    opacity: 1.0
-                }, 500, function(){
-                    
-                });
-            }, 550);
+            }, 250);
             
         }
         
@@ -270,54 +263,78 @@
     <div id='main-app-container'>
         <div class='docs-title'>COMMUNITY</div>
         <div id='section-navigation-container'>
-            <div class='section-option leftmost' id='intro-section-option'>intro</div>
-            <div class='section-option' id='cARd-option'>acorn pARk</div>
-            <div class='section-option rightmost' id='ARia-section-option'>pARk des prince</div>
+            <div class='section-option selected-option section-option-0' id='intro-section-option'>intro</div>
+            <div class='section-option section-option-1' id='cARd-option'>acorn pARk</div>
+            <div class='section-option section-option-2' id='ARia-section-option'>pARk des prince</div>
         </div>
         <div class='docs-content'>
             <div id='section-0' class='docs-content-section'>
-                <h2>Welcome</h2>
                 <p class='page-content-paragraph'>
-                    The public Augmented Reality kinectome, or pARk, is a 5G immersive internet framework.</p>
+                    The <span class='highlight'>public Augmented Reality kinectome</span>, or pARk, is a framework for 5G immersive internets.
+                </p>
                 <p class='page-content-paragraph'>
-                    pARks augment the flow of creative collaboration through technologies and communities that combine the best of the digital and physical realms. In a pARk, one can interact with the world as one is meant to -- without the constraints of abstractions like the Document Object Model -- while still taking advantage of the benefits of digital impressions, search, and machine processing.
+                    In a pARk, you can interact with the world as you are meant to -- with your hands and natural senses -- while still possessing the benefits of digital impressions, search, and machine processing.
+                </p>
+                <p class='page-content-paragraph'>
+                    We are no longer constrained to abstractions like the Document Object Model.  Instead, one can make digital services and experiences part-and-parcel of the natural flow of your every day life.
+                </p>
+                <p class='page-content-paragraph'>
+                    Each pARk is managed by a distributed autonomous organization, or DAO, known as a <span class='highlight'>Community</span>. Communities act as decentralized service providers and expose pARk access via the <span class='highlight'>I See Dead People</span> paradigm.
                 </p>
             </div>
             <div id='section-1' class='docs-content-section'>
-                <h2>acorn pARk</h2>
-                <div id='subsection-0' class='section-1-subsection'>
+                <ul>
+                    <li>Genesis</li>
+                    <li>Storage-wealth</li>
+                    <li>USD</li>
+                    <li>CMs</li>
+                    <li>Maxima</li>
+                </ul>
+                <div id='acornpark-description' class='subsection-description-container'>
                     <p class='page-content-paragraph'>
-                        Delivery
+                        description of what the acorn park is
                     </p>
-                    <div class='option-button-container'>
-                        <div id='tutorials-0-button' class='tutorial-option-button'>tutorials</div>
-                        <div id='code-0-button' class='code-option-button'>code</div>
+                </div>
+                <div id='acornpark-demo-apps' class='demo-dashboard-container'>
+                    <div class='demo-app-item'>
+                        shoppXR
+                    </div>
+                    <div class='demo-app-item'>
+                        ordXR
+                    </div>
+                    <div class='demo-app-item'>
+                        creatXR
                     </div>
                 </div>
-                <div id='subsection-1' class='section-1-subsection'>
-                    <p class='page-content-paragraph'>
-                        I2nteraction
-                    </p>
-                    <div class='option-button-container'>
-                        <div id='tutorials-1-button' class='tutorial-option-button'>tutorials</div>
-                        <div id='code-1-button' class='code-option-button'>code</div>
-                    </div>
-                </div>
-                <div id='subsection-2' class='section-1-subsection'>
-                    <p class='page-content-paragraph'>
-                        Collaboration
-                    </p>
-                    <div class='option-button-container'>
-                        <div id='tutorials-2-button' class='tutorial-option-button'>house</div>
-                        <div id='code-2-button' class='code-option-button'>roster</div>
-                    </div>
+                <div class='option-button-container'>
+                    <div id='tutorials-0-button' class='tutorial-option-button'>house</div>
+                    <div id='code-0-button' class='code-option-button'>roster</div>
                 </div>
             </div>
             <div id='section-2' class='docs-content-section'>
-                <h3>pARk des princes</h3>
-                <p class='page-content-paragraph'>
-                    coming soon
-                </p>
+                <ul>
+                    <li>Genesis</li>
+                    <li>Storage-wealth</li>
+                    <li>USD</li>
+                    <li>CMs</li>
+                    <li>Maxima</li>
+                </ul>
+                <div id='acornpark-description' class='subsection-description-container'>
+                    <p class='page-content-paragraph'>
+                        description of what the pARk des princes is
+                    </p>
+                </div>
+                <div id='acornpark-demo-apps' class='demo-dashboard-container'>
+                    <div class='demo-app-item'>
+                        shoppXR
+                    </div>
+                    <div class='demo-app-item'>
+                        ordXR
+                    </div>
+                    <div class='demo-app-item'>
+                        creatXR
+                    </div>
+                </div>
                 <div class='option-button-container'>
                     <div id='tutorials-4-button' class='tutorial-option-button'>house</div>
                     <div id='code-4-button' class='code-option-button'>roster</div>

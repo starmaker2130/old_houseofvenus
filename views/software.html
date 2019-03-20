@@ -31,7 +31,7 @@
             width: 100%;
             height: 100%;
             color: white;
-            background-color: blue;
+            background-color: rgba(155,177,255, 0.9);
         }
         
         .docs-title{
@@ -42,7 +42,7 @@
         
         #subsection-navigation-container{
             display: block;
-            margin: 1% auto;
+            margin: 2% auto 5% auto;
             width: 300px;
             height: 50px;
             font-size: 0;
@@ -65,12 +65,12 @@
             line-height: 50px;
             cursor: pointer;
             background-color: white;
-            color: blue;
+            color: rgba(155,177,255, 0.9);
             border: 0;
         }
         
         #subsection-navigation-container h3:hover{
-            background-color: blue;
+            background-color: rgba(155,177,255, 0.9);
             border: 2px white solid;
             width: 31%;
             color: white;
@@ -109,7 +109,7 @@
         
         .docs-content{
             width: 90%;
-            padding-top: 5%;
+            padding-top: 3%;
             padding-left: 5%;
             padding-right: 5%;
             height: 375px;
@@ -149,7 +149,7 @@
         
         .section-option:hover{
             border-bottom: 3px white solid;
-            /*color: blue;*/
+            /*color: rgba(155,177,255, 0.9);*/
         }
         
         .section-1-subsection, .docs-content-section{
@@ -163,9 +163,8 @@
         }
         
         .content-list-item:hover{
-            font-style: italic;
-            background-color: white;
-            color: blue;
+            font-weight: 900;
+            color: yellow;
         }
         
         ::-webkit-scrollbar {
@@ -196,7 +195,7 @@
         }
         
         .code-option-button:hover, .tutorial-option-button:hover{
-            background-color: blue;
+            background-color: rgba(155,177,255, 0.9);
             color: white;
         }
         
@@ -210,18 +209,34 @@
             border-radius: 10px;
             border: 2px white solid;
             background-color: white;
-            color: blue;
+            color: rgba(155,177,255, 0.9);
         }
         
         .selected-option{
+            color: yellow;
             border-bottom: 3px white solid;
         }
         
         .selected-subsection-option{
             width: 31% !important;
-            background-color: blue !important;
+            background-color: rgba(155,177,255, 0.9) !important;
             color: white !important;
             border: 2px white solid !important;
+        }
+        
+        .centered{
+            text-align: center;
+            width: 100%;
+        }
+        
+        .highlight:hover{
+            font-style: italic;
+        }
+        
+        .highlight{
+            /*font-style: italic;*/
+            font-weight: 900;
+            color: yellow;
         }
     </style>
     <script src='../js/jquery-3.2.1.min.js'></script>
@@ -331,7 +346,7 @@
     <div id='main-app-container'>
         <div class='docs-title'>SOFTWARE</div>
         <div id='section-navigation-container'>
-            <div class='section-option section-option-0' id='intro-section-option'>intro</div>
+            <div class='section-option section-option-0 selected-option' id='intro-section-option'>intro</div>
             <div class='section-option section-option-1' id='i-see-dead-people-option'>icdp</div>
             <div class='section-option section-option-2' id='saturday-section-option'>show and tell</div>
             <div class='section-option section-option-3' id='lyoko-section-option'>lyoko</div>
@@ -339,12 +354,16 @@
         <div class='docs-content'>
             <div id='section-0' class='docs-content-section'>
                 <p class='page-content-paragraph'>
-                    The public Augmented Reality kinectome, or pARk, is a framework for 5G immersive internets.</p>
+                    The <span class='highlight'>public Augmented Reality kinectome</span>, or pARk, is a framework for 5G immersive internets.</p>
                 <p class='page-content-paragraph'>
-                    In a pARk, one can interact with the world as one is meant to -- without the constraints of abstractions like the Document Object Model -- while still taking advantage of the benefits of digital impressions, search, and machine processing.
+                    In a pARk, you can interact with the world as you are meant to -- with your hands and natural senses -- while still possessing the benefits of digital impressions, search, and machine processing.
                 </p>
                 <p class='page-content-paragraph'>
-                    Each network is operated by a distributed autonomous organization, or DAO, known as a Community. Communities expose pARk technologies via an immersive computing paradigm called the I2oT-CaaS-DLT Paradigm, more commonly shortened to ICDP or the mnemonic "I See Dead People". There are three (3) components to an ICDP system:
+                    We are no longer constrained to abstractions like the Document Object Model.  Instead, make digital services and experiences part-and-parcel of the natural flow of your every day life.
+                </p>
+                <p class='page-content-paragraph'>
+                    Each network is managed by a distributed autonomous organization, or DAO, known as a <span class='highlight'>Community</span> that exposes pARk access via the <span class='highlight'>I See Dead People</span> paradigm  -- also known as ICDP. There are three (3) components to an ICDP system:
+                    <!--Communities act as decentralized service providers and expose pARk access via an immersive computing paradigm called the I2oT-CaaS-DLT Paradigm, more commonly shortened to <span class='highlight'>ICDP</span> or the mnemonic-->
                 </p>
                 <ol id='content-list'>
                     <li id='content-list-item-0' class='content-list-item'>Immersive Internet of Things or I2oT</li>
@@ -360,7 +379,10 @@
                 </div>
                 <div id='subsection-0' class='section-1-subsection'>
                     <p class='page-content-paragraph'>
-                        The Immersive Internet of Things is a sub-discipline of the more widely-known Internet of Things (IoT) concept. I2oT devices, just like IoT technologies, can communicate directly with each other, exchanging information from item to item without a centralized, third-party service. Additionally, I2oT devices possess interactive-display capabilities to overlay digital content in real world spaces.
+                        The <span class='highlight'>Immersive Internet of Things</span> is a subset of the more widely-known Internet of Things (IoT) concept. I2oT devices, just like IoT technologies, can communicate directly with each other, exchanging information from item to item without a centralized, third-party service. Additionally, I2oT devices possess interactive-display capabilities to overlay digital content in real world spaces (webXR).
+                    </p>
+                    <p class='page-content-paragraph centered'>
+                        Explore I2oT principles with the tutorials and Lyoko samples below:
                     </p>
                     <div class='option-button-container'>
                         <div id='tutorials-0-button' class='tutorial-option-button'>tutorials</div>
@@ -369,11 +391,14 @@
                 </div>
                 <div id='subsection-1' class='section-1-subsection'>
                     <p class='page-content-paragraph'>
-                     Community as a Service is the organizational structure of pARk DAOs. Under the CaaS model, pARk networks act as decentralized content exchanges between Community Members (CMs). <!--"Users" and "producers" can only be identified by the amount and type of content they post -- "users" tend to post more text content and likewise less storage-intensive content whereas "producers" post a wide variety of content types, not limited to text, that take up significantly more storage space.--> Every account that posts content to a pARk is rewarded for all the public content they produce -- comments and reactions to other posts included! The network does not differentiate between "users" or "producers", internally every agent is a CM.
+                     <span class='highlight'>Community-as-a-Service</span> (CaaS) is the organizational structure of pARk DAOs. Under the CaaS model, pARk networks act as decentralized content exchanges between <span class='highlight'>Community Members (CMs)</span>. <!--"Users" and "producers" can only be identified by the amount and type of content they post -- "users" tend to post more text content and likewise less storage-intensive content whereas "producers" post a wide variety of content types, not limited to text, that take up significantly more storage space.--> Every account that posts content to a pARk is rewarded for all the public content they produce -- comments and reactions to other posts included! The network does not differentiate between "users" or "producers", internally every agent is a CM.
                     </p>    
                     <p class='page-content-paragraph'>
-                        Content uploads are transactions in the pARk. All content has an associated Lyokoin -- and consequently US Dollar -- value. The owner of the content owns that value and can use it in other Community transactions on the pARk or exchange their Lyokoin for USD to take that value into other markets.<!-- On the traditional World Wide Web, internet users connected to content online by jumping between digital properties (e.g. websites or apps) owned by the content producers. Users paid for access to these properties directly via subscriptions and fees or indirectly through pervasive exposure to omnichannel advertising. Content and copyrights are monitored through a partially automated process of claims and appeals. This is much too slow and inefficient at scale as evidenced by the regular issues on large media publishing platforms like YouTube.-->
-                </p>
+                        Content uploads are transactions in the pARk. All content has an associated <span class='highlight'>Lyokoin</span> -- and consequently US Dollar -- value. The owner of the content owns that value and can use it in other Community transactions on the pARk or <span class='highlight'>exchange Lyokoin for USD to take that value into other markets</span>.<!-- On the traditional World Wide Web, internet users connected to content online by jumping between digital properties (e.g. websites or apps) owned by the content producers. Users paid for access to these properties directly via subscriptions and fees or indirectly through pervasive exposure to omnichannel advertising. Content and copyrights are monitored through a partially automated process of claims and appeals. This is much too slow and inefficient at scale as evidenced by the regular issues on large media publishing platforms like YouTube.-->
+                    </p>
+                    <p class='page-content-paragraph centered'>
+                        Explore CaaS principles with the tutorials and Lyoko samples below:
+                    </p>
                     <div class='option-button-container'>
                         <div id='tutorials-1-button' class='tutorial-option-button'>tutorials</div>
                         <div id='code-1-button' class='code-option-button'>code</div>
@@ -381,13 +406,25 @@
                 </div>
                 <div id='subsection-2' class='section-1-subsection'>
                     <p class='page-content-paragraph'>
-                        At the core of each pARk is a treeHouse Distributed Ledger (tHDL) that manages, validates, and records pARk data. Uploading content to a pARk initiates an experience generation request. This request contains the experience blueprint, i.e. the content itself, along with the Lyokoin necessary to generate the experience. The tHDL returns a decentralized immersive experience, pointers to its data/associated value, and a public record of successful validation. <!--Content is uploaded to the pARk via LOnce content is uploaded to the pARk it is registered permanently in a distributed ledger. To comply with privacy concerns, the ledger contains value pointers that point to where data is stored on the network rather than the encrypted data itself. This allows community members to delete content without breaking the ledger chain. The value pointer simply points to a null value where the data used to exist.-->
+                        At the core of each pARk is a <span class='highlight'>treeHouse Distributed Ledger</span> (tHDL) that manages, validates, and records pARk data. Uploading content to a pARk initiates an experience generation request. This request contains the experience blueprint, i.e. the content itself, along with the Lyokoin necessary to generate the experience. The tHDL returns a pointer to the decentralized immersive experience, its associated value, and a public record of successful validation. <!--Content is uploaded to the pARk via LOnce content is uploaded to the pARk it is registered permanently in a distributed ledger. To comply with privacy concerns, the ledger contains value pointers that point to where data is stored on the network rather than the encrypted data itself. This allows community members to delete content without breaking the ledger chain. The value pointer simply points to a null value where the data used to exist.-->
                     </p>
                     <!--<p class='page-content-paragraph'>
                         Content on the CN ledger is valued based on a combination of storage-cost and market-added value (MAV). Storage-cost is a caluclated combination of the amount of storage space and the hardware resources needed to render or process the content. MAV is any extra value derived from interactions and speculations by other CMs based on the semantics of the content itself.
                     </p>-->
                     <p class='page-content-paragraph'>
-                        All of the content in a pARk is wrapped in an experience object and can be interacted with as a self-contained experience. These experience objects are linked to or included in other experience objects forming a hyper-reality of interlinked or chained experiences rather than a simple mesh network of hyper-text domains.
+                        All of the content in a pARk is wrapped in an experience object so that anyone can interact with the content by itself as a self-contained immersive experience. Internally, these experience objects are linked to or included in other experience objects to form pARk experiences, services, tools, etc.
+                    </p>
+                    <p class='page-content-paragraph'>
+                        The <span class='highlight'>hyper-real space</span> of a decentralized immersive application (DIA) found in the pARk is the geographic spread or reach of said application defined as a set of boundaries. Hyper-real spaces are to the pARk what websites are to the World Wide Web (the Web).
+                    </p>
+                    <p class='page-content-paragraph'>
+                        Hyper-real spaces are also referred to as <span class='highlight'>ledgerspaces</span> because they are programmatically and digitally represented by blocks of code and hashes recorded in the tHDL. The result of this data structure is that media on the pARk is content-addressed rather insetad of location-addressed like it is on the Web.
+                    </p>
+                    <p class='page-content-paragraph'>
+                        Thanks to this fundamental shift in the nature of dat reprsentation, pARk networks form a hyper-reality of chained experiences rather than a simple linked mesh of hyper-text domains. For this reason, pARk hyper-real spaces can be supersets, dimension-wise, of WWW hypertext sites or any <span class='highlight'>mesh networks of a similar dimension-space</span>.
+                    </p>
+                    <p class='page-content-paragraph centered'>
+                        Explore DLT principles with the tutorials and Lyoko samples below:
                     </p>
                     <div class='option-button-container'>
                         <div id='tutorials-2-button' class='tutorial-option-button'>tutorials</div>
@@ -397,7 +434,7 @@
             </div>
             <div id='section-2' class='docs-content-section'>
                 <p class='page-content-paragraph'>
-                    Show and Tell is a decentralized web application written in Lyoko that lets community members use their hands and voice to build an experience naturally without the need for a mouse or any of the other tools generally found in a traditional 3D editor.
+                    <span class='highlight'>Show and Tell</span> is a decentralized web application written in Lyoko that lets community members use their hands and voice to build an experience naturally without the need for a mouse or any of the other tools generally found in a traditional 3D editor.
                 </p>
                 <div class='option-button-container'>
                     <div id='tutorials-3-button' class='tutorial-option-button'>tutorials</div>
@@ -405,7 +442,7 @@
             </div>
             <div id='section-3' class='docs-content-section'>
                 <p class='page-content-paragraph'>
-                    Lyoko is the programming language for pARk smart contracts. Inspired by natural conversation and built on top of ECMAScript, members use it to define content. Each Lyoko smart contract is its own self-contained webXR experience.
+                    <span class='highlight'>Lyoko</span> is the programming language for pARk smart contracts, or <span class='highlight'>Deeds</span>. Each deed is its own self-contained webXR experience. Inspired by natural language and built with ports to ECMAScript and C++/WebAssembly, members use Lyoko to define content, services, tools, etc.
                 </p>
                 <div class='option-button-container'>
                     <div id='tutorials-4-button' class='tutorial-option-button'>tutorials</div>
