@@ -109,6 +109,24 @@ app.get('/pamo', function(req, res){
     res.render('pamo.html',{root: dir[0]});
 });
 
+app.get('/docs/tutorials/musicplayXR', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering software roster page.') 
+    res.render('musicPlayerTutorial.html',{root: dir[0]});
+});
+
+app.get('/docs/tutorials/curatXR', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering software roster page.') 
+    res.render('curatorTutorial.html',{root: dir[0]});
+});
+
 app.get('/docs/examples', function(req, res){
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var headers = req.headers;

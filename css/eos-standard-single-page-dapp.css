@@ -114,6 +114,10 @@ body, html, #main-app-container{
 }
 
 .navigation-option-title{
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
     position: absolute;
     opacity: 1.0;
     font-size: 36px;
@@ -706,6 +710,10 @@ body, html, #main-app-container{
     }*/
     
     .navigation-option-title{
+        -webkit-user-select: none;  
+        -moz-user-select: none;    
+        -ms-user-select: none;      
+        user-select: none;
         position: absolute;
         opacity: 1.0;
         font-size: 30px;
@@ -718,6 +726,10 @@ body, html, #main-app-container{
     }
 
     .navigation-option-subtitle{
+        -webkit-user-select: none;  
+        -moz-user-select: none;    
+        -ms-user-select: none;      
+        user-select: none;
         position: absolute;
         font-size: 16px;
         width: 250px;
