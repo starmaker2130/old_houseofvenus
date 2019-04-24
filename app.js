@@ -82,13 +82,13 @@ app.get('/cARd', function(req, res){
     res.render('cARd.html',{root: dir[0]});
 });
 
-app.get('/cam', function(req, res){
+app.get('/tutorial', function(req, res){
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var headers = req.headers;
     checkInitialDeviceConnectionType(headers, ip);
     
-    console.log('rendering cam roster page.') 
-    res.render('cam.html',{root: dir[0]});
+    console.log('rendering tutorial page.') 
+    res.render('tutorial.html',{root: dir[0]});
 });
 
 app.get('/v', function(req, res){
@@ -176,6 +176,11 @@ app.get('/docs/community', function(req, res){
 app.get('/css/:stylesheet_id', function(req, res){
     var stylesheet_id = req.params.stylesheet_id;
     res.sendFile(stylesheet_id, {root: dir[1]});
+});
+
+app.get('/css/Fonts/5218298/:font_id', function(req, res){
+    var font_id = req.params.font_id;
+    res.sendFile(font_id, {root: './css/Fonts/5218298'});
 });
 
 app.get('/js/:script_id', function(req, res){

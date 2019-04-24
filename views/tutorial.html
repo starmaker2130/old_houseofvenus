@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8" >
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" >
+    <title>Tutorial</title>
+    
+    <style type="text/css">    
+        @font-face{
+            font-family:"AuraRegular W05 Regular";
+            src: url("../css/Fonts/5218298/d83d08da-5e79-48df-a9b1-6f5acf78cb00.eot?#iefix");
+            src: url("../css/Fonts/5218298/d83d08da-5e79-48df-a9b1-6f5acf78cb00.eot?#iefix") format("eot"),url("../css/Fonts/5218298/92d5ad9f-b979-4d9b-8608-e7bef993c281.woff2") format("woff2"),url("../css/Fonts/5218298/48665d19-aff2-4022-aa29-5f4afa40c8af.woff") format("woff"),url("../css/Fonts/5218298/27cf9724-1c32-4032-b145-f082ef3ddb21.ttf") format("truetype");
+        }    
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'AuraRegular W05 Regular', Fallback, sans-serif;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+            text-transform: lowercase;
+        }
+        
+        #screen-container{
+            color: white;
+            background-color: black;
+            position: absolute;
+            width: 500px;
+            height: 350px;
+            top: 50%;
+            left: 50%;
+            margin: -175px 0 0 -250px;
+            text-align: center;
+        }
+        /*animation: name duration timing-function delay iteration-count direction fill-mode play-state*/
+        
+        .typewriter{
+          overflow: hidden; /* Ensures the content is not revealed until the animation */
+          border-right: .15em solid white; /* The typwriter cursor */
+          white-space: nowrap; /* Keeps the content on a single line */
+          margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+          letter-spacing: .15em; /* Adjust as needed */
+          animation: 
+            typing 2.5s steps(25, end),
+            blink-caret .5s step-end 0s 10, /*infinite*/
+            hide-caret .5s step-end 5s infinite;
+        }
+        
+        .typewriter-1{
+          overflow: hidden; /* Ensures the content is not revealed until the animation */
+          border-right: .15em solid white; /* The typwriter cursor */
+          white-space: nowrap; /* Keeps the content on a single line */
+          margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+          letter-spacing: .15em; /* Adjust as needed */
+          animation: 
+              typingone 2.5s steps(25, end) 5s,
+              blink-caret .5s step-end 5s 9, /*infinite*/
+              hide-caret .5s step-end 9.5s infinite;
+        }
+        
+        .typewriter-2{
+          overflow: hidden; /* Ensures the content is not revealed until the animation */
+          border-right: .15em solid white; /* The typwriter cursor */
+          white-space: nowrap; /* Keeps the content on a single line */
+          margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+          letter-spacing: .15em; /* Adjust as needed */
+          animation: 
+              typingtwo 1.5s steps(15, end) 10s,
+              blink-caret .5s step-end 10s 6, /*infinite*/
+              hide-caret .5s step-end 13s infinite;
+        }
+        
+        .typewriter-3{
+          overflow: hidden; /* Ensures the content is not revealed until the animation */
+          border-right: .15em solid white; /* The typwriter cursor */
+          white-space: nowrap; /* Keeps the content on a single line */
+          margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+          letter-spacing: .15em; /* Adjust as needed */
+          animation: 
+            typingtwo 1.5s steps(15, end) 13s,
+            blink-caret .5s step-end 13s 15; /*infinite*/
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 230px }
+        }
+        
+        @keyframes typingone {
+          from { width: 0 }
+          to { width: 370px }
+        }
+        
+        @keyframes typingtwo {
+          from { width: 0 }
+          to { width: 160px }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+          from, to { border-color: transparent; border-width: 0px; }
+          50% { border-color: white; border-width: 15px; }
+        }
+        
+        @keyframes hide-caret {
+            from {border-right: 0}
+            to { border-right: 0; }
+        }
+    </style>
+    <script src='../js/jquery-3.2.1.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            console.log('loaded');
+            
+            setTimeout(function(){
+                $('.typewriter-1').css({
+                    opacity: 1.0
+                });
+            }, 5000);
+            
+            setTimeout(function(){
+                $('.typewriter-2').css({
+                    opacity: 1.0
+                });
+            }, 10000);
+            
+            setTimeout(function(){
+                $('.typewriter-3').css({
+                    opacity: 1.0
+                });
+            }, 13000);
+        });
+    </script>
+</head>
+<body>
+    <div id='screen-container'>
+        <div style='width: 80%; height: 60%; margin: 18% auto 0 auto'>
+            <div class='typewriter' style='font-size: 26px; width: 230px; margin: 0 auto;'>now loading:</div>
+            <div class='typewriter-1' style='font-size: 24px; width: 370px; margin: 0 auto; opacity: 0;'>kids next door mission</div>
+            <div class='typewriter-2' style='margin: 9% auto 0 auto; font-size: 24px; width: 160px; opacity: 0;'>operation:</div>
+            <div class='typewriter-3' style='font-size: 24px; opacity: 0; width: 160px;'>t.u.t.o.r.i.a.l.</div>
+        </div>
+        
+        <div id='acrostic-container' style='display: none; opacity: 0;'>
+            <div class='acrostic-header'>t</div>
+            <div class='acrostic-header'>u</div>
+            <div class='acrostic-header'>t</div>
+            <div class='acrostic-header'>o</div>
+            <div class='acrostic-header'>r</div>
+            <div class='acrostic-header'>i</div>
+            <div class='acrostic-header'>a</div>
+            <div class='acrostic-header'>l</div>
+        </div>
+    </div>
+</body>    
+</html>
