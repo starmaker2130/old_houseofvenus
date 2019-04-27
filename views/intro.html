@@ -3,14 +3,15 @@
 <head>
     <meta charset = "utf-8" >
     <meta name="viewport" content="width=device-width,initial-scale=1.0" >
-    <title>Tutorial</title>
+    <title>H.O.U.S.E.</title>
     
     <style type="text/css">    
         @font-face{
             font-family:"AuraRegular W05 Regular";
             src: url("../css/Fonts/5218298/d83d08da-5e79-48df-a9b1-6f5acf78cb00.eot?#iefix");
             src: url("../css/Fonts/5218298/d83d08da-5e79-48df-a9b1-6f5acf78cb00.eot?#iefix") format("eot"),url("../css/Fonts/5218298/92d5ad9f-b979-4d9b-8608-e7bef993c281.woff2") format("woff2"),url("../css/Fonts/5218298/48665d19-aff2-4022-aa29-5f4afa40c8af.woff") format("woff"),url("../css/Fonts/5218298/27cf9724-1c32-4032-b145-f082ef3ddb21.ttf") format("truetype");
-        }    
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -21,6 +22,7 @@
             width: 100%;
             height: 100%;
             text-transform: lowercase;
+            background-color: black;
         }
         
         #screen-container{
@@ -79,8 +81,8 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-            typingtwo 1.5s steps(15, end) 13s,
-            blink-caret .5s step-end 13s 15; /*infinite*/
+            typingthree 3s steps(15, end) 13s,
+            blink-caret .5s step-end 13s 20; /*infinite*/
         }
 
         /* The typing effect */
@@ -98,6 +100,11 @@
           from { width: 0 }
           to { width: 160px }
         }
+        
+        @keyframes typingthree {
+          from { width: 0 }
+          to { width: 225px }
+        }
 
         /* The typewriter cursor effect */
         @keyframes blink-caret {
@@ -109,6 +116,108 @@
             from {border-right: 0}
             to { border-right: 0; }
         }
+        
+        .acrostic-header{
+            height: 30px;
+            display: inline;
+            text-align: 'left';
+            vertical-align: top;
+            line-height: 30px;
+        }
+        
+        .acrostic-reveal{
+            display: none;
+        }
+        
+        #premier-reveal{
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                premier-ar 2.5s steps(25, end),
+                blink-caret .5s step-end 5,
+                hide-caret .5s step-end 2.5s infinite;
+        }
+        
+        #deuxieme-reveal{
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                deuxieme-ar 2.5s steps(25, end),
+                blink-caret .5s step-end 5,
+                hide-caret .5s step-end 2.5s infinite;
+        }
+        
+        #troisieme-reveal{
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                troisieme-ar 2.5s steps(25, end),
+                blink-caret .5s step-end 10,
+                hide-caret .5s step-end 2.5s infinite;
+        }
+        
+        #quatrieme-reveal{
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                quatrieme-ar 2.5s steps(25, end),
+                blink-caret .5s step-end 10,
+                hide-caret .5s step-end 2.5s infinite;
+        }
+        
+        #cinquieme-reveal{
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                cinquieme-ar 2.5s steps(25, end),
+                blink-caret .5s step-end 10,
+                hide-caret .5s step-end 2.5s infinite;
+        }
+        
+        @keyframes premier-ar{
+            from { width: 0 }
+            to { width: 125px }
+        }
+        
+        @keyframes deuxieme-ar{
+            from { width: 0 }
+            to { width: 125px }
+        }
+        
+        @keyframes troisieme-ar{
+            from { width: 0 }
+            to { width: 160px }
+        }
+        
+        @keyframes quatrieme-ar{
+            from { width: 0 }
+            to { width: 140px }
+        }
+        
+        @keyframes cinquieme-ar{
+            from { width: 0 }
+            to { width: 150px }
+        }
+        
+        .acrostic-letter{
+            height: 30px;
+            line-height: 30px;
+        }
     </style>
     <script src='../js/jquery-3.2.1.min.js'></script>
     <script>
@@ -119,19 +228,121 @@
                 $('.typewriter-1').css({
                     opacity: 1.0
                 });
-            }, 5000);
+            }, 5050);
             
             setTimeout(function(){
                 $('.typewriter-2').css({
                     opacity: 1.0
                 });
-            }, 10000);
+            }, 10100);
             
             setTimeout(function(){
                 $('.typewriter-3').css({
                     opacity: 1.0
                 });
-            }, 13000);
+            }, 13150);
+            
+            setTimeout(function(){
+                $('.typewriter, .typewriter-1, .typewriter-2').animate({
+                    opacity: 0
+                }, 1000, function(){
+                    
+                    $('.typewriter-3').css({
+                        borderRight: 0,
+                    });
+                    
+                    $('.acrostic-letter').css({
+                        display: 'inline-block',
+                        verticalAlign: 'top'
+                    });
+                    
+                    $('.acrostic-period').css({
+                        display: 'none'
+                    });
+                    
+                    $(this).css({
+                        display: 'none'
+                    });
+                    
+                    $('#premier').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#premier-reveal').css({
+                        display: 'inline-block',
+                        textAlign: 'left',
+                        verticalAlign: 'top',
+                        width: '125px'
+                    });
+                    
+                    /*$('#premier-reveal').css({
+                        /*width: '100%'
+                    }).addClass('revelation-0');*/
+                    $('#deuxieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#troisieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#quatrieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#cinquieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    setTimeout(function(){ 
+                        $('#deuxieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '125px'
+                        });
+                    }, 2500);
+                    
+                    setTimeout(function(){
+                        $('#troisieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '160px'
+                        });
+                    }, 5500);
+                    
+                    setTimeout(function(){
+                        $('#quatrieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '140px'
+                        });
+                    }, 9500);
+                    
+                    setTimeout(function(){
+                        $('#cinquieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '150px'
+                        });
+                    }, 12000);
+                    
+                });
+                
+            }, 23000);
         });
     </script>
 </head>
@@ -141,8 +352,16 @@
             <div class='typewriter' style='font-size: 26px; width: 230px; margin: 0 auto;'>now loading:</div>
             <div class='typewriter-1' style='font-size: 24px; width: 370px; margin: 0 auto; opacity: 0;'>kids next door mission</div>
             <div class='typewriter-2' style='margin: 9% auto 0 auto; font-size: 24px; width: 160px; opacity: 0;'>operation:</div>
-            <div class='typewriter-3' style='font-size: 24px; opacity: 0; width: 160px;'>h.o.u.s.e.</div>
+            <div id='acrostic-container' class='typewriter-3' style='font-size: 24px; opacity: 0; width: 225px;'>
+                <div id='premier' class='acrostic-header'><span class='acrostic-letter'>h</span><span id='premier-period' class='acrostic-period'>.</span><span id='premier-reveal' class='acrostic-reveal'>elping</span></div>
+                <div id='deuxieme' class='acrostic-header'>o<span id='deuxieme-period' class='acrostic-period'>.</span><span id='deuxieme-reveal' class='acrostic-reveal'>thers</span></div>
+                <div id='troisieme' class='acrostic-header'>u<span id='troisieme-period' class='acrostic-period'>.</span><span id='troisieme-reveal' class='acrostic-reveal'>nderstand</span></div>
+                <div id='quatrieme' class='acrostic-header'>s<span id='quatrieme-period' class='acrostic-period'>.</span><span id='quatrieme-reveal' class='acrostic-reveal'>entient</span></div>
+                <div  id='cinquieme' class='acrostic-header'>e<span id='cincquieme-period' class='acrostic-period'>.</span><span id='cinquieme-reveal' class='acrostic-reveal'>lectronics</span></div>
+            </div>
         </div>
+        
+        
     </div>
 </body>    
 </html>

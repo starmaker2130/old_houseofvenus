@@ -91,6 +91,33 @@ app.get('/tutorial', function(req, res){
     res.render('tutorial.html',{root: dir[0]});
 });
 
+app.get('/intro', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering intro page.') 
+    res.render('intro.html',{root: dir[0]});
+});
+
+app.get('/lyoko', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering intro page.') 
+    res.render('lyoko.html',{root: dir[0]});
+});
+
+app.get('/w', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering intro page.') 
+    res.render('writers.html',{root: dir[0]});
+});
+
 app.get('/v', function(req, res){
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var headers = req.headers;
