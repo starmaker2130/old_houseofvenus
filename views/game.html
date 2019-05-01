@@ -65,6 +65,16 @@
             z-index: 50;
         }
         
+        #canvas-container{
+            z-index: 75;
+            position: absolute;
+            width: 640px;
+            height: 480px;
+            top: 50%;
+            left: 50%;
+            margin: -240px 0 0 -320px;
+        }
+        
         .embedded-scene-container{
             z-index: 100;
             background-color: rgba(255, 255, 255, 0);
@@ -429,7 +439,8 @@
                 connection: io.connect(location.host),
                 start: (new Date()),
                 video: null,
-                videoSelect: null
+                videoSelect: null,
+                orientation: 0
             };
             
             setTimeout(function(){
@@ -584,6 +595,7 @@
                 
             }, 23000);
             
+            sessionManager.video = document.getElementById('videoElement');
             console.log('loaded');
             console.log(sessionManager.start);
             console.log(sessionManager.connection);
@@ -601,7 +613,7 @@
                     opacity: 1.0
                 }, 500);
                 
-                manager.video = document.getElementById('videoElement');
+                
                 manager.videoSelect = document.querySelector('select#videoSource');
                 // Get access to the camera!
                 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -609,9 +621,81 @@
                    navigator.mediaDevices.enumerateDevices().then(gotDevices).then(getStream).catch(handleError);
 
                     manager.video.onchange = getStream;
+                    
+                    manager.connection.emit('createScene', {orientation: 2});
+                    manager.orientation = 2;
                 }
                 
             }, 70000);
+            
+            manager.connection.on('clearInitialVideoFeed', function(data){
+                console.log(manager.video);
+                
+                if (window.stream) {
+                   // console.log('stream flowing my guy!!!');
+                    window.stream.getTracks().forEach(function(track) {
+                        track.stop();
+                    });
+                }
+
+/*                let video = manager.video;
+                let stream = video.srcObject;
+                let tracks = stream.getTracks();
+
+                tracks.forEach(function(track) {
+                    track.stop();
+                });
+*/
+                manager.video.srcObject = null;
+                //video.stop();
+                manager.video.style.display = 'none';
+            });
+
+            manager.connection.on('restartVideoFeed', function(data){
+                getStream();
+                //video.stop();
+                manager.video.style.display = 'block';
+            });
+            
+            manager.connection.on('paintCanvas', function(data){
+                var arr = new Uint8ClampedArray(data.buf); //buffer
+
+                const imgData = new ImageData(
+                  arr,
+                  data.cols,
+                  data.rows
+                );
+                // set canvas dimensions
+                const canvas = document.getElementById('canvas');
+                canvas.height = data.rows;
+                canvas.width = data.cols;
+                // set image data
+                const ctx = canvas.getContext('2d');
+                ctx.putImageData(imgData, 0, 0);/**/
+            });
+            
+            manager.connection.on('selectionMadeForItem', function(data){
+                let selection = data.selection;
+                //let selectedPos = document.querySelector(selection).object3D.position;
+                
+                document.querySelector('#new-option').object3D.visible = true;
+                document.querySelector('#load-option').object3D.visible = true;
+                document.querySelector('#info-option').object3D.visible = true;
+                
+                if(selection=='#new-option'){
+                    document.querySelector('#selected-option').object3D.position.set(-3, 1, -3);
+                }
+                else if(selection=='#load-option'){
+                    document.querySelector('#selected-option').object3D.position.set(0, 1, -3);
+                }
+                else if(selection=='#info-option'){
+                    document.querySelector('#selected-option').object3D.position.set(3, 1, -3);
+                }
+                document.querySelector(selection).object3D.visible = false;
+                
+                //document.querySelector('#selected-option').object3D.position.set(selectedPos);
+                document.querySelector('#selected-option').object3D.visible = true;
+            });
         });
     </script>
 </head>
@@ -653,15 +737,20 @@
             <select id='videoSource'></select>
             <a-scene embedded class='embedded-scene-container'>
                 <a-assets>
-                
+                    <img id='selected-texture' src='../media/texture/checkmark.png' preload="true" />
                 </a-assets>
-                <a-entity geometry='primitive: sphere; radius: 0.5;' material='color: red;' position='-3 1 -3'></a-entity>
-                <a-entity geometry='primitive: sphere; radius: 0.5;' material='color: green;' position='0 1 -3'></a-entity>
-                <a-entity geometry='primitive: sphere; radius: 0.5;' material='color: blue;' position='3 1 -3'></a-entity>
+                <a-entity id="new-option" geometry="primitive: sphere; radius: 0.5;"  material='color: red;' position='-3 1 -3'></a-entity><!--text="value: new"-->
+                <a-entity id="load-option" geometry='primitive: sphere; radius: 0.5;' material='color: green;' position='0 1 -3'></a-entity><!--text="value: load"-->
+                <a-entity id="info-option" geometry='primitive: sphere; radius: 0.5;' material='color: blue;' position='3 1 -3'></a-entity><!-- text="value: info"-->
+                
+                <a-entity id='selected-option' visible="false" geometry='primitive: box; depth: 0.8; height: 0.8; width: 0.8;' position='0 2.2 -4' material='src: #selected-texture;'></a-entity>
                 <a-camera userHeight='1.8' position='0 1.8 2'></a-camera>
                 
                 <a-sky material='transparent: true; opacity: 0;'></a-sky>
             </a-scene>
+            <div id='canvas-container'><!-- z: -50 | 50 -->
+                <canvas id="canvas"></canvas>
+            </div>
         </div>
     </div>
 </body>    
