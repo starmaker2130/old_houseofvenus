@@ -250,6 +250,18 @@
                 opacity: 1.0
             }, 500);
             
+            $('#shoppXR-app-container').click(function(){
+                
+            });
+            
+            $('#shoppXR-app-container').click(function(){
+                window.location.href = './shoppXR';
+            });
+            
+            $('#realtXR-app-container').click(function(){
+                window.location.href = './realtXR';
+            });
+            
             $('#full-page-container').show();
             
             //navigation event handlers
@@ -433,7 +445,7 @@
         <div id='full-page-container'>
             <div id='vision-page-container' class='page-container'>
                 <div class='page-container-title'>explore</div>
-                <div class='page-container-content'><p class='page-content-paragraph'>affordable access to clean drinking water and safe open internets is the most vital element for human life and freedom on Earth</p><p class='page-content-paragraph'> our HOUSE is committed to serving the planet and the life on it through our <span id='kinectome-link'>pARk: a community-operated 5G immersive internet</span></p><p class='page-content-paragraph'>&#9664; <span id='makers-link-span'>Makers</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id='hyper-reality-link-span'>Hyper-Reality</span> &#9658;</p></div>
+                <div class='page-container-content'><p class='page-content-paragraph'>clean drinking water and safe, open internets are the most vital elements for human life and freedom on Earth</p><p class='page-content-paragraph'> our HOUSE is committed to serving the planet through our <span id='kinectome-link'>pARk: a community-operated 5G immersive internet</span></p><p class='page-content-paragraph'>&#9664; <span id='makers-link-span'>Makers</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id='hyper-reality-link-span'>Hyper-Reality</span> &#9658;</p></div>
                 <input type='button' value='team' id='vision-team-option' class='vision-page-option-button' />
                 <input type='button' value='dApps' id='vision-apps-option' class='vision-page-option-button' />
                 <div class='close-page-container-button'>x</div>
@@ -510,13 +522,13 @@
             </div>
             <div id='demos-page-container' class='page-container'>
                 <div class='secondary-page-container-title'>demos</div>
-                <div class='demo-app-container'>
+                <div id='shoppXR-app-container' class='demo-app-container'>
                     <div class='demo-app-title-container'>shoppXR</div>
                     <div class='demo-app-description-container'>your portal to the frontiers of fashion, food, and health</div>
                     <div class='demo-app-version-container'>pARk v. 0.2.0</div>
                     <div style='width: 100%; height: 50px; line-height: 50px; text-align: center;'>launch demo</div>
                 </div>
-                <div class='demo-app-container'>
+                <div id='realtXR-app-container' class='demo-app-container'>
                     <div class='demo-app-title-container'>realtXR</div>
                     <div class='demo-app-description-container'>explore and discover local property </div>
                     <div class='demo-app-version-container'>pARk v. 0.2.0</div>

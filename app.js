@@ -73,6 +73,15 @@ app.get('/pARk', function(req, res){
     res.render('pARk.html',{root: dir[0]});
 });
 
+app.get('/game', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering pARk application teaser page...') 
+    res.render('game.html',{root: dir[0]});
+});
+
 app.get('/cARd', function(req, res){
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var headers = req.headers;
@@ -98,6 +107,24 @@ app.get('/intro', function(req, res){
     
     console.log('rendering intro page.') 
     res.render('intro.html',{root: dir[0]});
+});
+
+app.get('/syllabus', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering intro page.') 
+    res.render('syllabus.html',{root: dir[0]});
+});
+
+app.get('/corinth', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering intro page.') 
+    res.render('corinth.html',{root: dir[0]});
 });
 
 app.get('/lyoko', function(req, res){
@@ -134,6 +161,24 @@ app.get('/pamo', function(req, res){
     
     console.log('rendering patrice-morgan roster page.') 
     res.render('pamo.html',{root: dir[0]});
+});
+
+app.get('/shoppXR', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering shoppXR app.') 
+    res.render('shoppXR.html',{root: dir[0]});
+});
+
+app.get('/realtXR', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('rendering realtXR app.') 
+    res.render('realtXR.html',{root: dir[0]});
 });
 
 app.get('/docs/tutorials/musicplayXR', function(req, res){
@@ -251,8 +296,23 @@ app.get('/media/video/:video_id', function(req, res){
     res.sendFile(video_id, {root: dir[10]});
 });
 
-app.listen(config.PORT, function(){
+var io = require('socket.io').listen(app.listen(config.PORT, function(){
     console.log(`[0] listening on port ${config.PORT}`);
+}));
+
+var subjects = [];
+
+io.sockets.on('connection', function(socket){
+    var conn = socket;
+    console.log('client connected.');
+    console.log(conn.id);
+    subjects.push(conn);
+    
+
+    ///////
+    socket.on('disconnect', function(){
+        console.log(`socket ${conn.id} disconnected.`);
+    });
 });
 
 /*var io = require('socket.io').listen());

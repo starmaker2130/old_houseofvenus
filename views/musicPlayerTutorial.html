@@ -34,49 +34,6 @@
             background-color: white;
         }
         
-        .docs-title{
-            color: black;
-            font-size: 22px;
-            width: 100%;
-            text-align: center;
-        }
-        
-        #subsection-navigation-container{
-            display: block;
-            margin: 2% auto 5% auto;
-            width: 300px;
-            height: 50px;
-            font-size: 0;
-        }
-        
-        .leftmost{
-            border-radius: 10px 0 0 10px;
-        }
-        
-        .rightmost{
-            border-radius: 0 10px 10px 0;
-        }
-        
-        #subsection-navigation-container h3{
-            text-align: center;
-            display: inline-block;
-            width: 33%;
-            height: 100%;
-            font-size: 16px;
-            line-height: 50px;
-            cursor: pointer;
-            background-color: white;
-            color: white;
-            border: 0;
-        }
-        
-        #subsection-navigation-container h3:hover{
-            background-color: white;
-            border: 2px white solid;
-            width: 31%;
-            color: white;
-        }
-        
         #main-app-container{
             width: 600px;
             height: 505px;
@@ -87,6 +44,7 @@
             text-align: center;
         }
         
+             
         #author-footer{
             position: absolute;
             width: 250px;
@@ -99,170 +57,6 @@
             line-height: 50px;
             font-size: 10px;
         }
-        
-        .category-section-container{
-            cursor: pointer;
-            width: 100%;
-            height: 150px;
-            line-height: 125px;
-            display: inline-block;
-            text-align: center;
-            background-size: 100% auto;
-            background-position: center center;
-            opacity: 0.7;
-            font-size: 16px;
-            transition: 1.0s;
-        }
-        
-        .category-section-container:hover{
-            font-size: 20px;
-            height: 250px;
-            line-height: 200px;
-            opacity: 1.0;
-        }
-        
-        #aria-category-container{
-            border-radius: 15px 15px 0 0;
-            background-image: url('../media/texture/aria.gif');
-        }
-        
-        #caas-category-container{
-            background-image: url('../media/texture/tokyoave.gif');
-        }
-        
-        #card-category-container{
-            background-image: url('../media/texture/card.gif');
-        }
-        
-        #park-category-container{
-            background-image: url('../media/texture/museum.gif');
-        }
-        
-        #dlt-category-container{
-            background-image: url('../media/texture/dlt.gif');
-        }
-        
-        #i2ot-category-container{
-            background-image: url('../media/texture/hyperreality.gif');
-        }
-        
-        #more-categories-button-container:hover{
-            background-image: url('../media/texture/warp.gif');
-            border-radius: 0 0 15px 15px;
-        }
-        
-        #more-categories-button-container{
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-        }
-        
-        .docs-content{
-            width: 90%;
-            padding-top: 3%;
-            padding-left: 5%;
-            padding-right: 5%;
-            height: 375px;
-            overflow-y: scroll;
-            overflow-wrap: break-word;
-        }
-        
-        #section-navigation-container{
-            width: 600px;
-            height: 8%;
-            min-height: 50px;
-            line-height: 50px;
-            font-size: 0;
-            margin: 1% auto;
-        }
-        
-        .section-option{
-            display: inline-block;
-            width: 33%;
-            height: 100%;
-            font-size: 16px;
-            color: black;
-            text-align: center;
-            cursor: pointer;
-        }
-        
-        .section-option:hover{
-            border-bottom: 3px white solid;
-            /*color: black*/
-        }
-        
-        .section-1-subsection, .docs-content-section{
-            display: none;
-            opacity: 0;
-        }
-        
-        ::-webkit-scrollbar {
-            width: 5px;
-            height: 20px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background-color: black;
-        }
-        
-        ::-webkit-scrollbar-button {
-            background-color: black;
-        }
-        
-        ::-webkit-scrollbar-track-piece {
-            background-color: white;
-        }
-        
-        h2{
-            font-weight: 200;
-            font-size: 20px;
-        }
-        
-        .option-button-container{
-            width: 275px;
-            margin: 5% auto 0 auto;
-        }
-        
-        .code-option-button:hover, .tutorial-option-button:hover{
-            background-color: white;
-            color: white;
-        }
-        
-        .selected-option{
-            color: blue;;
-            border-bottom: 3px white solid;
-        }
-        
-        .centered{
-            text-align: center;
-            width: 100%;
-        }
-        
-        .highlight:hover{
-            font-style: italic;
-        }
-        
-        .highlight{
-            /*font-style: italic;*/
-            font-weight: 900;
-            color: yellow;
-        }
-        
-        .tutorial-description-container{
-            width: 100%;
-            color: black;
-            height: 25px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: 1.0s;
-        }
-        
-        .tutorial-description-container:hover{
-            border-top: 2px black solid;
-            border-bottom: 2px black solid;
-            height: 85px;
-            padding: 2px 0;
-            margin: 2% auto;
-        }
     </style>
     <script src='../js/jquery-3.2.1.min.js'></script>
     <script>
@@ -271,148 +65,33 @@
             onSection: 0
         };
         
-        function showContentSection(section){
-            $('.docs-content-section').animate({
-                opacity: 0
-            }, 150, function(){
-                $(this).hide();
-            });
-            
-            setTimeout(function(){
-                $(`.section-option-${sessionManager.onPage}`).removeClass('selected-option');
-                
-                $(`.section-option-${section}`).addClass('selected-option');
-                
-                $(`#section-${section}`).show().animate({
-                    opacity: 1.0
-                }, 250, function(){
-                    sessionManager.onPage = section;
-                });
-            }, 250);
-            
-        }
-        
-        function showSubSection(section){
-            $('.section-1-subsection').animate({
-                opacity: 0
-            }, 255, function(){
-                $(this).hide();
-            });
-            
-            setTimeout(function(){
-                $(`#subsection-option-${sessionManager.onSection}`).removeClass('selected-subsection-option');
-                
-                $(`#subsection-option-${section}`).addClass('selected-subsection-option');
-                
-                $(`#subsection-${section}`).show().animate({
-                    opacity: 1.0
-                }, 250, function(){
-                    sessionManager.onSection = section;
-                });
-            }, 500);
-            
-        }
-        
         document.addEventListener('DOMContentLoaded', function(){
-            $('#section-0').show().animate({
-                opacity: 1.0
-            }, 500);
             
-            document.getElementById('intro-section-option').addEventListener('click', function(){
-                showContentSection(0);
-            });
-            
-            document.getElementById('i-see-dead-people-option').addEventListener('click', function(){
-                showContentSection(1);
-                showSubSection(0);
-            });
-            
-            document.getElementById('saturday-section-option').addEventListener('click', function(){
-                showContentSection(2);
-            });
         });
     </script>
     </head>
 <body>
     <div id='main-app-container'>
-        <div class='docs-title'>SELECT EXAMPLES</div>
-        <div id='section-navigation-container'>
-            <div class='section-option section-option-0 selected-option' id='intro-section-option'>by category</div>
-            <div class='section-option section-option-1' id='i-see-dead-people-option'>view all</div>
-            <div class='section-option section-option-2' id='saturday-section-option'>see code</div>
+        <div>
+            pick a song
         </div>
-        <div class='docs-content'>
-            <div id='section-0' class='docs-content-section'>
-                <div class='category-section-container' id='aria-category-container'>
-                    Augmented Reality internet assistant
-                </div>
-                <div class='category-section-container' id='caas-category-container'>
-                    Community-as-a-Service
-                </div>
-                <div class='category-section-container' id='card-category-container'>
-                    creative Augmented Reality desktop
-                </div>
-                <div class='category-section-container' id='dlt-category-container'>
-                    Distributed Ledger Technology
-                </div>
-                <div class='category-section-container' id='i2ot-category-container'>
-                    Immersive Internet of Things
-                </div>
-                <div class='category-section-container' id='park-category-container'>
-                    public Augmented Reality kinectome
-                </div>
-                <div class='category-section-container' id='more-categories-button-container'>
-                    more
-                </div>
+        <div>
+            <div>
+                pick another song?
             </div>
-            <div id='section-1' class='docs-content-section'>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>Music PlayXR</span>
-                    <span style='display: block; width: 100%; height: 50px;'>create an immersive music playlist and share it online with family and friends</span>
-                </div>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>CuratXR</span>
-                    <span style='display: block; width: 100%; height: 50px;'>desription for the second tutorial exploring the functionality of the Augmented Reality internet assistant</span>
-                </div>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>cARd tutorial 1</span>
-                    <span style='display: block; width: 100%; height: 50px;'>desription for the first tutorial exploring the functionality of the creative Augmented Reality desktop</span>
-                </div>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>cARd tutorial 2</span>
-                    <span style='display: block; width: 100%; height: 50px;'>desription for the second tutorial exploring the functionality of the creative Augmented Reality desktop</span>
-                </div>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>I2oT tutorial</span>
-                    <span style='display: block; width: 100%; height: 50px;'>desription for the I2oT tutorial</span>
-                </div>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>CaaS tutorial</span>
-                    <span style='display: block; width: 100%; height: 50px;'>desription for the CaaS tutorial</span>
-                </div>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>DLT tutorial</span>
-                    <span style='display: block; width: 100%; height: 50px;'>desription for the DLT tutorial</span>
-                </div>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>pARk tutorial 1</span>
-                    <span style='display: block; width: 100%; height: 50px;'>desription for the first tutorial exploring the functionality of the creative Augmented Reality desktop</span>
-                </div>
-                <div class='tutorial-description-container'>
-                    <span style='display: block; width: 100%; height: 24px;'>pARk tutorial 2</span>
-                    <span style='display: block; width: 100%; height: 50px;'>desription for the second tutorial exploring the functionality of the creative Augmented Reality desktop</span>
-                </div>        
+            <div>
+                yes
             </div>
-            <div id='section-2' class='docs-content-section'>
-                
-            </div>
-            <div id='section-3' class='docs-content-section'>
-                <div class='option-button-container'>
-                    <div id='tutorials-4-button' class='tutorial-option-button'>tutorials</div>
-                    <div id='code-4-button' class='code-option-button'>code</div>
-                </div>
+            <div>
+                no
             </div>
         </div>
+        <div>
+            name your project
+            <input type = "checkbox" value = "" />
+            <input type = "button" value = "" />
+        </div>
+        
     </div>
     <div id='author-footer'>Patrice-Morgan Ongoly | 2019</div>
 </body>
