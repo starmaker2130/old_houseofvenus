@@ -41,6 +41,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(express.static('/'));
 
+var PALM_POINT = null;
 var PRESSING_ON_SELECTION_MATRIX = 
     [
         [
@@ -55,8 +56,8 @@ var PRESSING_ON_SELECTION_MATRIX =
                     range: {
                         x1: 75,
                         x2: 200,
-                        y1: 200,
-                        y2: 300,
+                        y1: 400,
+                        y2: 500,
                         count: 0
                     },
                     SELECTION_MADE: false,
@@ -73,8 +74,8 @@ var PRESSING_ON_SELECTION_MATRIX =
                     range: {
                         x1: 300,
                         x2: 400,
-                        y1: 200,
-                        y2: 300,
+                        y1: 400,
+                        y2: 500,
                         count: 0
                     },
                     SELECTION_MADE: false,
@@ -91,8 +92,8 @@ var PRESSING_ON_SELECTION_MATRIX =
                     range: {
                         x1: 500,
                         x2: 600,
-                        y1: 200,
-                        y2: 300,
+                        y1: 400,
+                        y2: 500,
                         count: 0
                     },
                     SELECTION_MADE: false,
@@ -101,7 +102,7 @@ var PRESSING_ON_SELECTION_MATRIX =
         ]
     ];
 function checkInitialDeviceConnectionType(headers, ip){
-    var result = new WhichBrowser(headers);
+    let result = new WhichBrowser(headers);
     console.log(result.toString());
 
     if(result.isType('desktop')){
@@ -450,6 +451,7 @@ function gestureTrackingTest(source, target, renderRate){
         const getMostCentralPoint = function(pointGroup) {
         // find center
             const center = getCenterPt(pointGroup.map(ptWithIdx => ptWithIdx.pt));
+            PALM_POINT = center;
         // sort ascending by distance to center
             return pointGroup.sort((ptWithIdx1, ptWithIdx2) => ptDist(ptWithIdx1.pt, center) - ptDist(ptWithIdx2.pt, center))[0];
         };
@@ -509,7 +511,7 @@ function gestureTrackingTest(source, target, renderRate){
     const green = new cv.Vec(0, 255, 0);
     const red = new cv.Vec(0, 0, 255);
     
-    const pointColor = new cv.Vec(255, 255, 255);
+    const pointColor = new cv.Vec(255, 255, 255); // COLOR OF THE HAND MASK
     
     objectsInSceneHandler.gestureInterval = setInterval(function(){
         wCap.readAsync(function(err, frame){
@@ -520,7 +522,7 @@ function gestureTrackingTest(source, target, renderRate){
                         // const { grabFrames } = require('./utils'); <-- investigate this function
 
             // main
-            const resizedImg = frame.resizeToMax(640);
+            const resizedImg = frame.resize(510, 680);  // resizeToMax(680);
 
             const handMask = makeHandMask(resizedImg);
             const handContour = getHandContour(handMask);
@@ -545,7 +547,7 @@ function gestureTrackingTest(source, target, renderRate){
             //var vertext;
 
     
-            const result = resizedImg.copy();
+            //const result = resizedImg.copy();
             //const ballScene = resizedImg.copy();
               // draw bounding box and center line
 
@@ -554,15 +556,17 @@ function gestureTrackingTest(source, target, renderRate){
                         
           if(verticesWithValidAngle[0]!=undefined){
             try{
-                const xValue = verticesWithValidAngle[0].d1.x;
-                const yValue = verticesWithValidAngle[0].d1.y;
-                const vertext = verticesWithValidAngle[0].d1;
-                console.log(`x ${xValue} | y ${yValue}`);
                 
-                //console.log(PRESSING_ON_SELECTION_MATRIX[0][1]);
-                /*console.log(PRESSING_ON_SELECTION_MATRIX[0][1]);
-                console.log(PRESSING_ON_SELECTION_MATRIX[2][0]);*/
-                
+                const xValue = PALM_POINT.x;
+                const yValue = PALM_POINT.y;
+                const vertext = verticesWithValidAngle[0].pt;
+                //console.log(`[0] x ${xValue} | y ${yValue}`);
+                //console.log(PALM_POINT);
+                /*console.log(`[1] ${verticesWithValidAngle[1].pt.x} | ${verticesWithValidAngle[1].pt.x}`);
+                console.log(`[2] ${verticesWithValidAngle[2].pt.x} | ${verticesWithValidAngle[2].pt.x}`);
+                console.log(`[3] ${verticesWithValidAngle[3].pt.x} | ${verticesWithValidAngle[3].pt.x}`);
+                console.log(`[4] ${verticesWithValidAngle[4].pt.x} | ${verticesWithValidAngle[4].pt.x}`);
+                */
                 if(xValue>PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.x1&&xValue<PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.x2){
                         
                     if(yValue>PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.y1&&yValue<PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.y2){
@@ -621,9 +625,9 @@ function gestureTrackingTest(source, target, renderRate){
                         }
                     }
                 }
-                else{
+                /*else{
                     console.log(xValue);  
-                }
+                }*/
                 //ballScene.drawCircle(vertext, 20, pointColor, -5);       // previous version: 50, blueblue
                 
                 if(objectsInSceneHandler.saveLastVertex){
@@ -641,23 +645,24 @@ function gestureTrackingTest(source, target, renderRate){
                 
            }
               // draw points and vertices
-            verticesWithValidAngle.forEach(function(v){
-        
+           /* verticesWithValidAngle.forEach(function(v){
+                //console.log(`x ${v.pt.x} | y ${v.pt.y}`);
+                
                 // previous version: the section below was not commented out
                 
             /*    resizedImg.drawLine( v.pt, v.d1, { color: green, thickness: 2 });
                 resizedImg.drawLine(v.pt, v.d2, { color: green, thickness: 2 });*/
-                resizedImg.drawEllipse(
+             /*   resizedImg.drawEllipse(
                     new cv.RotatedRect(v.pt, new cv.Size(10, 10), 0), // previous version: cv.Size(20, 20, 0)
             
                     { color: red, thickness: 2 }
                 );
                 
-                result.drawEllipse(
+                /*result.drawEllipse(
                     new cv.RotatedRect(v.pt, new cv.Size(10, 10), 0), // previous version: cv.Size(20, 20, 0)
                     { color: red, thickness: 2 }
-                );
-            });
+                );*/
+         /*   }); VERTICES REMOVED TO TEST SPEED INCREASE */
             
             for(var i=0; i<objectsInSceneHandler.points.length; i++){
                 resizedImg.drawCircle(objectsInSceneHandler.points[i], 25, green, -5);
@@ -666,54 +671,56 @@ function gestureTrackingTest(source, target, renderRate){
               // display detection result  
             const numFingersUp = verticesWithValidAngle.length-2;
     
-            result.drawRectangle(
-                new cv.Point(10, 10),
-                new cv.Point(70, 70),
+            /*resizedImg.drawRectangle(   //was "result" copy
+                new cv.Point(PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.x1, PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.y1),
+                new cv.Point(PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.x2, PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.y2),
+                { color: red, thickness: 2 }            
+            );
+            
+            resizedImg.drawRectangle(   //was "result" copy
+                new cv.Point(PRESSING_ON_SELECTION_MATRIX[0][1].pocket.range.x1, PRESSING_ON_SELECTION_MATRIX[0][1].pocket.range.y1),
+                new cv.Point(PRESSING_ON_SELECTION_MATRIX[0][1].pocket.range.x2, PRESSING_ON_SELECTION_MATRIX[0][1].pocket.range.y2),
                 { color: green, thickness: 2 }            
             );
+            
+            resizedImg.drawRectangle(   //was "result" copy
+                new cv.Point(PRESSING_ON_SELECTION_MATRIX[0][2].pocket.range.x1, PRESSING_ON_SELECTION_MATRIX[0][2].pocket.range.y1),
+                new cv.Point(PRESSING_ON_SELECTION_MATRIX[0][2].pocket.range.x2, PRESSING_ON_SELECTION_MATRIX[0][2].pocket.range.y2),
+                { color: blue, thickness: 2 }            
+            );*/
 
             const fontScale = 2;
     
-            result.putText(
+          /*  resizedImg.putText(
                 String(numFingersUp),
                 new cv.Point(20, 60),
                 cv.FONT_ITALIC,
                 fontScale,
                 { color: green, thickness: 2 }
             );
-
+*/
             
-            const { rows, cols } = result;
+            /*const { rows, cols } = result;
             
             if(objectTarget==0){
                 const sideBySide = new cv.Mat(rows, cols * 2, cv.CV_8UC3);
                 //ballScene.copyTo(sideBySide.getRegion(new cv.Rect(0, 0, cols, rows)));//result
                 resizedImg.copyTo(sideBySide.getRegion(new cv.Rect(cols, 0, cols, rows)));
-
-
+                
                 //cv.imshow('handMask', handMask);
                 cv.imshow('result', sideBySide); //sideBySide= a combination of result and resizedImg  result = circled finger tips only; resizedImg = vertex covered hand (green and blue lines, red circles)
-
+                
                 cv.waitKey(9); 
             }
-            else if(objectTarget==1){
-                /*if(objectsInSceneHandler.adding){
-                    const matRGBA = ballScene.channels === 1
-                      ? ballScene.cvtColor(cv.COLOR_GRAY2RGBA)
-                      : ballScene.cvtColor(cv.COLOR_BGR2RGBA);
-
-                    var bufArray = matRGBA.getData();
-
-                    socket.emit('paintCanvas', {buf: bufArray, rows: ballScene.rows, cols: ballScene.cols, type: 'hand'});  
-                }
-                else{*/
+            else*/
+            if(objectTarget==1){
                     /* Hand mesh*/
                 const matRGBA = resizedImg.channels === 1
                       ? resizedImg.cvtColor(cv.COLOR_GRAY2RGBA)
                       : resizedImg.cvtColor(cv.COLOR_BGR2RGBA);
                 var bufArray = matRGBA.getData();
                 // console.log(bufArray);
-                socket.emit('paintCanvas', {buf: bufArray, rows: resizedImg.rows, cols: resizedImg.cols, type: 'hand'});/**/    
+                // socket.emit('paintCanvas', {buf: bufArray, rows: resizedImg.rows, cols: resizedImg.cols, type: 'hand'});/**/    
                 //}                
             }
         });    
@@ -820,11 +827,11 @@ io.sockets.on('connection', function(socket){
                 break;
             case 1: // face oriented
                 //facialRecognitionTest(socket, 0, 100);
-                facialRecognitionTest(conn, 1, 250);
+                facialRecognitionTest(conn, 1, 160);
                 break;
             case 2: // hand oriented
                 //gestureTrackingTest(socket, 0, 100);
-                gestureTrackingTest(conn, 1, 250);
+                gestureTrackingTest(conn, 1, 160);
                 //gestureTrackingTest(socket, 1, 1000);
                 break;
             default:
@@ -842,15 +849,3 @@ io.sockets.on('connection', function(socket){
         console.log(`socket ${conn.id} disconnected.`);
     });
 });
-
-/*var io = require('socket.io').listen());
-
-io.sockets.on('connection', function(socket){
-    console.log('client connected.');
-    var conn = socket;
-
-    ///////
-    socket.on('disconnect', function(){
-        console.log(`socket ${socket.id} disconnected.`);
-    });
-});*/

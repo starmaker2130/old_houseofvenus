@@ -28,11 +28,11 @@
             color: white;
             background-color: black;
             position: absolute;
-            width: 650px;
-            height: 500px;
+            width: 700px;
+            height: 600px;
             top: 50%;
             left: 50%;
-            margin: -250px 0 0 -325px;
+            margin: -300px 0 0 -350px;
             text-align: center;
         }
         
@@ -55,8 +55,8 @@
         #videoElement{
             margin: 1% auto;
             display: block;
-            width: 640px;
-            height: 480px;
+            width: 680px;
+            height: 510px;
             z-index: 5;
             border: 2px white solid;
         }
@@ -68,19 +68,23 @@
         #canvas-container{
             z-index: 75;
             position: absolute;
-            width: 640px;
-            height: 480px;
+            width: 680px;
+            height: 510px;
             top: 50%;
             left: 50%;
-            margin: -240px 0 0 -320px;
+            margin: -260px 0 0 -340px;
+        }
+        
+        #buffer-canvas{
+            opacity: 0;
         }
         
         .embedded-scene-container{
             z-index: 100;
             background-color: rgba(255, 255, 255, 0);
             position: absolute;
-            width: 640px;
-            height: 480px;
+            width: 680px;
+            height: 510px;
             top: 50%;
             left: 50%;
             margin: -240px 0 0 -320px;
@@ -125,33 +129,33 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-            typing 2.5s steps(25, end),
-            blink-caret .25s step-end 0s 20, /*infinite*/
-            hide-caret .5s step-end 5s infinite;
+            typing 1.5s steps(15, end),
+            blink-caret .25s step-end 0s 16, /*infinite*/
+            hide-caret .5s step-end 4s infinite;
         }
         
-        .typewriter-1{
+        .typewriter-1{ /* kids next door mission */
           overflow: hidden; /* Ensures the content is not revealed until the animation */
           border-right: .15em solid white; /* The typwriter cursor */
           white-space: nowrap; /* Keeps the content on a single line */
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-              typingone 2.5s steps(25, end) 5s,
-              blink-caret .25s step-end 5s 20, /*infinite*/
-              hide-caret .5s step-end 10s infinite;
+              typingone 1.5s steps(15, end) 4s,
+              blink-caret .25s step-end 4s 16, /*infinite*/
+              hide-caret .5s step-end 8s infinite;
         }
         
-        .typewriter-2{
+        .typewriter-2{ /* operation */
           overflow: hidden; /* Ensures the content is not revealed until the animation */
           border-right: .15em solid white; /* The typwriter cursor */
           white-space: nowrap; /* Keeps the content on a single line */
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-              typingtwo 1.5s steps(15, end) 10s,
-              blink-caret .25s step-end 10s 12, /*infinite*/
-              hide-caret .5s step-end 13s infinite;
+              typingtwo 1s steps(15, end) 8s,
+              blink-caret .25s step-end 8s 16, /*infinite*/
+              hide-caret .5s step-end 12s infinite;
         }
         
         .typewriter-3{
@@ -161,8 +165,8 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-            typingthree 3s steps(15, end) 13s,
-            blink-caret .25s step-end 13s 40; /*infinite*/
+            typingthree 1.5s steps(15, end) 12s,
+            blink-caret .25s step-end 12s 20; /*infinite*/
         }
                
         .typewriter-4{ /* writing operatives */
@@ -172,9 +176,9 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-            typingfour 2.5s steps(25, end) 0s,
-            blink-caret .25s step-end 0s 20, /*infinite*/
-            hide-caret .5s step-end 5s infinite;
+            typingfour 1.5s steps(25, end) 0s,
+            blink-caret .25s step-end 0s 16, /*infinite*/
+            hide-caret .5s step-end 4s infinite;
         }
         
         .typewriter-5{ /* patrice-morgan ongoly */
@@ -184,9 +188,9 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-              typingfive 2.5s steps(25, end) 5s,
-              blink-caret .25s step-end 5s 20, /*infinite*/
-              hide-caret .5s step-end 10s infinite;
+              typingfive 1.5s steps(25, end) 4s,
+              blink-caret .25s step-end 5s 16, /*infinite*/
+              hide-caret .5s step-end 8s infinite;
         }
         
         .typewriter-6{  /* akshay grewal */
@@ -196,9 +200,9 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-              typingsix 1.5s steps(15, end) 10s,
-              blink-caret .25s step-end 10s 20, /*infinite*/
-              hide-caret .5s step-end 15s infinite;
+              typingsix 1.5s steps(15, end) 8s,
+              blink-caret .25s step-end 8s 16, /*infinite*/
+              hide-caret .5s step-end 12s infinite;
         }
         
         .typewriter-7{ /* storyboard operatives: */
@@ -208,9 +212,9 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-              typingseven 3s steps(15, end) 15s,
-              blink-caret .25s step-end 15s 40, /*infinite*/
-              hide-caret .5s step-end 20s infinite;
+              typingseven 1.5s steps(15, end) 12s,
+              blink-caret .25s step-end 12s 16, /*infinite*/
+              hide-caret .5s step-end 16s infinite;
         }
         
         .typewriter-8{ /* patrice-morgan ongoly */
@@ -220,9 +224,9 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-              typingeight 3s steps(15, end) 20s,
-              blink-caret .25s step-end 20s 40, /*infinite*/
-              hide-caret .5s step-end 25s infinite;
+              typingeight 1.5s steps(15, end) 16s,
+              blink-caret .25s step-end 16s 16, /*infinite*/
+              hide-caret .5s step-end 20s infinite;
         }
         
         .typewriter-9{ /* with */
@@ -232,9 +236,9 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-              typingnine 3s steps(15, end) 25s,
-              blink-caret .25s step-end 25s 40, /*infinite*/
-              hide-caret .5s step-end 28s infinite;
+              typingnine 1s steps(10, end) 20s,
+              blink-caret .25s step-end 20s 16, /*infinite*/
+              hide-caret .5s step-end 22s infinite;
         }
         
         .typewriter-10{ /* samson-gabriel aria */
@@ -244,9 +248,9 @@
           margin: 0 auto; /* Gives that scrolling effect as the typing happens */
           letter-spacing: .15em; /* Adjust as needed */
           animation: 
-              typingten 3s steps(15, end) 28s,
-              blink-caret .25s step-end 28s 40, /*infinite*/
-              hide-caret .5s step-end 35s infinite;
+              typingten 1.5s steps(15, end) 22s,
+              blink-caret .25s step-end 22s 40, /*infinite*/
+              hide-caret .5s step-end 28s infinite;
         }
         
         #premier-reveal{
@@ -257,8 +261,8 @@
             letter-spacing: .15em; /* Adjust as needed */
             animation:
                 premier-ar 1.5s steps(15, end),
-                blink-caret .25s step-end 10,
-                hide-caret .5s step-end 2.5s infinite;
+                blink-caret .25s step-end 8,
+                hide-caret .5s step-end 2s infinite;
         }
         
         #deuxieme-reveal{
@@ -268,9 +272,9 @@
             margin: 0 auto; /* Gives that scrolling effect as the typing happens */
             letter-spacing: .15em; /* Adjust as needed */
             animation:
-                deuxieme-ar 2s steps(20, end),
-                blink-caret .25s step-end 12,
-                hide-caret .5s step-end 3s infinite;
+                deuxieme-ar 1.5s steps(20, end),
+                blink-caret .25s step-end 8,
+                hide-caret .5s step-end 2s infinite;
         }
         
         #troisieme-reveal{
@@ -280,9 +284,9 @@
             margin: 0 auto; /* Gives that scrolling effect as the typing happens */
             letter-spacing: .15em; /* Adjust as needed */
             animation:
-                troisieme-ar 2s steps(20, end),
-                blink-caret .25s step-end 12,
-                hide-caret .5s step-end 3s infinite;
+                troisieme-ar 1.5s steps(20, end),
+                blink-caret .25s step-end 8,
+                hide-caret .5s step-end 2s infinite;
         }
         
         #quatrieme-reveal{
@@ -423,6 +427,27 @@
 
             navigator.mediaDevices.getUserMedia(constraints).then(gotStream).catch(handleError);
         }
+        
+        function stopStream(){
+            var constraints = {
+                video: {
+                    deviceId: {exact: manager.videoSelect.value}
+                }
+            };
+            navigator.mediaDevices.getUserMedia(constraints).then(pauseStream).catch(handleError);
+        }
+        
+        function pauseStream(stream){
+            console.log("stop the stream flow");
+            stream.getTracks().forEach(function(track) {
+                track.stop();
+            });
+            if (window.stream) {
+                window.stream.getTracks().forEach(function(track) {
+                    track.stop();
+                });
+            }
+        }
 
         function gotStream(stream) {
             window.stream = stream; // make stream available to console
@@ -431,7 +456,7 @@
         }
 
         function handleError(error) {
-            console.log('Error: ', error);
+            console.log('ERROR W/STREAM: ', error);
         }
         
         function init(){
@@ -447,19 +472,19 @@
                 $('.typewriter-1').css({
                     opacity: 1.0
                 });
-            }, 5050);
+            }, 4050);
             
             setTimeout(function(){
                 $('.typewriter-2').css({
                     opacity: 1.0
                 });
-            }, 10100);
+            }, 8100);
             
             setTimeout(function(){
                 $('.typewriter-3').css({
                     opacity: 1.0
                 });
-            }, 13150);
+            }, 12150);
             
             setTimeout(function(){
                 $('.typewriter, .typewriter-1, .typewriter-2').animate({
@@ -521,7 +546,7 @@
                             verticalAlign: 'top',
                             width: '120px'
                         });
-                    }, 2500);
+                    }, 2000);
                     
                     setTimeout(function(){
                         $('#troisieme-reveal').css({
@@ -530,7 +555,7 @@
                             verticalAlign: 'top',
                             width: '125px'
                         });
-                    }, 5500);
+                    }, 4000);
                     
                     setTimeout(function(){
                         $('#quatrieme-reveal').css({
@@ -539,7 +564,7 @@
                             verticalAlign: 'top',
                             width: '60px'
                         });
-                    }, 8500);
+                    }, 6000);
                 
                     setTimeout(function(){
                         $('#first-page-container').hide();
@@ -557,43 +582,43 @@
                                 $('.typewriter-5').css({
                                     opacity: 1.0
                                 });
-                            }, 4990);
+                            }, 3990);
 
                             setTimeout(function(){
                                 $('.typewriter-6').css({
                                     opacity: 1.0
                                 });
-                            }, 9990);
+                            }, 7990);
 
                             setTimeout(function(){
                                 $('.typewriter-7').css({
                                     opacity: 1.0
                                 });
-                            }, 14990);
+                            }, 11990);
 
                             setTimeout(function(){
                                 $('.typewriter-8').css({
                                     opacity: 1.0
                                 });
-                            }, 19990);
+                            }, 15990);
 
                             setTimeout(function(){
                                 $('.typewriter-9').css({
                                     opacity: 1.0
                                 });
-                            }, 24990);
+                            }, 19990);
 
                             setTimeout(function(){
                                 $('.typewriter-10').css({
                                     opacity: 1.0
                                 });
-                            }, 27990);
+                            }, 21990);
                         });    
                     }, 11500);
 
                 });
                 
-            }, 23000);
+            }, 16000);
             
             sessionManager.video = document.getElementById('videoElement');
             console.log('loaded');
@@ -626,29 +651,25 @@
                     manager.orientation = 2;
                 }
                 
-            }, 70000);
+            }, 52000);
             
             manager.connection.on('clearInitialVideoFeed', function(data){
                 console.log(manager.video);
+                //stopStream();
+                /*manager.video.pause();
+                document.getElementById('videoElement').srcObject.getTracks().forEach(function(track){
+                    track.stop();
+                });
                 
                 if (window.stream) {
-                   // console.log('stream flowing my guy!!!');
+                    console.log("stop the stream flow");
                     window.stream.getTracks().forEach(function(track) {
                         track.stop();
                     });
                 }
 
-/*                let video = manager.video;
-                let stream = video.srcObject;
-                let tracks = stream.getTracks();
-
-                tracks.forEach(function(track) {
-                    track.stop();
-                });
-*/
                 manager.video.srcObject = null;
-                //video.stop();
-                manager.video.style.display = 'none';
+                //manager.video.style.display = "none";*/
             });
 
             manager.connection.on('restartVideoFeed', function(data){
@@ -657,21 +678,46 @@
                 manager.video.style.display = 'block';
             });
             
+            //var imgPreloader = [];
+            
             manager.connection.on('paintCanvas', function(data){
                 var arr = new Uint8ClampedArray(data.buf); //buffer
-
+                
                 const imgData = new ImageData(
                   arr,
                   data.cols,
                   data.rows
                 );
-                // set canvas dimensions
+                
+                
                 const canvas = document.getElementById('canvas');
-                canvas.height = data.rows;
-                canvas.width = data.cols;
+                //imgPreloader.push({rows: data.rows, cols: data.cols, img: imgData});
+                canvas.height = data.rows;//imgPreloader[0].rows;
+                canvas.width = data.cols;//imgPreloader[0].cols;
+                
+                let buffer = document.getElementById('buffer-canvas');
+                buffer.width = canvas.width;
+                buffer.height = canvas.height;
+                
+                buffer.getContext('2d').putImageData(imgData, 0, 0);
+                
                 // set image data
-                const ctx = canvas.getContext('2d');
-                ctx.putImageData(imgData, 0, 0);/**/
+                //const ctx = canvas.getContext('2d');
+                canvas.getContext('2d').drawImage(buffer, 0, 0);
+                
+                //ctx.putImageData(imgData/*imgPreloader[0].img*/, 0, 0);/**/
+                /*if(imgPreloader.length>1){
+                    imgPreloader.shift();
+                }
+                
+                if(imgPreloader.length>60){
+                    setInterval(function(){
+                        
+                    }, 160);
+                }*/
+                // set canvas dimensions
+                
+                
             });
             
             manager.connection.on('selectionMadeForItem', function(data){
@@ -683,13 +729,13 @@
                 document.querySelector('#info-option').object3D.visible = true;
                 
                 if(selection=='#new-option'){
-                    document.querySelector('#selected-option').object3D.position.set(-3, 1, -3);
+                    document.querySelector('#selected-option').object3D.position.set(-3, 0.05, -3);
                 }
                 else if(selection=='#load-option'){
-                    document.querySelector('#selected-option').object3D.position.set(0, 1, -3);
+                    document.querySelector('#selected-option').object3D.position.set(0, 0.05, -3);
                 }
                 else if(selection=='#info-option'){
-                    document.querySelector('#selected-option').object3D.position.set(3, 1, -3);
+                    document.querySelector('#selected-option').object3D.position.set(3, 0.05, -3);
                 }
                 document.querySelector(selection).object3D.visible = false;
                 
@@ -739,17 +785,27 @@
                 <a-assets>
                     <img id='selected-texture' src='../media/texture/checkmark.png' preload="true" />
                 </a-assets>
-                <a-entity id="new-option" geometry="primitive: sphere; radius: 0.5;"  material='color: red;' position='-3 1 -3'></a-entity><!--text="value: new"-->
-                <a-entity id="load-option" geometry='primitive: sphere; radius: 0.5;' material='color: green;' position='0 1 -3'></a-entity><!--text="value: load"-->
-                <a-entity id="info-option" geometry='primitive: sphere; radius: 0.5;' material='color: blue;' position='3 1 -3'></a-entity><!-- text="value: info"-->
+                <a-entity id="new-option" geometry="primitive: sphere; radius: 0.25;"  material='color: red;' position='-2 0.05 -3'></a-entity><!--text="value: new"-->
+                <a-entity id="load-option" geometry='primitive: sphere; radius: 0.25;' material='color: green;' position='0 0.05 -3'></a-entity><!--text="value: load"-->
+                <a-entity id="info-option" geometry='primitive: sphere; radius: 0.25;' material='color: blue;' position='2 0.05 -3'></a-entity><!-- text="value: info"-->
                 
-                <a-entity id='selected-option' visible="false" geometry='primitive: box; depth: 0.8; height: 0.8; width: 0.8;' position='0 2.2 -4' material='src: #selected-texture;'></a-entity>
-                <a-camera userHeight='1.8' position='0 1.8 2'></a-camera>
+                <a-entity id="info-option" geometry='primitive: sphere; radius: 0.25;' material='color: yellow;' position='6 6 -3'></a-entity><!-- text="value: info"-->
+                
+                
+                <a-entity id="title-banner" geometry='primitive: plane; height: 2; width: 4;' visible="false" material='color: yellow;' position='0 4 -3'></a-entity><!-- text="value: title banner"-->
+                
+                <a-entity id="hero-option" geometry='primitive: plane; height: 2; width: 2;' visible="false" material='color: violet;' position='1.5 2.5 -3'></a-entity><!-- text="value: hero option"-->
+                
+                <a-entity id="god-option" geometry='primitive: plane; height: 2; width: 2;' visible="false" material='color: magenta;' position='-1.5 2.5 -3'></a-entity><!-- text="value: god option"-->
+                
+                <a-entity id='selected-option' visible="false" geometry='primitive: box; depth: 0.5; height: 0.5; width: 0.5;' position='0 0.05 -3' material='src: #selected-texture;'></a-entity>
+                <a-camera userHeight='1.8' position='0 1.8 0'></a-camera>
                 
                 <a-sky material='transparent: true; opacity: 0;'></a-sky>
             </a-scene>
             <div id='canvas-container'><!-- z: -50 | 50 -->
                 <canvas id="canvas"></canvas>
+                <canvas id="buffer-canvas"></canvas>
             </div>
         </div>
     </div>

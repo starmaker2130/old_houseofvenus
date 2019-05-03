@@ -3,10 +3,11 @@
     "version": "0.6.0",
     "private": true,
     "dependencies": {
-        "ejs": "latest",
         "aws-sdk": "latest",
-        "express": "latest",
         "body-parser": "latest",
+        "ejs": "latest",
+        "express": "latest",
+        "npm": "^6.9.0",
         "which-browser": "latest"
     },
     "scripts": {
