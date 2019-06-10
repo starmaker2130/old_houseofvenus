@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8" >
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" >
+    <title>stream proccessed (hand mask)</title>
+
+    <script src="../js/socket.io.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+        }
+        
+        #canvas-container{
+            z-index: 75;
+            position: absolute;
+            width: 680px;
+            height: 510px;
+            top: 50%;
+            left: 50%;
+            margin: -260px 0 0 -340px;
+        }
+        
+        #buffer-canvas{
+            opacity: 0;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContenLoaded', function(){
+                var manager = {
+                connection: io.connect(location.host)
+            };
+
+            manager.connection.emit('checkHandMaskProcessing', {status: true});
+
+            manager.connection.on('paintCanvasFromStash', function(data){
+                var stash = data.canvas;
+                for(var i = 0; i< stash.length; i++){
+                    paintCanvas(stash[i], i, stash.length);
+                }
+
+            }); // reveals the underlying open CV processing map, was default in v 0.7.0 and below; now toggleable for special masks or effects; default output stream is html5 media (video) stream
+
+            function paintCanvas(stash, count, last){
+                let data = stash;
+
+                setTimeout(function(){
+                    var arr = new Uint8ClampedArray(data.buf); //buffer
+
+                    const imgData = new ImageData(
+                      arr,
+                      data.cols,
+                      data.rows
+                    );
+
+
+                    const canvas = document.getElementById('canvas');
+                    //imgPreloader.push({rows: data.rows, cols: data.cols, img: imgData});
+                    canvas.height = data.rows;//imgPreloader[0].rows;
+                    canvas.width = data.cols;//imgPreloader[0].cols;
+
+                    let buffer = document.getElementById('buffer-canvas');
+                    buffer.width = canvas.width;
+                    buffer.height = canvas.height;
+
+                    buffer.getContext('2d').putImageData(imgData, 0, 0);
+
+                        // set image data
+                        //const ctx = canvas.getContext('2d');
+                    canvas.getContext('2d').drawImage(buffer, 0, 0);
+
+                        //ctx.putImageData(imgData/*imgPreloader[0].img*/, 0, 0);/**/
+                        /*if(imgPreloader.length>1){
+                            imgPreloader.shift();
+                        }
+
+                        if(imgPreloader.length>60){
+                            setInterval(function(){
+
+                            }, 160);
+                        }*/
+                            // set canvas dimensions
+
+                    if(count+1==last){
+                        manager.connection.emit('checkHandMaskProcessing', {status: true});
+                    }
+
+                }, 160+count*160);    
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id='canvas-container'><!-- z: -50 | 50 -->
+        <canvas id="canvas"></canvas>
+        <canvas id="buffer-canvas"></canvas>
+    </div>
+</body>    
+</html>

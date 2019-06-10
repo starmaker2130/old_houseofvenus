@@ -41,9 +41,10 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(express.static('/'));
 
+var MENU_REVEALED = false;
+var SELECTION_COUNTER = null
 var PALM_POINT = null;
-var PRESSING_ON_SELECTION_MATRIX = 
-    [
+var PRESSING_ON_SELECTION_MATRIX = [
         [
             {
                 id: 'new-option',
@@ -101,6 +102,7 @@ var PRESSING_ON_SELECTION_MATRIX =
             }
         ]
     ];
+
 function checkInitialDeviceConnectionType(headers, ip){
     let result = new WhichBrowser(headers);
     console.log(result.toString());
@@ -124,6 +126,14 @@ app.get('/', function(req, res){
     res.render('index.html',{root: dir[0]});
 });
 
+app.get('/streamproc', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    res.render('streamproc.html',{root: dir[0]});
+});
+
 app.get('/pARk', function(req, res){
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var headers = req.headers;
@@ -138,8 +148,17 @@ app.get('/game', function(req, res){
     var headers = req.headers;
     checkInitialDeviceConnectionType(headers, ip);
     
-    console.log('rendering pARk application teaser page...') 
+    console.log('requesting DIA from pARk... \n rendering game. \n') 
     res.render('game.html',{root: dir[0]});
+});
+
+app.get('/snackshack', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('requesting DIA from pARk... \n rendering snack shack. \n') 
+    res.render('snackshack.html',{root: dir[0]});
 });
 
 app.get('/cARd', function(req, res){
@@ -360,6 +379,18 @@ var io = require('socket.io').listen(app.listen(config.PORT, function(){
 }));
 
 var subjects = [];
+var imgPreloader = [];
+
+function stashCanvas(data){
+    // {buf: bufArray, rows: resizedImg.rows, cols: resizedImg.cols, type: 'hand'}
+    imgPreloader.push(data);    
+}
+
+function paintCanvasFromStash(){
+    let rawCanvas = imgPreloader;
+    imgPreloader = [];
+    return rawCanvas;
+}
 
 var objectsInSceneHandler = {
     points: [],
@@ -382,7 +413,6 @@ function landmarkTrackingTest(source){
 }
 
 function gestureTrackingTest(source, target, renderRate){
-    
     var delayInterval = renderRate;
     var objectTarget = target;
     var socket = source;
@@ -392,11 +422,11 @@ function gestureTrackingTest(source, target, renderRate){
     const cv = require('opencv4nodejs');
     
     const skinColorUpper = hue => new cv.Vec(hue, 0.8 * 255, 0.6 * 255);
-    const skinColorLower = hue => new cv.Vec(hue, 0.3 * 255, 0.15 * 255);
+    const skinColorLower = hue => new cv.Vec(hue, 0.1 * 255, 0.05 * 255);
     
     /*
     const skinColorUpper = hue => new cv.Vec(hue, 0.8 * 255, 0.6 * 255);
-    const skinColorLower = hue => new cv.Vec(hue, 0.1 * 255, 0.05 * 255);
+    const skinColorLower = hue => new cv.Vec(hue, 0.3 * 255, 0.15 * 255);
     */
     
     const devicePort = 0;
@@ -561,12 +591,21 @@ function gestureTrackingTest(source, target, renderRate){
                 const yValue = PALM_POINT.y;
                 const vertext = verticesWithValidAngle[0].pt;
                 //console.log(`[0] x ${xValue} | y ${yValue}`);
-                //console.log(PALM_POINT);
+                console.log(PALM_POINT);
                 /*console.log(`[1] ${verticesWithValidAngle[1].pt.x} | ${verticesWithValidAngle[1].pt.x}`);
                 console.log(`[2] ${verticesWithValidAngle[2].pt.x} | ${verticesWithValidAngle[2].pt.x}`);
                 console.log(`[3] ${verticesWithValidAngle[3].pt.x} | ${verticesWithValidAngle[3].pt.x}`);
                 console.log(`[4] ${verticesWithValidAngle[4].pt.x} | ${verticesWithValidAngle[4].pt.x}`);
                 */
+                if(SELECTION_COUNTER!=null&&!MENU_REVEALED){
+                    let now = new Date().getTime();
+                    let elapsed = now - SELECTION_COUNTER;
+                    elapsed = Math.abs(elapsed);
+                    if(elapsed>5000){
+                        socket.emit('revealMenuXRComponents', {status: true});
+                        //MENU_REVEALED = true;
+                    }
+                }
                 if(xValue>PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.x1&&xValue<PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.x2){
                         
                     if(yValue>PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.y1&&yValue<PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.y2){
@@ -574,7 +613,9 @@ function gestureTrackingTest(source, target, renderRate){
                         if(!PRESSING_ON_SELECTION_MATRIX[0][0].pocket.SELECTION_MADE){
                             PRESSING_ON_SELECTION_MATRIX[0][0].pocket.count();
                         }
-                        if(PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.count>5&&PRESSING_ON_SELECTION_MATRIX[0][0].pocket.SELECTION_MADE==false){
+                        if(PRESSING_ON_SELECTION_MATRIX[0][0].pocket.range.count>3&&PRESSING_ON_SELECTION_MATRIX[0][0].pocket.SELECTION_MADE==false){
+                            SELECTION_COUNTER = new Date().getTime();
+                            
                             PRESSING_ON_SELECTION_MATRIX[0][0].pocket.SELECTION_MADE = true;
                             
                             PRESSING_ON_SELECTION_MATRIX[0][1].pocket.SELECTION_MADE = false;
@@ -593,7 +634,8 @@ function gestureTrackingTest(source, target, renderRate){
                         if(!PRESSING_ON_SELECTION_MATRIX[0][1].pocket.SELECTION_MADE){
                             PRESSING_ON_SELECTION_MATRIX[0][1].pocket.count();
                         }
-                        if(PRESSING_ON_SELECTION_MATRIX[0][1].pocket.range.count>5&&PRESSING_ON_SELECTION_MATRIX[0][1].pocket.SELECTION_MADE==false){
+                        if(PRESSING_ON_SELECTION_MATRIX[0][1].pocket.range.count>3&&PRESSING_ON_SELECTION_MATRIX[0][1].pocket.SELECTION_MADE==false){
+                            SELECTION_COUNTER = new Date().getTime();
                             PRESSING_ON_SELECTION_MATRIX[0][1].pocket.SELECTION_MADE = true;
                             
                             PRESSING_ON_SELECTION_MATRIX[0][0].pocket.SELECTION_MADE = false;
@@ -612,7 +654,8 @@ function gestureTrackingTest(source, target, renderRate){
                         if(!PRESSING_ON_SELECTION_MATRIX[0][2].pocket.SELECTION_MADE){
                             PRESSING_ON_SELECTION_MATRIX[0][2].pocket.count();
                         }
-                        if(PRESSING_ON_SELECTION_MATRIX[0][2].pocket.range.count>5&&PRESSING_ON_SELECTION_MATRIX[0][2].pocket.SELECTION_MADE==false){
+                        if(PRESSING_ON_SELECTION_MATRIX[0][2].pocket.range.count>3&&PRESSING_ON_SELECTION_MATRIX[0][2].pocket.SELECTION_MADE==false){
+                            SELECTION_COUNTER = new Date().getTime();
                             PRESSING_ON_SELECTION_MATRIX[0][2].pocket.SELECTION_MADE = true;
                             
                             PRESSING_ON_SELECTION_MATRIX[0][0].pocket.SELECTION_MADE = false;
@@ -720,6 +763,8 @@ function gestureTrackingTest(source, target, renderRate){
                       : resizedImg.cvtColor(cv.COLOR_BGR2RGBA);
                 var bufArray = matRGBA.getData();
                 // console.log(bufArray);
+                stashCanvas({buf: bufArray, rows: resizedImg.rows, cols: resizedImg.cols, type: 'hand'});
+        
                 // socket.emit('paintCanvas', {buf: bufArray, rows: resizedImg.rows, cols: resizedImg.cols, type: 'hand'});/**/    
                 //}                
             }
@@ -816,6 +861,11 @@ io.sockets.on('connection', function(socket){
     
     ///////
     
+    socket.on('menuXRComponentsRevealed', function(data){
+        MENU_REVEALED = data.status;
+        console.log(`reveal menu xr components request \n sent \n ${data.status} cycle ${data.meta}`);
+    });
+    
     socket.on('createScene', function(data){
         let ori = data.orientation;
         
@@ -842,7 +892,12 @@ io.sockets.on('connection', function(socket){
         socket.emit('transitionToBuildView', {buildType: ori});
     });
     
-    
+    socket.on('checkHandMaskProcessing', function(data){
+        if(data.status){
+            let stash = paintCanvasFromStash();
+            socket.emit('paintCanvasFromStash', {canvas: stash});
+        }
+    });
 
     ///////
     socket.on('disconnect', function(){

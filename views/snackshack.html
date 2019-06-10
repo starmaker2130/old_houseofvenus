@@ -3,7 +3,7 @@
 <head>
     <meta charset = "utf-8" >
     <meta name="viewport" content="width=device-width,initial-scale=1.0" >
-    <title>G.A.M.E.</title>
+    <title>S.N.A.C.K.S.H.A.C.K.</title>
     
     <style type="text/css">    
         @font-face{
@@ -298,8 +298,81 @@
             animation:
                 quatrieme-ar 1.5s steps(15, end),
                 blink-caret .25s step-end 12,
-                hide-caret .5s step-end 3.5s infinite;
+                hide-caret .5s step-end 2s infinite;
         }
+        
+        #cinquieme-reveal{
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                cinquieme-ar 1.5s steps(15, end),
+                blink-caret .25s step-end 12,
+                hide-caret .5s step-end 2s infinite;
+        }
+        
+        #sixieme-reveal{ /* so */
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                sixieme-ar 1.5s steps(15, end),
+                blink-caret .25s step-end 12,
+                hide-caret .5s step-end 2s infinite;
+        }
+        
+        #septieme-reveal{ /* homebound */
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                septieme-ar 1.5s steps(15, end),
+                blink-caret .25s step-end 12,
+                hide-caret .5s step-end 2s infinite;
+        }
+        
+        #huitieme-reveal{ /* adolescents */
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                huitieme-ar 1.5s steps(15, end),
+                blink-caret .25s step-end 12,
+                hide-caret .5s step-end 2s infinite;
+        }
+        
+        #neuvieme-reveal{ /* can */
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                neuvieme-ar 1.5s steps(15, end),
+                blink-caret .25s step-end 12,
+                hide-caret .5s step-end 2s infinite;
+        }
+        
+        #dixieme-reveal{ /* kick-it */
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid white; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation:
+                dixieme-ar 1.5s steps(15, end),
+                blink-caret .25s step-end 12,
+                hide-caret .5s step-end 2s infinite;
+        }
+        
         /* The typing effect */
         @keyframes typing {
           from { width: 0 }
@@ -318,7 +391,7 @@
         
         @keyframes typingthree {
           from { width: 0 }
-          to { width: 180px }
+          to { width: 520px }
         }
         
         @keyframes premier-ar{
@@ -328,17 +401,47 @@
         
         @keyframes deuxieme-ar{
             from { width: 0 }
-            to { width: 120px }
+            to { width: 170px }
         }
         
         @keyframes troisieme-ar{
             from { width: 0 }
-            to { width: 125px }
+            to { width: 190px }
         }
         
         @keyframes quatrieme-ar{
             from { width: 0 }
+            to { width: 170px }
+        }
+        
+        @keyframes cinquieme-ar{
+            from { width: 0 }
+            to { width: 150px }
+        }
+        
+        @keyframes sixieme-ar{
+            from { width: 0 }
+            to { width: 35px }
+        }
+        
+        @keyframes septieme-ar{
+            from { width: 0 }
+            to { width: 180px }
+        }
+        
+        @keyframes huitieme-ar{
+            from { width: 0 }
+            to { width: 190px }
+        }
+        
+        @keyframes neuvieme-ar{
+            from { width: 0 }
             to { width: 60px }
+        }
+        
+        @keyframes dixieme-ar{
+            from { width: 0 }
+            to { width: 90px }
         }
         
         @keyframes typingfour {
@@ -465,7 +568,8 @@
                 start: (new Date()),
                 video: null,
                 videoSelect: null,
-                orientation: 0
+                orientation: 0,
+                selection: null
             };
             
             setTimeout(function(){
@@ -538,13 +642,49 @@
                         textAlign: 'left',
                         width: '100%'
                     });
+                    
+                    $('#cinquieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#sixieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#septieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#huitieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#neuvieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
+                    
+                    $('#dixieme').css({
+                        display: 'block',
+                        textAlign: 'left',
+                        width: '100%'
+                    });
 
                     setTimeout(function(){ 
                         $('#deuxieme-reveal').css({
                             display: 'inline-block',
                             textAlign: 'left',
                             verticalAlign: 'top',
-                            width: '120px'
+                            width: '170px'
                         });
                     }, 2000);
                     
@@ -553,7 +693,7 @@
                             display: 'inline-block',
                             textAlign: 'left',
                             verticalAlign: 'top',
-                            width: '125px'
+                            width: '190px'
                         });
                     }, 4000);
                     
@@ -562,9 +702,63 @@
                             display: 'inline-block',
                             textAlign: 'left',
                             verticalAlign: 'top',
-                            width: '60px'
+                            width: '170px'
                         });
                     }, 6000);
+                    
+                    setTimeout(function(){
+                        $('#cinquieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '150px'
+                        });
+                    }, 8000);
+                    
+                    setTimeout(function(){
+                        $('#sixieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '35px'
+                        });
+                    }, 10000);
+                    
+                    setTimeout(function(){
+                        $('#septieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '170px'
+                        });
+                    }, 12000);
+                    
+                    setTimeout(function(){
+                        $('#huitieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '190px'
+                        });
+                    }, 14000);
+                    
+                    setTimeout(function(){
+                        $('#neuvieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '60px'
+                        });
+                    }, 16000);
+                    
+                    setTimeout(function(){
+                        $('#dixieme-reveal').css({
+                            display: 'inline-block',
+                            textAlign: 'left',
+                            verticalAlign: 'top',
+                            width: '90px'
+                        });
+                    }, 18000);
                 
                     setTimeout(function(){
                         $('#first-page-container').hide();
@@ -614,7 +808,7 @@
                                 });
                             }, 21990);
                         });    
-                    }, 11500);
+                    }, 23500);
 
                 });
                 
@@ -643,7 +837,7 @@
                 // Get access to the camera!
                 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     // Not adding `{ audio: true }` since we only want video now
-                   navigator.mediaDevices.enumerateDevices().then(gotDevices).then(getStream).catch(handleError);
+                    navigator.mediaDevices.enumerateDevices().then(gotDevices).then(getStream).catch(handleError);
 
                     manager.video.onchange = getStream;
                     
@@ -651,30 +845,44 @@
                     manager.orientation = 2;
                 }
                 
-            }, 52000);
+            }, 70000);
             
             manager.connection.on('clearInitialVideoFeed', function(data){
                 console.log('LEGACY FUNCTION \n no longer cleared as of v. 0.8.0 \n to be deprecated as of v. 0.9.0');
-                //stopStream();
-                /*manager.video.pause();
-                document.getElementById('videoElement').srcObject.getTracks().forEach(function(track){
-                    track.stop();
-                });
-                
-                if (window.stream) {
-                    console.log("stop the stream flow");
-                    window.stream.getTracks().forEach(function(track) {
-                        track.stop();
-                    });
-                }
-
-                manager.video.srcObject = null;
-                //manager.video.style.display = "none";*/
             });
             
+            function revealCorrespondingXRSubComponents(){
+                console.log(`revealing xr sub components for menu selection ${manager.selection}`);
+                
+                if(manager.selection!=null){
+                    if(manager.selection=="backwoods"){
+                        document.querySelector('#backwoods-option').object3D.visible = true;
+                    }
+                    else if(manager.selection=="chips"){
+                        document.querySelector('#chips-option').object3D.visible = true;
+                    }
+                    else if(manager.selection=="orders"){
+                        document.querySelector('#orders-option').object3D.visible = true;
+                    }
+                }
+                else{
+                    console.log('no selection has been made or registered with the session manager.');
+                }
+            }
             manager.connection.on('revealMenuXRComponents', function(data){
                 console.log(`reveal menu xr components request received. answering? ${data.status}`);
                 document.querySelector('#title-banner').object3D.visible = true;
+                
+                let count = setInterval(function(){
+                    let currentCount = new Date();
+                    console.log(currentCount);
+                }, 1000);
+                
+                setTimeout(function(){
+                    clearInterval(count);
+                    revealCorrespondingXRSubComponents();
+                }, 10000);
+                
                 /*document.querySelector('#hero-option').object3D.visible = true;
                 document.querySelector('#god-option').object3D.visible = true;*/
                 manager.connection.emit('menuXRComponentsRevealed', {status: true, meta: 'complete'})
@@ -738,12 +946,15 @@
                 
                 if(selection=='#new-option'){
                     document.querySelector('#selected-option').object3D.position.set(-2, 0.05, -3);
+                    manager.selection = 'backwoods';
                 }
                 else if(selection=='#load-option'){
                     document.querySelector('#selected-option').object3D.position.set(0, 0.05, -3);
+                    manager.selection = 'chips';
                 }
                 else if(selection=='#info-option'){
                     document.querySelector('#selected-option').object3D.position.set(2, 0.05, -3);
+                    manager.selection = 'orders';
                 }
                 document.querySelector(selection).object3D.visible = false;
                 
@@ -759,11 +970,59 @@
             <div class='typewriter' style='font-size: 26px; width: 250px; margin: 0 auto;'>now loading:</div>
             <div class='typewriter-1' style='font-size: 24px; width: 390px; margin: 0 auto; opacity: 0;'>kids next door mission</div>
             <div class='typewriter-2' style='margin: 9% auto 0 auto; font-size: 24px; width: 160px; opacity: 0;'>operation:</div>
-            <div id='acrostic-container' class='typewriter-3' style='font-size: 24px; opacity: 0; width: 180px;'>
-                <div id='premier' class='acrostic-header'><span class='acrostic-letter'>g</span><span id='premier-period' class='acrostic-period'>.</span><span id='premier-reveal' class='acrostic-reveal'>raphics</span></div>
-                <div id='deuxieme' class='acrostic-header'>a<span id='deuxieme-period' class='acrostic-period'>.</span><span id='deuxieme-reveal' class='acrostic-reveal'>ugment</span></div>
-                <div id='troisieme' class='acrostic-header'>m<span id='troisieme-period' class='acrostic-period'>.</span><span id='troisieme-reveal' class='acrostic-reveal'>illennial</span></div>
-                <div id='quatrieme' class='acrostic-header'>e<span id='quatrieme-period' class='acrostic-period'>.</span><span id='quatrieme-reveal' class='acrostic-reveal'>gos</span></div>
+            <div id='acrostic-container' class='typewriter-3' style='font-size: 24px; opacity: 0; width: 520px;'>
+                <div id='premier' class='acrostic-header'>
+                    <span class='acrostic-letter'>
+                    s
+                    </span>
+                    <span id='premier-period' class='acrostic-period'>.</span>
+                    <span id='premier-reveal' class='acrostic-reveal'>tudents</span>
+                </div>
+                <div id='deuxieme' class='acrostic-header'>
+                    n
+                    <span id='deuxieme-period' class='acrostic-period'>.</span>
+                    <span id='deuxieme-reveal' class='acrostic-reveal'>octurnally</span>
+                </div>
+                <div id='troisieme' class='acrostic-header'>
+                    a
+                    <span id='troisieme-period' class='acrostic-period'>.</span>
+                    <span id='troisieme-reveal' class='acrostic-reveal'>dminister</span>
+                </div>
+                <div id='quatrieme' class='acrostic-header'>
+                    c
+                    <span id='quatrieme-period' class='acrostic-period'>.</span>
+                    <span id='quatrieme-reveal' class='acrostic-reveal'>oncession</span>
+                </div>
+                <div id='cinquieme' class='acrostic-header'>
+                    k
+                    <span id='cinquieme-period' class='acrostic-period'>.</span>
+                    <span id='cinquieme-reveal' class='acrostic-reveal'>inectome</span>
+                </div>
+                <div id='sixieme' class='acrostic-header'>
+                    s
+                    <span id='sixieme-period' class='acrostic-period'>.</span>
+                    <span id='sixieme-reveal' class='acrostic-reveal'>o</span>
+                </div>
+                <div id='septieme' class='acrostic-header'>
+                    h
+                    <span id='septieme-period' class='acrostic-period'>.</span>
+                    <span id='septieme-reveal' class='acrostic-reveal'>omebound</span>
+                </div>
+                <div id='huitieme' class='acrostic-header'>
+                    a
+                    <span id='huitieme-period' class='acrostic-period'>.</span>
+                    <span id='huitieme-reveal' class='acrostic-reveal'>dolescents</span>
+                </div>
+                <div id='neuvieme' class='acrostic-header'>
+                    c
+                    <span id='neuvieme-period' class='acrostic-period'>.</span>
+                    <span id='neuvieme-reveal' class='acrostic-reveal'>an</span>
+                </div>
+                <div id='dixieme' class='acrostic-header'>
+                    k
+                    <span id='dixieme-period' class='acrostic-period'>.</span>
+                    <span id='dixieme-reveal' class='acrostic-reveal'>ick-it</span>
+                </div>
             </div>
         </div>
         <div id='second-page-container' class='page-container'>
@@ -794,26 +1053,31 @@
                     <img id='selected-texture' src='../media/texture/checkmark.png' preload="true" />
                 </a-assets>
                 <a-entity id="new-option" geometry="primitive: sphere; radius: 0.25;"  material='color: red;' position='-2 0.05 -3'>
-                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: new; color: white; align: center; width: 6;" geometry="primitive: plane; width: 2; height: 1;" material="opacity: 0.1" position="0 0.5 0"></a-entity>
+                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: backwoods; color: white; align: center; width: 6;" geometry="primitive: plane; width: 2; height: 1;" material="opacity: 0;" position="0 0.5 0"></a-entity>
                 </a-entity><!--text="value: new"-->
                 <a-entity id="load-option" geometry='primitive: sphere; radius: 0.25;' material='color: green;' position='0 0.05 -3'>
-                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: load; color: white; align: center; width: 6;" geometry="primitive: plane; width: 2; height: 1;" material="opacity: 0.1" position="0 0.5 0"></a-entity>
+                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: chips; color: white; align: center; width: 6;" geometry="primitive: plane; width: 2; height: 1;" material="opacity: 0;" position="0 0.5 0"></a-entity>
                 </a-entity><!--text="value: load"-->
                 <a-entity id="info-option" geometry='primitive: sphere; radius: 0.25;' material='color: blue;' position='2 0.05 -3'>
-                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: info; color: white; align: center; width: 6;" geometry="primitive: plane; width: 2; height: 1;" material="opacity: 0.1" position="0 0.5 0"></a-entity>
+                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: orders; color: white; align: center; width: 6;" geometry="primitive: plane; width: 2; height: 1;" material="opacity: 0;" position="0 0.5 0"></a-entity>
                 </a-entity><!-- text="value: info"-->
                 
                 <a-entity id="cancel-option" geometry='primitive: sphere; radius: 0.25;' material='color: yellow; opacity: 0.5;' position='6 6 -3'></a-entity><!-- text="value: info"-->
                 
                 
-                <a-entity id="title-banner" geometry='primitive: plane; height: 1; width: 4;' visible="false" material='color: yellow;' position='0 3.5 -3'>
-                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: GAME v010; color: black; align: center; width: 10;" geometry="primitive: plane; width: 4; height: 2;" material="opacity: 0;" position="0 0 0">
+                <a-entity id="title-banner" geometry='primitive: plane; height: 1; width: 4;' visible="false" material='color: yellow; opacity: 0;' position='0 3.5 -3'>
+                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: SNACK SHACK; color: white; align: center; width: 10;" geometry="primitive: plane; width: 4; height: 2;" material="opacity: 0;" position="0 0 0">
+                    </a-entity>
+                    <a-entity text="font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; value: a DIA for late night convenience; color: white; align: center; width: 6;" geometry="primitive: plane; width: 3; height: 1.5;" material="opacity: 0;" position="0 -1 0">
                     </a-entity>
                 </a-entity><!-- text="value: title banner"-->
                 
-                <a-entity id="hero-option" geometry='primitive: plane; height: 2; width: 2;' visible="false" material='color: violet;' position='1.5 2.5 -3'></a-entity><!-- text="value: hero option"-->
+                <a-entity id="backwoods-option" text="value: MD BREEZE \n $ 15.00/s \n\n newly minted, test \n the new flavor of \n naturally bred and \n packed Maryland Breeze; font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; align: center; width: 4; color: white;" geometry='primitive: plane; height: 3; width: 4;' visible="false" material='color: violet; opacity: 0;' position='0 1.5 -3'>
+                </a-entity><!-- text="value: hero option"-->
                 
-                <a-entity id="god-option" geometry='primitive: plane; height: 2; width: 2;' visible="false" material='color: magenta;' position='-1.5 2.5 -3'></a-entity><!-- text="value: god option"-->
+                <a-entity id="chips-option" text="value: CLASSIC POTATO CHIPS \n $ 2.00/s \n\n fresh take on a \n classic potato chip \n formula; font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; align: center; width: 4; color: white;" geometry='primitive: plane; height: 3; width: 4;' visible="false" material='color: magenta; opacity: 0;' position='0 1.5 -3'></a-entity><!-- text="value: god option"-->
+                
+                <a-entity id="orders-option" text="value: ORDERS \n\n loading previous orders... ; font: ../css/mozillavr.fnt; fontImage: ../css/mozillavr.png; align: center; width: 4; color: white;" geometry='primitive: plane; height: 3; width: 4;' visible="false" material='color: magenta; opacity: 0;' position='0 1.5 -3'></a-entity><!-- text="value: god option"-->
                 
                 <a-entity id='selected-option' visible="false" geometry='primitive: box; depth: 0.5; height: 0.5; width: 0.5;' position='0 0.05 -3' material='src: #selected-texture;'></a-entity>
                 <a-camera userHeight='1.8' position='0 1.8 0'></a-camera>
