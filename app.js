@@ -143,6 +143,15 @@ app.get('/pARk', function(req, res){
     res.render('pARk.html',{root: dir[0]});
 });
 
+app.get('/niggar', function(req, res){
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var headers = req.headers;
+    checkInitialDeviceConnectionType(headers, ip);
+    
+    console.log('requesting DIA from pARk... \n rendering niggar. \n') 
+    res.render('niggar.html',{root: dir[0]});
+});
+
 app.get('/game', function(req, res){
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var headers = req.headers;

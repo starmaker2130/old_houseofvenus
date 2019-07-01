@@ -1,0 +1,419 @@
+@font-face{
+    font-family:"AuraRegular W05 Regular";
+    src: url("../css/Fonts/5218298/d83d08da-5e79-48df-a9b1-6f5acf78cb00.eot?#iefix");
+    src: url("../css/Fonts/5218298/d83d08da-5e79-48df-a9b1-6f5acf78cb00.eot?#iefix") format("eot"),url("../css/Fonts/5218298/92d5ad9f-b979-4d9b-8608-e7bef993c281.woff2") format("woff2"),url("../css/Fonts/5218298/48665d19-aff2-4022-aa29-5f4afa40c8af.woff") format("woff"),url("../css/Fonts/5218298/27cf9724-1c32-4032-b145-f082ef3ddb21.ttf") format("truetype");
+}    
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'AuraRegular W05 Regular', Fallback, sans-serif;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+    text-transform: lowercase;
+    background-color: black;
+}
+
+#screen-container{
+    color: white;
+    background-color: black;
+    position: absolute;
+    width: 700px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    margin: -300px 0 0 -350px;
+    text-align: center;
+}
+
+.page-container{
+    width: 80%; height: 60%; margin: 18% auto 0 auto;
+}
+
+#second-page-container, #third-page-container{
+    display: none;
+    opacity: 0;
+}
+
+#third-page-container{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+
+#videoElement{
+    margin: 1% auto;
+    display: block;
+    width: 680px;
+    height: 510px;
+    z-index: 5;
+    border: 2px white solid;
+}
+
+#videoLabel{
+    z-index: 50;
+}
+
+#canvas-container{
+    z-index: 75;
+    position: absolute;
+    width: 680px;
+    height: 510px;
+    top: 50%;
+    left: 50%;
+    margin: -260px 0 0 -340px;
+}
+
+#buffer-canvas{
+    opacity: 0;
+}
+
+.embedded-scene-container{
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    width: 680px;
+    height: 510px;
+    top: 50%;
+    left: 50%;
+    margin: -240px 0 0 -320px;
+}
+
+#videoSource{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 150;
+    width: 75px;
+    border-radius: 10px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    display: block;
+    border: 3px white solid;
+}
+/*animation: name duration timing-function delay iteration-count direction fill-mode play-state*/
+
+#acrostic-container{
+    font-size: 24px;
+    opacity: 0;
+    width: 225px;
+}
+
+.acrostic-header{
+    height: 30px;
+    display: inline;
+    text-align: 'left';
+    vertical-align: top;
+    line-height: 30px;
+}
+
+.acrostic-reveal{
+    display: none;
+}
+
+.acrostic-letter{
+    height: 30px;
+    line-height: 30px;
+}
+
+.typewriter{
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 1.5s steps(15, end),
+    blink-caret .25s step-end 0s 16, /*infinite*/
+    hide-caret .5s step-end 4s infinite;
+}
+
+.typewriter-1{ /* kids next door mission */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+      typingone 1.5s steps(15, end) 4s,
+      blink-caret .25s step-end 4s 16, /*infinite*/
+      hide-caret .5s step-end 8s infinite;
+}
+
+.typewriter-2{ /* operation */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+      typingtwo 1s steps(15, end) 8s,
+      blink-caret .25s step-end 8s 16, /*infinite*/
+      hide-caret .5s step-end 12s infinite;
+}
+
+.typewriter-3{
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typingthree 1.5s steps(15, end) 12s,
+    blink-caret .25s step-end 12s 36; /*infinite*/
+}
+
+.typewriter-4{ /* writing operatives */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typingfour 1.5s steps(25, end) 0s,
+    blink-caret .25s step-end 0s 20, /*infinite*/
+    hide-caret .5s step-end 5s infinite;
+}
+
+.typewriter-5{ /* patrice-morgan ongoly */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+      typingfive 1.5s steps(25, end) 5s,
+      blink-caret .25s step-end 5s 16, /*infinite*/
+      hide-caret .5s step-end 8s infinite;
+}
+
+.typewriter-6{  /* akshay grewal */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+      typingsix 1.5s steps(15, end) 8s,
+      blink-caret .25s step-end 8s 16, /*infinite*/
+      hide-caret .5s step-end 12s infinite;
+}
+
+.typewriter-7{ /* storyboard operatives: */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+      typingseven 1.5s steps(15, end) 12s,
+      blink-caret .25s step-end 12s 16, /*infinite*/
+      hide-caret .5s step-end 16s infinite;
+}
+
+.typewriter-8{ /* patrice-morgan ongoly */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+      typingeight 1.5s steps(15, end) 16s,
+      blink-caret .25s step-end 16s 16, /*infinite*/
+      hide-caret .5s step-end 20s infinite;
+}
+
+.typewriter-9{ /* with */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+      typingnine 1s steps(10, end) 20s,
+      blink-caret .25s step-end 20s 16, /*infinite*/
+      hide-caret .5s step-end 22s infinite;
+}
+
+.typewriter-10{ /* samson-gabriel aria */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+      typingten 1.5s steps(15, end) 22s,
+      blink-caret .25s step-end 22s 40, /*infinite*/
+      hide-caret .5s step-end 28s infinite;
+}
+
+#premier-reveal{
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+        premier-ar 1.5s steps(15, end),
+        blink-caret .25s step-end 8,
+        hide-caret .5s step-end 2s infinite;
+}
+
+#deuxieme-reveal{
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+        deuxieme-ar 1.5s steps(20, end),
+        blink-caret .25s step-end 8,
+        hide-caret .5s step-end 2s infinite;
+}
+
+#troisieme-reveal{
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+        troisieme-ar 1.5s steps(20, end),
+        blink-caret .25s step-end 8,
+        hide-caret .5s step-end 2s infinite;
+}
+
+#quatrieme-reveal{
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+        quatrieme-ar 1.5s steps(15, end),
+        blink-caret .25s step-end 12,
+        hide-caret .5s step-end 2s infinite;
+}
+
+#cinquieme-reveal{
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+        cinquieme-ar 1.5s steps(15, end),
+        blink-caret .25s step-end 16,
+        hide-caret .5s step-end 2s infinite;
+}
+
+#sixieme-reveal{
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+        sixieme-ar 1.5s steps(15, end),
+        blink-caret .25s step-end 20,
+        hide-caret .5s step-end 5s infinite;
+}
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 230px }
+}        
+
+@keyframes typingone {
+  from { width: 0 }
+  to { width: 370px }
+}
+
+@keyframes typingtwo {
+  from { width: 0 }
+  to { width: 160px }
+}
+
+@keyframes typingthree {
+  from { width: 0 }
+  to { width: 180px }
+}
+
+@keyframes premier-ar{
+    from { width: 0 }
+    to { width: 110px }
+}
+
+@keyframes deuxieme-ar{
+    from { width: 0 }
+    to { width: 165px }
+}
+
+@keyframes troisieme-ar{
+    from { width: 0 }
+    to { width: 65px }
+}
+
+@keyframes quatrieme-ar{
+    from { width: 0 }
+    to { width: 125px }
+}
+
+@keyframes cinquieme-ar{
+    from { width: 0 }
+    to { width: 160px }
+}
+
+@keyframes sixieme-ar{
+    from { width: 0 }
+    to { width: 120px }
+}
+
+@keyframes typingfour {
+  from { width: 0 }
+  to { width: 330px }
+}
+
+@keyframes typingfive {
+  from { width: 0 }
+  to { width: 370px }
+}
+
+@keyframes typingsix {
+  from { width: 0 }
+  to { width: 300px }
+}
+
+@keyframes typingseven {
+  from { width: 0 }
+  to { width: 370px }
+}
+
+@keyframes typingeight {
+  from { width: 0 }
+  to { width: 370px }
+}
+
+@keyframes typingnine {
+  from { width: 0 }
+  to { width: 100px }
+}
+
+@keyframes typingten {
+  from { width: 0 }
+  to { width: 350px }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; border-width: 0px; }
+  50% { border-color: white; border-width: 15px; }
+}
+
+@keyframes hide-caret {
+    from {border-right: 0}
+    to { border-right: 0; }
+}
